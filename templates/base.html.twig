@@ -24,47 +24,36 @@
 		<header>
 			<nav id="mynav" class="navbar fixed-top navbar-expand-lg navbar-light">
 				<div class="container-fluid">
-					<a class="navbar-brand" href=""><img src="" class="" alt=""></i>
-				</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+                        <a class="navbar-brand" href=""><img src="" class="" alt=""></i>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-					<div class="navbar-nav  ms-auto">
-						<a class="nav-link" href="">Voeux</a>
-						<a class="nav-link" href="">Choixpeau</a>
-
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								<span class="login-logo">
-									<i class="fas fa-user"></i>
-									<span></a>
-
-									<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-										<a class="dropdown-item" href="">Se connecter</a>
-										<a class="dropdown-item" href="">Inscrivez-vous !</a>
-										<a class="dropdown-item" href="">Déconnexion</a>
-									</ul>
-								</li>
-								<a class="nav-link" href="">Article</a>
-								<a class="nav-link" href="">Ecole</a>
-								<a class="nav-link" href="">Maison</a>
-
-								<a class="nav-link" href="">Classe</a>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav  ms-auto">
+                            <a class="nav-link" href="{{ path('home') }}">Home</a>
 
 
-								<a class="nav-link" href="">Catégorie</a>
-								<a class="nav-link" href="">Location</a>
-								<a class="nav-link" href="">Spécialité</a>
-								<a class="nav-link" href="">Utilisateurs</a>
-							</div>
-						</li>
-					</div>
-				</nav>
+                                    <a class="nav-link" href="{{ '/login' }}">Se connecter</a>
+                                    <a class="nav-link" href="{{ '/register' }}">Inscrivez-vous !</a>
+                                    <a class="nav-link" href="{{ ('/logout') }}">Déconnexion</a>
+                                    <a class="nav-link" href="{{ path('menus_index') }}">Menus</a>
+                                    <a class="nav-link" href="{{ path('events_index') }}">Evènements</a>
+                                    <a class="nav-link" href="{{ path('categories_index') }}">Catégories</a>
+                                    <a class="nav-link" href="{{ path('pubs_index') }}">Pubs</a>
+                                    <a class="nav-link" href="{{ path('products_index') }}">Produits</a>
+                                    <a class="nav-link" href="{{ path('user_index') }}">Utilisateurs</a>
+                        </div>
+                    </div>
+                </div>
+			</nav>
 
 			</header>
 			{% block body %}{% endblock %}
-		</body>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+			<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+            <script src="{{asset('js/app.js')}}"></script>
 	</body>
 </html>
