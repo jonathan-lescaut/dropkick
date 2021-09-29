@@ -66,6 +66,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $cpUser;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Pubs::class, inversedBy="users")
+     */
+    private $pubs;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -214,4 +219,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getPubs(): ?Pubs
+    {
+        return $this->pubs;
+    }
+
+    public function setPubs(?Pubs $pubs): self
+    {
+        $this->pubs = $pubs;
+
+        return $this;
+    }
+
 }

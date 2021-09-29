@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +33,27 @@ class Products
      * @ORM\Column(type="text")
      */
     private $contentProduct;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Pubs::class, mappedBy="products")
+     */
+    private $pubs;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="products")
+     */
+    private $categories;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Menus::class, inversedBy="products")
+     */
+    private $menus;
+
+    public function __construct()
+    {
+        $this->pubs = new ArrayCollection();
+        $this->menus = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -69,6 +92,69 @@ class Products
     public function setContentProduct(string $contentProduct): self
     {
         $this->contentProduct = $contentProduct;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Pubs[]
+     */
+    public function getPubs(): Collection
+    {
+        return $this->pubs;
+    }
+
+    public function addPub(Pubs $pub): self
+    {
+        if (!$this->pubs->contains($pub)) {
+            $this->pubs[] = $pub;
+            $pub->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removePub(Pubs $pub): self
+    {
+        if ($this->pubs->removeElement($pub)) {
+            $pub->removeProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function getCategories(): ?Categories
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(?Categories $categories): self
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Menus[]
+     */
+    public function getMenus(): Collection
+    {
+        return $this->menus;
+    }
+
+    public function addMenu(Menus $menu): self
+    {
+        if (!$this->menus->contains($menu)) {
+            $this->menus[] = $menu;
+        }
+
+        return $this;
+    }
+
+    public function removeMenu(Menus $menu): self
+    {
+        $this->menus->removeElement($menu);
 
         return $this;
     }

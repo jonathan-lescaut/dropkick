@@ -42,6 +42,11 @@ class Events
      */
     private $placeEvent;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Pubs::class, inversedBy="events")
+     */
+    private $pubs;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Events
     public function setPlaceEvent(string $placeEvent): self
     {
         $this->placeEvent = $placeEvent;
+
+        return $this;
+    }
+
+    public function getPubs(): ?Pubs
+    {
+        return $this->pubs;
+    }
+
+    public function setPubs(?Pubs $pubs): self
+    {
+        $this->pubs = $pubs;
 
         return $this;
     }
