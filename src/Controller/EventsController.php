@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @Route("/events")
@@ -28,13 +31,37 @@ class EventsController extends AbstractController
     /**
      * @Route("/new", name="events_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, SluggerInterface $slugger): Response
     {
         $event = new Events();
         $form = $this->createForm(EventsType::class, $event);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $imgEvent = $form->get('imgEvent')->getData();
+            if ($imgEvent) {
+            $originalFilename = pathinfo($imgEvent->getClientOriginalName(),
+            PATHINFO_FILENAME);
+
+            $safeFilename = $slugger->slug($originalFilename);
+            $newFilename = $safeFilename.'-'.uniqid().'.'.$imgEvent->guessExtension();
+
+            try {
+            $imgEvent->move(
+            $this->getParameter('photos_directory'),
+            $newFilename
+            );
+            } catch (FileException $e) {}
+                
+            
+            $event->setImgEvent($newFilename);
+        }
+
+
+
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($event);
             $entityManager->flush();

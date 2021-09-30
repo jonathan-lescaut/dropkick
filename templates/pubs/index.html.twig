@@ -20,7 +20,7 @@
             <tr>
                 <td>{{ pub.id }}</td>
                 <td>{{ pub.namePub }}</td>
-                <td>{{ pub.imgPub }}</td>
+                <td><img src="{{ asset('uploads/photos/' ~ pub.imgPub) }}" width="100"></td>
                 <td>{{ pub.contentPub }}</td>
                 <td>
                     <a href="{{ path('pubs_show', {'id': pub.id}) }}">show</a>

@@ -1,4 +1,13 @@
 body {
   width: 100%;
 }
+
+nav {
+  background-color: rgba(0, 0, 0, 0.61);
+}
+
+.navH {
+  font-size: 2rem;
+  color: white !important;
+}
 /*# sourceMappingURL=style.css.map */

@@ -45,7 +45,7 @@ class Pubs
     private $events;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Products::class, inversedBy="pubs")
+     * @ORM\ManyToMany(targetEntity=Products::class, mappedBy="pubs")
      */
     private $products;
 

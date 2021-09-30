@@ -35,7 +35,7 @@ class Products
     private $contentProduct;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Pubs::class, mappedBy="products")
+     * @ORM\ManyToMany(targetEntity=Pubs::class, inversedBy="products")
      */
     private $pubs;
 
@@ -48,6 +48,11 @@ class Products
      * @ORM\ManyToMany(targetEntity=Menus::class, inversedBy="products")
      */
     private $menus;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $imgProduct;
 
     public function __construct()
     {
@@ -155,6 +160,18 @@ class Products
     public function removeMenu(Menus $menu): self
     {
         $this->menus->removeElement($menu);
+
+        return $this;
+    }
+
+    public function getImgProduct(): ?string
+    {
+        return $this->imgProduct;
+    }
+
+    public function setImgProduct(string $imgProduct): self
+    {
+        $this->imgProduct = $imgProduct;
 
         return $this;
     }

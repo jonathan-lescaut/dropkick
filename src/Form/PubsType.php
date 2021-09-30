@@ -6,6 +6,8 @@ use App\Entity\Pubs;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
 
 class PubsType extends AbstractType
 {
@@ -13,8 +15,23 @@ class PubsType extends AbstractType
     {
         $builder
             ->add('namePub')
-            ->add('imgPub')
+            ->add('imgPub', FileType::class, [
+                'label' => 'Photo pub',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                    'maxSize' => '1024k',
+                    'mimeTypes' => [
+                    'image/*',
+                    ],
+                    'mimeTypesMessage' => 'Veuillez entrer un format de document
+                    valide',
+                ])
+            ],
+        ])
             ->add('contentPub')
+            
         ;
     }
 

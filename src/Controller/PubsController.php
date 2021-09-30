@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @Route("/pubs")
@@ -28,13 +31,33 @@ class PubsController extends AbstractController
     /**
      * @Route("/new", name="pubs_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, SluggerInterface $slugger): Response
     {
         $pub = new Pubs();
         $form = $this->createForm(PubsType::class, $pub);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+                $imgPub = $form->get('imgPub')->getData();
+                if ($imgPub) {
+                $originalFilename = pathinfo($imgPub->getClientOriginalName(),
+                PATHINFO_FILENAME);
+
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imgPub->guessExtension();
+
+                try {
+                $imgPub->move(
+                $this->getParameter('photos_directory'),
+                $newFilename
+                );
+                } catch (FileException $e) {}
+                    
+                
+                $pub->setImgPub($newFilename);
+            }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($pub);
             $entityManager->flush();

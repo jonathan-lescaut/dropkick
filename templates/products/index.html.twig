@@ -10,8 +10,12 @@
             <tr>
                 <th>Id</th>
                 <th>NameProduct</th>
+                <th>imgProduct</th>
                 <th>PriceProduct</th>
                 <th>ContentProduct</th>
+                <th>Category</th>
+                <th>Menus</th>
+                <th>Pub</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,6 +26,15 @@
                 <td>{{ product.nameProduct }}</td>
                 <td>{{ product.priceProduct }}</td>
                 <td>{{ product.contentProduct }}</td>
+                <td>{{ product.categories.nameCategory }}</td>
+                {% for menu in product.menus %}
+                <td>{{ menu.nameMenu }}</td>
+                {% endfor %}
+                <td><img src="{{ asset('uploads/photos/' ~ product.imgProduct) }}" width="100"></td>
+                {% for pub in product.pubs %}
+                <td>{{ pub.namePub }}</td>
+                {% endfor %}
+
                 <td>
                     <a href="{{ path('products_show', {'id': product.id}) }}">show</a>
                     <a href="{{ path('products_edit', {'id': product.id}) }}">edit</a>

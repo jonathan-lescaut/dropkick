@@ -14,6 +14,7 @@
                 <th>DateEvent</th>
                 <th>ContentEvent</th>
                 <th>PlaceEvent</th>
+                <th>pub</th> 
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,10 +23,13 @@
             <tr>
                 <td>{{ event.id }}</td>
                 <td>{{ event.nameEvent }}</td>
-                <td>{{ event.imgEvent }}</td>
+                <td><img src="{{ asset('uploads/photos/' ~ event.imgEvent) }}" width="100"></td>
                 <td>{{ event.dateEvent ? event.dateEvent|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ event.contentEvent }}</td>
                 <td>{{ event.placeEvent }}</td>
+                <td>{{ event.pubs.namePub }}</td>
+
+
                 <td>
                     <a href="{{ path('events_show', {'id': event.id}) }}">show</a>
                     <a href="{{ path('events_edit', {'id': event.id}) }}">edit</a>
