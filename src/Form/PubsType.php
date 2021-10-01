@@ -31,7 +31,7 @@ class PubsType extends AbstractType
             ],
         ])
             ->add('contentPub')
-            
+            ->add('cityPub')
         ;
     }
 

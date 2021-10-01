@@ -5,13 +5,15 @@ namespace App\Controller;
 use App\Entity\Pubs;
 use App\Form\PubsType;
 use App\Repository\PubsRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\EventsRepository;
+use App\Repository\ProductsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
  * @Route("/pubs")
@@ -25,6 +27,8 @@ class PubsController extends AbstractController
     {
         return $this->render('pubs/index.html.twig', [
             'pubs' => $pubsRepository->findAll(),
+            
+
         ]);
     }
 
@@ -74,10 +78,12 @@ class PubsController extends AbstractController
     /**
      * @Route("/{id}", name="pubs_show", methods={"GET"})
      */
-    public function show(Pubs $pub): Response
+    public function show(Pubs $pub, EventsRepository $eventsRepository, ProductsRepository $productsRepository): Response
     {
         return $this->render('pubs/show.html.twig', [
             'pub' => $pub,
+            'events' => $eventsRepository->findAll(),
+            'products' => $productsRepository->findAll(),
         ]);
     }
 
