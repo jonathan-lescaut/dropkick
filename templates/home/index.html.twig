@@ -25,18 +25,17 @@
 
             <img src="{{asset('uploads/reims.jpg')}}" alt="reims">
         </div>
-
-
     </div>
 
+    <div class="blocLienPubs">
+        {% for pub in pubs %}
+        <div class="lienPub">
+            <a href="{{ path('pubs_show', {'id': pub.id}) }}" class="cityPub">{{pub.cityPub}}</a>
+        </div>
+        {% endfor %}
+    </div>
 </body>
 
-
-{% for pub in pubs %}
-    
-    <a href="{{ path('pubs_show', {'id': pub.id}) }}">{{pub.cityPub}}</a>
-
-{% endfor %}
 
 
 {% endblock %}

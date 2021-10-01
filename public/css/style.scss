@@ -20,7 +20,7 @@
     */
 
 /* FONTS
-    - Default       Lato
+    - Default       IrishUncialfabeta-Bold
     - Subtitle
 
 /* CSS DIRECTORY
@@ -39,8 +39,14 @@ body{
   box-sizing: border-box;
   width: 100%;
 }
+@font-face {
+    font-family: 'irish';
+    src: url('/public/font/IrishUncialfabeta-Bold.ttf');
+ }
 
-
+*{
+    font-family: 'irish';
+}
 // NAVIGATION HOME ===================================================================================================
 nav{
     background-color: rgba(0, 0, 0, 0.61);
@@ -48,6 +54,21 @@ nav{
 .navH{
     font-size: 2rem;
     color: white !important;
+}
+
+.blocLienPubs{
+    display: flex;
+}
+.lienPub{
+    display: flex;
+    width: 100%;
+
+}
+.cityPub{
+    text-transform: none;
+    text-decoration: none;
+    color: black;
+    font-size: 4rem;
 }
 
 // CAROUSSEL =========================================================================================================

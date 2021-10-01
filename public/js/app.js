@@ -38,7 +38,6 @@ $(function(){
 				//photo on
 				$('#slidertype' + pic_num).css({display:'block',opacity:'0'}).animate({opacity:'1'},fadeSpeed);
 				}
-
 				else if (count == 2){
 				//photo off
 				$('#slidertype' + pic_num).css({display:'block',opacity:'1'}).animate({opacity:'0'},fadeSpeed);
