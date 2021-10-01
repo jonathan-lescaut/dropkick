@@ -1,9 +1,43 @@
+/*DUCUMENT INFORMATION
+    - Document : Dropkick
+    - Version 1.0.0
+    - Autor : Jonathan
 
+*/
 
+/* COLORS
+    - Defaut Body text    #eee
+    - h1                  #eee
+    - h2                  #000
+    - h3
 
+    - button
+    - button:hover
+    - icon                #008000   
+
+    - Border
+
+    */
+
+/* FONTS
+    - Default       Lato
+    - Subtitle
+
+/* CSS DIRECTORY
+
+    1. =GLOBAL
+    2. =HEADER
+    3. =PRODUITS
+
+*/
+/* GLOBAL
+==============================================*/
 
 body{
-    width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 
@@ -11,12 +45,18 @@ body{
 nav{
     background-color: rgba(0, 0, 0, 0.61);
 }
-
-
 .navH{
     font-size: 2rem;
     color: white !important;
 }
 
+// CAROUSSEL =========================================================================================================
+header{
+  width: 100%;
+}
 
+.slide {
+    width: 100%;
+    transition: transform .1s; /* Animation */
+  }
 // ===================================================================================================================

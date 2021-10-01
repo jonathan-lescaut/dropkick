@@ -8,7 +8,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>NameProduct</th>
                 <th>imgProduct</th>
                 <th>PriceProduct</th>
@@ -22,19 +21,21 @@
         <tbody>
         {% for product in products %}
             <tr>
-                <td>{{ product.id }}</td>
                 <td>{{ product.nameProduct }}</td>
+                <td><img src="{{ asset('uploads/photos/' ~ product.imgProduct) }}" width="100"></td>
                 <td>{{ product.priceProduct }}</td>
                 <td>{{ product.contentProduct }}</td>
                 <td>{{ product.categories.nameCategory }}</td>
-                {% for menu in product.menus %}
-                <td>{{ menu.nameMenu }}</td>
+                <td>
+                {% for menu in product.menus %}   
+                    {{ menu.nameMenu }}
                 {% endfor %}
-                <td><img src="{{ asset('uploads/photos/' ~ product.imgProduct) }}" width="100"></td>
+                </td>
+                <td>
                 {% for pub in product.pubs %}
-                <td>{{ pub.namePub }}</td>
+                {{ pub.namePub }}
                 {% endfor %}
-
+                </td>
                 <td>
                     <a href="{{ path('products_show', {'id': product.id}) }}">show</a>
                     <a href="{{ path('products_edit', {'id': product.id}) }}">edit</a>

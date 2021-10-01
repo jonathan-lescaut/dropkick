@@ -8,16 +8,19 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+
                 <th>NameMenu</th>
+                <th>priceMenu</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for menu in menuses %}
             <tr>
-                <td>{{ menu.id }}</td>
+
                 <td>{{ menu.nameMenu }}</td>
+                <td>{{ menu.priceMenu }}</td>
+
                 <td>
                     <a href="{{ path('menus_show', {'id': menu.id}) }}">show</a>
                     <a href="{{ path('menus_edit', {'id': menu.id}) }}">edit</a>

@@ -49,6 +49,11 @@ class Pubs
      */
     private $products;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $cityPub;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -177,6 +182,18 @@ class Pubs
     public function removeProduct(Products $product): self
     {
         $this->products->removeElement($product);
+
+        return $this;
+    }
+
+    public function getCityPub(): ?string
+    {
+        return $this->cityPub;
+    }
+
+    public function setCityPub(string $cityPub): self
+    {
+        $this->cityPub = $cityPub;
 
         return $this;
     }

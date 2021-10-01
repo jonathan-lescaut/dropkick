@@ -21,34 +21,46 @@
 		{% endblock %}
 	</head>
 	<body>
-		<header>
-			<nav id="mynav" class="navbar fixed-top navbar-expand-lg ">
-				<div class="container-fluid">
-                        <a class="navbar-brand" href=""><img src="" class="" alt=""></i>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
 
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav ms-auto">
-                            <a class="nav-link navH" href="{{ path('home') }}">Home</a>
+	 <header>
+        <nav id="mynav" class="navbar fixed-top navbar-expand-lg ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href=""><img src="" class="" alt=""></i>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto">
+                        <a class="nav-link navH" href="{{ path('home') }}">Home</a>
 
 
-                                    <a class="nav-link navH" href="{{ '/login' }}">Se connecter</a>
-                                    <a class="nav-link navH" href="{{ '/register' }}">Inscrivez-vous !</a>
-                                    <a class="nav-link navH" href="{{ ('/logout') }}">Déconnexion</a>
-                                    <a class="nav-link navH" href="{{ path('menus_index') }}">Menus</a>
-                                    <a class="nav-link navH" href="{{ path('events_index') }}">Evènements</a>
-                                    <a class="nav-link navH" href="{{ path('categories_index') }}">Catégories</a>
-                                    <a class="nav-link navH" href="{{ path('pubs_index') }}">Pubs</a>
-                                    <a class="nav-link navH" href="{{ path('products_index') }}">Produits</a>
-                                    <a class="nav-link navH" href="{{ path('user_index') }}">Utilisateurs</a>
-                        </div>
+
+                        {% if (is_granted('ROLE_ADMIN')) %}
+						<h2>Administration</h2>
+                        <a class="nav-link navH" href="{{ path('menus_index') }}">Menus</a>
+                        <a class="nav-link navH" href="{{ path('events_index') }}">Evènements</a>
+                        <a class="nav-link navH" href="{{ path('categories_index') }}">Catégories</a>
+                        <a class="nav-link navH" href="{{ path('pubs_index') }}">Pubs</a>
+                        <a class="nav-link navH" href="{{ path('products_index') }}">Produits</a>
+                        <a class="nav-link navH" href="{{ path('user_index') }}">Utilisateurs</a>
+                        {% endif %}
+
+                        {% if (is_granted('ROLE_USER')) %}
+                        <a class="nav-link navH" href="{{ ('/logout') }}">Déconnexion</a>
+                        {% else %}
+                        <a class="nav-link navH" href="{{ '/login' }}">Se connecter</a>
+                        <a class="nav-link navH" href="{{ '/register' }}">Inscrivez-vous !</a>
+                        {% endif %}
                     </div>
                 </div>
-			</nav>
-			</header>
+            </div>
+        </nav>
+    </header>
+
 			{% block body %}{% endblock %}
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 			<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>

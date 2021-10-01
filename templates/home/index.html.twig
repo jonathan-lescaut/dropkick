@@ -4,25 +4,39 @@
 
 {% block body %}
 
-<div align="center">
-
-<div id="slidertype1" style="display:none">
-
-<img src="{{asset('uploads/Orleans.jpg')}}" alt="orleans">
-</div>
+<body>
 
 
-<div id="slidertype2" style="display:none">
+    <div align="center">
 
-<img src="{{asset('uploads/troyes.jpg')}}" alt="troyes">
-</div>
+        <div id="slidertype1" class='slide' style="display:none">
 
-
-<div id="slidertype3" style="display:none">
-
-<img src="{{asset('uploads/reims.jpg')}}" alt="reims">
-</div>
+            <img src="{{asset('uploads/Orleans.jpg')}}" alt="orleans">
+        </div>
 
 
-</div>
+        <div id="slidertype2" class='slide' style="display:none">
+
+            <img src="{{asset('uploads/troyes.jpg')}}" alt="troyes">
+        </div>
+
+
+        <div id="slidertype3" class='slide' style="display:none">
+
+            <img src="{{asset('uploads/reims.jpg')}}" alt="reims">
+        </div>
+
+
+    </div>
+
+</body>
+
+
+{% for pub in pubs %}
+    
+    <a href="{{ path('pubs_show', {'id': pub.id}) }}">{{pub.namePub}}</a>
+
+{% endfor %}
+
+
 {% endblock %}

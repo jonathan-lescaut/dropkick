@@ -29,6 +29,11 @@ class Menus
      */
     private $products;
 
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=0)
+     */
+    private $priceMenu;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -74,6 +79,18 @@ class Menus
         if ($this->products->removeElement($product)) {
             $product->removeMenu($this);
         }
+
+        return $this;
+    }
+
+    public function getPriceMenu(): ?string
+    {
+        return $this->priceMenu;
+    }
+
+    public function setPriceMenu(string $priceMenu): self
+    {
+        $this->priceMenu = $priceMenu;
 
         return $this;
     }
