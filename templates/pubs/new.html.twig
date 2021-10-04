@@ -3,9 +3,13 @@
 {% block title %}New Pubs{% endblock %}
 
 {% block body %}
+<section class="pagePub navbarMargin">
+
     <h1>Create new Pubs</h1>
 
     {{ include('pubs/_form.html.twig') }}
 
     <a href="{{ path('pubs_index') }}">back to list</a>
+</section>
+
 {% endblock %}

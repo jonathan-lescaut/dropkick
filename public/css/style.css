@@ -47,6 +47,10 @@ body {
   font-family: 'irish';
 }
 
+.navbarMargin {
+  margin-top: 80px;
+}
+
 nav {
   background-color: rgba(0, 0, 0, 0.61);
 }

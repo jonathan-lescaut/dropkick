@@ -13,6 +13,8 @@ class MenusType extends AbstractType
     {
         $builder
             ->add('nameMenu')
+            ->add('priceMenu')
+
         ;
     }
 

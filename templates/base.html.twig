@@ -36,7 +36,13 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ms-auto">
                         <a class="nav-link navH" href="{{ path('home') }}">Home</a>
-
+                        {% if (pub.id) %}
+                        <pre>
+                            {{ dump(pub.id) }}
+                        </pre>
+                        
+                        {% endif %}
+                        
 
 
                         {% if (is_granted('ROLE_ADMIN')) %}
@@ -51,6 +57,9 @@
 
                         {% if (is_granted('ROLE_USER')) %}
                         <a class="nav-link navH" href="{{ ('/logout') }}">Déconnexion</a>
+                                                {# mettre le path ?? #}
+                        <a class="nav-link navH" href="{{ ('cart') }}">Panier</a>
+
                         {% else %}
                         <a class="nav-link navH" href="{{ '/login' }}">Se connecter</a>
                         <a class="nav-link navH" href="{{ '/register' }}">Inscrivez-vous !</a>

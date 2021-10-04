@@ -3,6 +3,7 @@
 {% block title %}Edit Pubs{% endblock %}
 
 {% block body %}
+<section class="pagePub navbarMargin">
     <h1>Edit Pubs</h1>
 
     {{ include('pubs/_form.html.twig', {'button_label': 'Update'}) }}
@@ -10,4 +11,5 @@
     <a href="{{ path('pubs_index') }}">back to list</a>
 
     {{ include('pubs/_delete_form.html.twig') }}
+</section>
 {% endblock %}

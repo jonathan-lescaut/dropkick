@@ -47,6 +47,13 @@ body{
 *{
     font-family: 'irish';
 }
+
+// margin Top des autres section pour adapter avec la nav bar
+.navbarMargin{
+    margin-top: 80px;
+}
+
+
 // NAVIGATION HOME ===================================================================================================
 nav{
     background-color: rgba(0, 0, 0, 0.61);

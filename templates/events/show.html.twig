@@ -3,6 +3,8 @@
 {% block title %}Events{% endblock %}
 
 {% block body %}
+<section class="pageEvent navbarMargin">
+
     <h1>Events</h1>
 
     <table class="table">
@@ -39,4 +41,6 @@
     <a href="{{ path('events_edit', {'id': event.id}) }}">edit</a>
 
     {{ include('events/_delete_form.html.twig') }}
+    </section>
+
 {% endblock %}

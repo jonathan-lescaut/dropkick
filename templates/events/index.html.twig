@@ -3,6 +3,8 @@
 {% block title %}Events index{% endblock %}
 
 {% block body %}
+<section class="pageEvent navbarMargin">
+
     <h1>Events index</h1>
 
     <table class="table">
@@ -44,4 +46,6 @@
     </table>
 
     <a href="{{ path('events_new') }}">Create new</a>
+    </section>
+
 {% endblock %}

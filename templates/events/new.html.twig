@@ -3,9 +3,13 @@
 {% block title %}New Events{% endblock %}
 
 {% block body %}
+<section class="pageEvent navbarMargin">
+
     <h1>Create new Events</h1>
 
     {{ include('events/_form.html.twig') }}
 
     <a href="{{ path('events_index') }}">back to list</a>
+    </section>
+
 {% endblock %}
