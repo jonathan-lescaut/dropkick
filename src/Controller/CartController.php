@@ -28,10 +28,12 @@ class CartController extends AbstractController
             $product = $productsRepository->find($id);
             $dataCart[] = [
                 "product" => $product,
-                "quantité" => $quantite
+                "quantite" => $quantite
             ];
             $total += $product->getPriceProduct() * $quantite;
         }
+
+        
 
         return $this->render('cart/index.html.twig', compact("dataCart", "total"));
     }
@@ -47,14 +49,64 @@ class CartController extends AbstractController
 
         if (!empty($cart[$id])) {
             $cart[$id]++;
-
+            
         }else {
-            $cart = array();
+            // $cart = array();
             $cart[$id] = 1;
-
         }
         $session->set("cart", $cart);
 
         return $this->redirectToRoute('cart_index');
     }
+
+            /**
+         * @Route("/remove/{id}", name="cart_remove")
+         */
+        public function remove(SessionInterface $session, Products $product)
+        {
+            // on recupere le panier actuel
+            $cart = $session->get("cart", []);
+            $id = $product->getId();
+    
+            if (!empty($cart[$id])) {
+                if ($cart[$id] > 1) {
+                    $cart[$id]--;
+                }else {
+                    unset($cart[$id]);
+                }
+                
+            }
+            $session->set("cart", $cart);
+    
+            return $this->redirectToRoute('cart_index');
+        }
+
+        /**
+         * @Route("/delete/{id}", name="cart_delete")
+         */
+        public function delete(SessionInterface $session, Products $product)
+        {
+            // on recupere le panier actuel
+            $cart = $session->get("cart", []);
+            $id = $product->getId();
+    
+            if (!empty($cart[$id])) {
+                unset($cart[$id]);
+            }
+            $session->set("cart", $cart);
+    
+            return $this->redirectToRoute('cart_index');
+        }
+
+
+        /**
+         * @Route("/delete", name="cart_delete_all")
+         */
+        public function deleteAll(SessionInterface $session)
+        {
+
+            $session->set("cart", []);
+    
+            return $this->redirectToRoute('cart_index');
+        }
 }

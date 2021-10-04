@@ -3,30 +3,50 @@
 {% block title %}Hello CartController!{% endblock %}
 
 {% block body %}
-<section class="navbarMargin">
+<section class="cart navbarMargin">
 <h1>Votre panier</h1>
+
+    <a href=javascript:history.go(-1)>Revenir au pub</a>
 
     <table class="table">
         <thead>
-            <th>
+            <tr>
                 <th>Produit</th>
                 <th>Image</th>
                 <th>Prix</th>
                 <th>quantité</th>
                 <th>total</th>
                 <th>Action</th>
-            </th>
+            </tr>
         </thead>
         <tbody>
-
-
+            {% for element in dataCart %}
+            <tr>
+                <td>{{element.product.nameProduct}}</td>
+                <td><img src="{{ asset('uploads/photos/' ~ element.product.imgProduct) }}" width="100"></td>
+                <td>{{element.product.priceProduct}} €</td>
+                <td>{{element.quantite}}</td>
+                <td>{{element.quantite * element.product.priceProduct}}</td>
+                <td>
+                    <a href="{{path("cart_add", {id: element.product.id})}}" class="btn btn-success">Ajouter</a>
+                    <a href="{{path("cart_remove", {id: element.product.id})}}" class="btn btn-warning">Enlever</a>
+                    <a href="{{path("cart_delete", {id: element.product.id})}}" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+                
+            {% else %}
+                <tr>
+                    <td colspan ="6" class="text-center">Votre panier est vide</td>
+                </tr>
+            {% endfor %}
         </tbody>
-
-        <pre>
-            {{ dump() }}
-        </pre>
+        <tfoot>
+            <tr>
+                <td colspan="3">total</td>
+                <td class="text-end">{{ total }} €</td>
+                <td> <a href="{{path("cart_delete_all")}}" class="btn btn-danger">Supprimer le panier</a></td>
+            </tr>
+        </tfoot>
     </table>
-
-
 </section>
 {% endblock %}

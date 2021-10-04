@@ -92,4 +92,8 @@ header {
   transition: transform .1s, -webkit-transform .1s;
   /* Animation */
 }
+
+.cart a {
+  color: #000;
+}
 /*# sourceMappingURL=style.css.map */
