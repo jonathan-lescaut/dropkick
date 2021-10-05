@@ -34,10 +34,8 @@
                 {% endfor %}
                 </td>
                 <td>
-                {% for pub in product.pubs %}
-                {{ pub.namePub }}
-
-                {% endfor %}
+                    {# {{ product.pub.namePub }} #}
+               
                 </td>
                 <td>
                     <a href="{{ path('products_show', {'id': product.id}) }}">show</a>

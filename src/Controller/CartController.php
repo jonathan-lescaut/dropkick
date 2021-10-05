@@ -18,7 +18,6 @@ class CartController extends AbstractController
     {
 
         $cart = $session->get("cart", []);
-
         // on fabrique les données
 
         $dataCart = [];
@@ -26,7 +25,10 @@ class CartController extends AbstractController
 
         foreach ($cart as $id => $quantite) {
             $product = $productsRepository->find($id);
+            $pub = $product->getPub();
+
             $dataCart[] = [
+                "pub" => $pub,
                 "product" => $product,
                 "quantite" => $quantite
             ];
@@ -51,7 +53,6 @@ class CartController extends AbstractController
             $cart[$id]++;
             
         }else {
-            // $cart = array();
             $cart[$id] = 1;
         }
         $session->set("cart", $cart);

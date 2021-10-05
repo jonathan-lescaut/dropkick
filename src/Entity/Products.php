@@ -34,10 +34,6 @@ class Products
      */
     private $contentProduct;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Pubs::class, inversedBy="products")
-     */
-    private $pubs;
 
     /**
      * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="products")
@@ -54,9 +50,13 @@ class Products
      */
     private $imgProduct;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Pubs::class, inversedBy="products")
+     */
+    private $pub;
+
     public function __construct()
     {
-        $this->pubs = new ArrayCollection();
         $this->menus = new ArrayCollection();
     }
 
@@ -97,33 +97,6 @@ class Products
     public function setContentProduct(string $contentProduct): self
     {
         $this->contentProduct = $contentProduct;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Pubs[]
-     */
-    public function getPubs(): Collection
-    {
-        return $this->pubs;
-    }
-
-    public function addPub(Pubs $pub): self
-    {
-        if (!$this->pubs->contains($pub)) {
-            $this->pubs[] = $pub;
-            $pub->addProduct($this);
-        }
-
-        return $this;
-    }
-
-    public function removePub(Pubs $pub): self
-    {
-        if ($this->pubs->removeElement($pub)) {
-            $pub->removeProduct($this);
-        }
 
         return $this;
     }
@@ -172,6 +145,18 @@ class Products
     public function setImgProduct(string $imgProduct): self
     {
         $this->imgProduct = $imgProduct;
+
+        return $this;
+    }
+
+    public function getPub(): ?Pubs
+    {
+        return $this->pub;
+    }
+
+    public function setPub(?Pubs $pub): self
+    {
+        $this->pub = $pub;
 
         return $this;
     }

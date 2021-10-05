@@ -22,10 +22,8 @@ class ProductsType extends AbstractType
             ->add('nameProduct')
             ->add('priceProduct')
             ->add('contentProduct')
-            ->add('pubs', EntityType::class, [
+            ->add('pub', EntityType::class, [
                 'class' => Pubs::class,
-                'multiple' => true,
-                'expanded' => true,
                 'choice_label' => 'namePub',
             ])
             ->add('menus', EntityType::class, [

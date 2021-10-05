@@ -8,6 +8,7 @@
 
     <a href=javascript:history.go(-1)>Revenir au pub</a>
 
+
     <table class="table">
         <thead>
             <tr>
@@ -21,6 +22,7 @@
         </thead>
         <tbody>
             {% for element in dataCart %}
+
             <tr>
                 <td>{{element.product.nameProduct}}</td>
                 <td><img src="{{ asset('uploads/photos/' ~ element.product.imgProduct) }}" width="100"></td>
@@ -32,6 +34,13 @@
                     <a href="{{path("cart_remove", {id: element.product.id})}}" class="btn btn-warning">Enlever</a>
                     <a href="{{path("cart_delete", {id: element.product.id})}}" class="btn btn-danger">Supprimer</a>
                 </td>
+                {# <td>{{element.pub}}</td> #}
+                {% for pub in element.pub %}
+                    
+                {% endfor %}
+                <pre>
+                    {{ dump(element.pub) }}
+                </pre>
             </tr>
                 
             {% else %}

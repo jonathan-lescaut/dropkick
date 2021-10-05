@@ -44,15 +44,16 @@ class Pubs
      */
     private $events;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Products::class, mappedBy="pubs")
-     */
-    private $products;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $cityPub;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Products::class, mappedBy="pub")
+     */
+    private $products;
 
     public function __construct()
     {
@@ -162,6 +163,18 @@ class Pubs
         return $this;
     }
 
+    public function getCityPub(): ?string
+    {
+        return $this->cityPub;
+    }
+
+    public function setCityPub(string $cityPub): self
+    {
+        $this->cityPub = $cityPub;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Products[]
      */
@@ -174,6 +187,7 @@ class Pubs
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
+            $product->setPub($this);
         }
 
         return $this;
@@ -181,19 +195,12 @@ class Pubs
 
     public function removeProduct(Products $product): self
     {
-        $this->products->removeElement($product);
-
-        return $this;
-    }
-
-    public function getCityPub(): ?string
-    {
-        return $this->cityPub;
-    }
-
-    public function setCityPub(string $cityPub): self
-    {
-        $this->cityPub = $cityPub;
+        if ($this->products->removeElement($product)) {
+            // set the owning side to null (unless already changed)
+            if ($product->getPub() === $this) {
+                $product->setPub(null);
+            }
+        }
 
         return $this;
     }

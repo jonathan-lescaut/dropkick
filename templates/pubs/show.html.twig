@@ -1,70 +1,77 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Pubs{% endblock %}
+{% block title %}Pubs
+{% endblock %}
 
 {% block body %}
-<section class="pagePub navbarMargin">
+	<section class="pagePub navbarMargin">
 
-    <h1>Pubs</h1>
+		<h1>Pubs</h1>
 
-    <table class="table">
-        <tbody>
+		<table class="table">
+			<tbody>
 
-            <tr>
-                <th>cityPub</th>
-                <td>{{ pub.cityPub }}</td>
-            </tr>
-            <tr>
-                <th>ImgPub</th>
-                <td>{{ pub.imgPub }}</td>
-            </tr>
-            <tr>
-                <th>ContentPub</th>
-                <td>{{ pub.contentPub }}</td>
-            </tr>
-        </tbody>
-    </table>
+				<tr>
+					<th>cityPub</th>
+					<td>{{ pub.cityPub }}</td>
+				</tr>
+				<tr>
+					<th>ImgPub</th>
+					<td>{{ pub.imgPub }}</td>
+				</tr>
+				<tr>
+					<th>ContentPub</th>
+					<td>{{ pub.contentPub }}</td>
+				</tr>
+			</tbody>
+		</table>
 
-    <a href="{{ path('pubs_index') }}">back to list</a>
+		<a href="{{ path('pubs_index') }}">back to list</a>
 
-    <a href="{{ path('pubs_edit', {'id': pub.id}) }}">edit</a>
+		<a href="{{ path('pubs_edit', {'id': pub.id}) }}">edit</a>
 
-<h3>Event</h3>
-{% for event in events %}
-    {% if event.pubs.id is same as(pub.id)%}
-    
-    <p>{{event.nameEvent}}</p>
-    <p>{{event.pubs.namePub}}</p>  
-    {% endif %}
-    
-{% endfor %}
+		<h3>Event</h3>
+		{% for event in events %}
+			{% if event.pubs.id is same as(pub.id)%}
 
+				<p>{{event.nameEvent}}</p>
+				<p>{{event.pubs.namePub}}</p>
+			{% endif %}
 
-<h3>Product</h3>
-
-{# Many to many = a for dans le for pour acceder à la collection #}
-{% for product in products %}
-
-    {% for pubs in product.pubs %}
-        {% if pub.id is same as(pubs.id)%}
-            <p>{{product.nameProduct}}</p>
-            <img src="{{ asset('uploads/photos/' ~ product.imgProduct) }}" width="100">
-            <p>{{product.priceProduct}} euros</p>
-            <a href="{{path('cart_add', {id: product.id})}}" class="btn btn-success">
-                <i class="bi bi-cart-plus"></i> Ajouter
-            </a>
-        {% endif %}
-    {% endfor %}
+		{% endfor %}
 
 
+		<h3>Product</h3>
 
-{% endfor %}
+		{# Many to many = a for dans le for pour acceder à la collection #}
+		<div class="row">
+
+			{% for product in products %}
+
+				{% for pubs in product.pubs %}
+					{% if pub.id is same as(pubs.id)%}
+						<div class="col-4 mt-4">
+							<div class="border border-dark rounded p-2 clearfix">
+								<p>{{product.nameProduct}}</p>
+								<img class="w-100" src="{{ asset('uploads/photos/' ~ product.imgProduct) }}" width="100">
+								<p>{{product.priceProduct}}
+									Euros</p>
+								<a href="{{path('cart_add', {id: product.id})}}" class="btn btn-success">
+									<i class="bi bi-cart-plus"></i>
+									Ajouter
+								</a>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
 
 
+			{% endfor %}
+		</div>
 
 
-    {{ include('pubs/_delete_form.html.twig') }}
+		{{ include('pubs/_delete_form.html.twig') }}
 
-</section>
+	</section>
 
 {% endblock %}
