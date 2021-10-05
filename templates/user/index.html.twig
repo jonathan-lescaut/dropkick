@@ -18,20 +18,26 @@
                 <th>AddressUser</th>
                 <th>CityUser</th>
                 <th>CpUser</th>
+                <th>Pub choisis</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
+
             <tr>
                 <td>{{ user.id }}</td>
                 <td>{{ user.email }}</td>
+        {% if (is_granted('ROLE_ADMIN')) %}
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+        {% endif %}
+
                 <td>{{ user.lastNameUser }}</td>
                 <td>{{ user.firstNameUser }}</td>
                 <td>{{ user.addressUser }}</td>
                 <td>{{ user.cityUser }}</td>
                 <td>{{ user.cpUser }}</td>
+                <td>{{ user.pubs.namePub}}</td>
                 <td>
                     <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>

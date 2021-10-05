@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Pubs;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -48,6 +50,10 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
+            ])
+            ->add('pubs', EntityType::class, [
+                'class' => Pubs::class,
+                'choice_label' => 'namePub',
             ])
         ;
     }

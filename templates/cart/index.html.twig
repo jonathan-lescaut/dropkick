@@ -4,7 +4,14 @@
 
 {% block body %}
 <section class="cart navbarMargin">
-<h1>Votre panier</h1>
+{% for element in dataCart %}
+
+<h1>Votre panier {{element.product.pub.cityPub}}</h1>
+
+{% endfor %}
+
+
+
 
     <a href=javascript:history.go(-1)>Revenir au pub</a>
 
@@ -39,7 +46,7 @@
                     
                 {% endfor %}
                 <pre>
-                    {{ dump(element.pub) }}
+                    {{ dump(element.product.pub.cityPub) }}
                 </pre>
             </tr>
                 

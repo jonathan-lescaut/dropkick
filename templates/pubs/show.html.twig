@@ -43,13 +43,10 @@
 
 		<h3>Product</h3>
 
-		{# Many to many = a for dans le for pour acceder à la collection #}
 		<div class="row">
 
 			{% for product in products %}
-
-				{% for pubs in product.pubs %}
-					{% if pub.id is same as(pubs.id)%}
+					{% if product.pub.id is same as(pub.id)%}
 						<div class="col-4 mt-4">
 							<div class="border border-dark rounded p-2 clearfix">
 								<p>{{product.nameProduct}}</p>
@@ -63,9 +60,6 @@
 							</div>
 						</div>
 					{% endif %}
-				{% endfor %}
-
-
 			{% endfor %}
 		</div>
 

@@ -5,6 +5,8 @@
 {% block body %}
 <section class="pageProduct navbarMargin">
 
+
+
     <h1>Products index</h1>
 
     <table class="table">
@@ -34,8 +36,7 @@
                 {% endfor %}
                 </td>
                 <td>
-                    {# {{ product.pub.namePub }} #}
-               
+                {{product.pub.namePub}}
                 </td>
                 <td>
                     <a href="{{ path('products_show', {'id': product.id}) }}">show</a>

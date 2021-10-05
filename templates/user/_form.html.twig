@@ -1,4 +1,17 @@
+
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+        {{ form_row(form.email) }}
+        {{ form_row(form.firstNameUser) }}
+        {{ form_row(form.lastNameUser) }}
+        {{ form_row(form.addressUser) }}
+        {{ form_row(form.cityUser) }}
+        {{ form_row(form.cpUser) }}
+        {{ form_row(form.pubs) }}
+
+        {% if (is_granted('ROLE_ADMIN')) %}
+        {{ form_row(form.roles) }}
+        {% endif %}
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
