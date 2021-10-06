@@ -5,13 +5,16 @@ namespace App\Controller;
 use App\Entity\Menus;
 use App\Form\MenusType;
 use App\Repository\MenusRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 
 /**
  * @Route("/menus")
+ * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droits d'accés")
  */
 class MenusController extends AbstractController
 {

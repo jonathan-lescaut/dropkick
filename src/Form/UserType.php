@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 class UserType extends AbstractType
 {
 
+    
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -23,33 +24,10 @@ class UserType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        // var_dump($options['role']);
-        $builder
-            ->add('email')
-//             ->add('roles', ChoiceType::class, [
-//                 'choices' => [
-//                     'Utilisateur' => User::ROLE_USER,
-//                     'Employé' => User::ROLE_WORKER,
-//                     'Cadre' => User::ROLE_MASTER,
-//                     'Administrateur' => User::ROLE_ADMIN,
-//                 ],
-//                 'multiple' => true,
-//                 'expanded' => true,
-//                 'required' => true,
-// ])
-            ->add('lastNameUser')
-            ->add('firstNameUser')
-            ->add('addressUser')
-            ->add('cityUser')
-            ->add('cpUser')
-            ->add('pubs', EntityType::class, [
-                'class' => Pubs::class,
-                'choice_label' => 'namePub',
-            ]);
-            
-            if ($options['role'][0] === 'ROLE_ADMIN') {
-                
-                $builder
+
+        if (count($options['role']) == 4) {
+            $builder
+                ->add('email')
                 ->add('roles', ChoiceType::class, [
                     'choices' => [
                         'Utilisateur' => User::ROLE_USER,
@@ -60,11 +38,31 @@ class UserType extends AbstractType
                     'multiple' => true,
                     'expanded' => true,
                     'required' => true,
+                ])
+                ->add('lastNameUser')
+                ->add('firstNameUser')
+                ->add('addressUser')
+                ->add('cityUser')
+                ->add('cpUser')
+                ->add('pubs', EntityType::class, [
+                    'class' => Pubs::class,
+                    'choice_label' => 'namePub',
                 ]);
-            }
-
-        ;
+        } else {
+            $builder
+                ->add('email')
+                ->add('lastNameUser')
+                ->add('firstNameUser')
+                ->add('addressUser')
+                ->add('cityUser')
+                ->add('cpUser')
+                ->add('pubs', EntityType::class, [
+                    'class' => Pubs::class,
+                    'choice_label' => 'namePub',
+                ]);
+        };
     }
+
 
 
 }

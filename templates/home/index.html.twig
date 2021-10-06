@@ -27,11 +27,28 @@
     </div>
 
     <div class="blocLienPubs">
-        {% for pub in pubs %}
+        <div class="lienPub">
+        {% if app.user is same as null %}
+              {% for pub in pubs %}
         <div class="lienPub">
             <a href="{{ path('pubs_show', {'id': pub.id}) }}" class="cityPub">{{pub.cityPub}}</a>
         </div>
         {% endfor %}
+        {% else %}  
+        <p>Mon Dropkick : </p>
+        <p>{{app.user.pubs.cityPub}} </p>
+              {% for pub in pubs %}
+        {% if app.user.pubs.cityPub is same as pub.cityPub %}
+
+
+            <a href="{{ path('pubs_show', {'id': pub.id}) }}" class="cityPub">{{pub.cityPub}}</a>
+
+        {% endif %}
+             {% endfor %}
+        {% endif %}
+   
+
+        </div>
     </div>
 </section>
 

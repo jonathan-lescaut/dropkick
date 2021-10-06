@@ -12,16 +12,20 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
+
 /**
  * @Route("/pubs")
+ * @IsGranted("ROLE_USER", message="Vous n'avez pas les droits d'accés")
  */
 class PubsController extends AbstractController
 {
     /**
      * @Route("/", name="pubs_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droits d'accés")
      */
     public function index(PubsRepository $pubsRepository): Response
     {
@@ -34,6 +38,7 @@ class PubsController extends AbstractController
 
     /**
      * @Route("/new", name="pubs_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droit d'accés")
      */
     public function new(Request $request, SluggerInterface $slugger): Response
     {
@@ -77,6 +82,7 @@ class PubsController extends AbstractController
 
     /**
      * @Route("/{id}", name="pubs_show", methods={"GET"})
+     * @IsGranted("ROLE_USER", message="Vous n'avez pas les droit d'accés")
      */
     public function show(Pubs $pub, EventsRepository $eventsRepository, ProductsRepository $productsRepository): Response
     {
@@ -89,6 +95,7 @@ class PubsController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="pubs_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droits d'accés")
      */
     public function edit(Request $request, Pubs $pub): Response
     {
@@ -109,6 +116,7 @@ class PubsController extends AbstractController
 
     /**
      * @Route("/{id}", name="pubs_delete", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droits d'accés")
      */
     public function delete(Request $request, Pubs $pub): Response
     {

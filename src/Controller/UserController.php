@@ -5,10 +5,11 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/user")
@@ -17,6 +18,7 @@ class UserController extends AbstractController
 {
     /**
      * @Route("/", name="user_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droits d'accés")
      */
     public function index(UserRepository $userRepository): Response
     {
@@ -27,6 +29,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
+     * @IsGranted('ROLE_ADMIN', message="Vous n'avez pas les droits d'accés")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +53,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/{id}", name="user_show", methods={"GET"})
+     * @IsGranted("ROLE_USER", message="Vous n'avez pas les droits d'accés")
      */
     public function show(User $user): Response
     {
@@ -60,10 +64,12 @@ class UserController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER", message="Vous n'avez pas les droit d'accés")
      */
     public function edit(Request $request, User $user): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+
+        $form = $this->createForm(UserType::class, $user, ['role' => $this->getUser()->getRoles()]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -80,6 +86,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/{id}", name="user_delete", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droits d'accés")
      */
     public function delete(Request $request, User $user): Response
     {

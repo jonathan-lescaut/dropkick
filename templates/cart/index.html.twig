@@ -2,16 +2,12 @@
 
 {% block title %}Hello CartController!{% endblock %}
 
+
 {% block body %}
+
+
 <section class="cart navbarMargin">
-{% for element in dataCart %}
-
-<h1>Votre panier {{element.product.pub.cityPub}}</h1>
-
-{% endfor %}
-
-
-
+<h1>Votre panier {{app.user.pubs.cityPub}}</h1>
 
     <a href=javascript:history.go(-1)>Revenir au pub</a>
 
@@ -29,7 +25,8 @@
         </thead>
         <tbody>
             {% for element in dataCart %}
-
+            {% if element.pub.cityPub ==  app.user.pubs.cityPub %}
+            
             <tr>
                 <td>{{element.product.nameProduct}}</td>
                 <td><img src="{{ asset('uploads/photos/' ~ element.product.imgProduct) }}" width="100"></td>
@@ -41,15 +38,14 @@
                     <a href="{{path("cart_remove", {id: element.product.id})}}" class="btn btn-warning">Enlever</a>
                     <a href="{{path("cart_delete", {id: element.product.id})}}" class="btn btn-danger">Supprimer</a>
                 </td>
-                {# <td>{{element.pub}}</td> #}
-                {% for pub in element.pub %}
-                    
-                {% endfor %}
                 <pre>
-                    {{ dump(element.product.pub.cityPub) }}
+                    {{ dump(element.pub.cityPub) }}
                 </pre>
+
             </tr>
-                
+            {% else %}
+                <p> Mauvais pub </p>
+                {% endif %}
             {% else %}
                 <tr>
                     <td colspan ="6" class="text-center">Votre panier est vide</td>
