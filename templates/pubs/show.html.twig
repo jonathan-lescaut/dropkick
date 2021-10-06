@@ -6,64 +6,79 @@
 {% block body %}
 	<section class="pagePub navbarMargin">
 
-		<h1>Pubs</h1>
 
-		<table class="table">
-			<tbody>
+		{# ============================ affichage d'origine du pub show  ============================#}
 
-				<tr>
-					<th>cityPub</th>
-					<td>{{ pub.cityPub }}</td>
-				</tr>
-				<tr>
-					<th>ImgPub</th>
-					<td>{{ pub.imgPub }}</td>
-				</tr>
-				<tr>
-					<th>ContentPub</th>
-					<td>{{ pub.contentPub }}</td>
-				</tr>
-			</tbody>
-		</table>
+		{# <h1>Pubs</h1>
+		
+				<table class="table">
+					<tbody>
+		
+						<tr>
+							<th>cityPub</th>
+							<td>{{ pub.cityPub }}</td>
+						</tr>
+						<tr>
+							<th>ImgPub</th>
+							<td>{{ pub.imgPub }}</td>
+						</tr>
+						<tr>
+							<th>ContentPub</th>
+							<td>{{ pub.contentPub }}</td>
+						</tr>
+					</tbody>
+				</table>
+		
+				<a href="{{ path('pubs_index') }}">back to list</a>
+		
+			{# =========================================================================================#}<h3>Event
+		</h3>
+			{% for event in events %}
+				{% if event.pubs.id is same as(pub.id)%}<p>{{event.nameEvent}}
+				</p><p>{{event.pubs.namePub}}
+			</p>
+		{% endif %}
 
-		<a href="{{ path('pubs_index') }}">back to list</a>
+		{% endfor %}<h3>Menus
+		</h3>
+			<div class="row"> {% for menu in pub.menuses %}
 
-		<a href="{{ path('pubs_edit', {'id': pub.id}) }}">edit</a>
 
-		<h3>Event</h3>
-		{% for event in events %}
-			{% if event.pubs.id is same as(pub.id)%}
-
-				<p>{{event.nameEvent}}</p>
-				<p>{{event.pubs.namePub}}</p>
-			{% endif %}
-
-		{% endfor %}
+				<div class="col-4 mt-4">
+					<div class="border border-dark rounded p-2 clearfix">
+						<p>{{menu.nameMenu}}</p>
+						<p>{{menu.priceMenu}}
+							Euros</p>
+						<a href="{{path('cart_add', {id: menu.id})}}" class="btn btn-success">
+							<i class="bi bi-cart-plus"></i>
+							Ajouter
+						</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
 
 
 		<h3>Product</h3>
 
 		<div class="row">
-
 			{% for product in products %}
-					{% if product.pub.id is same as(pub.id)%}
-						<div class="col-4 mt-4">
-							<div class="border border-dark rounded p-2 clearfix">
-								<p>{{product.nameProduct}}</p>
-								<img class="w-100" src="{{ asset('uploads/photos/' ~ product.imgProduct) }}" width="100">
-								<p>{{product.priceProduct}}
-									Euros</p>
-								<a href="{{path('cart_add', {id: product.id})}}" class="btn btn-success">
-									<i class="bi bi-cart-plus"></i>
-									Ajouter
-								</a>
-							</div>
+				{% if product.pub.id is same as(pub.id)%}
+					<div class="col-4 mt-4">
+						<div class="border border-dark rounded p-2 clearfix">
+							<p>{{product.nameProduct}}</p>
+							<img class="w-100" src="{{ asset('uploads/photos/' ~ product.imgProduct) }}" width="100">
+							<p>{{product.priceProduct}}
+								Euros</p>
+							<a href="{{path('cart_add', {id: product.id})}}" class="btn btn-success">
+								<i class="bi bi-cart-plus"></i>
+								Ajouter
+							</a>
 						</div>
-					{% endif %}
+					</div>
+				{% endif %}
 			{% endfor %}
 		</div>
-
-
 		{{ include('pubs/_delete_form.html.twig') }}
 
 	</section>

@@ -12,6 +12,8 @@
 
                 <th>NameMenu</th>
                 <th>priceMenu</th>
+                <th>pubMenu</th>
+                <th>imgMenu</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,7 +23,8 @@
 
                 <td>{{ menu.nameMenu }}</td>
                 <td>{{ menu.priceMenu }}</td>
-
+                <td>{{ menu.pub.cityPub}}</td>
+                <td><img src="{{ asset('uploads/photos/' ~ menu.imgMenu) }}" width="100"></td>
                 <td>
                     <a href="{{ path('menus_show', {'id': menu.id}) }}">show</a>
                     <a href="{{ path('menus_edit', {'id': menu.id}) }}">edit</a>

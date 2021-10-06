@@ -24,6 +24,7 @@ class CartController extends AbstractController
         $total = 0;
 
         foreach ($cart as $id => $quantite) {
+            // $menu = $menusRepository->find($id);
             $product = $productsRepository->find($id);
             $pub = $product->getPub();
 
