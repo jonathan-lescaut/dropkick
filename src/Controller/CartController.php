@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Products;
+use App\Entity\Pubs;
 use App\Repository\ProductsRepository;
+use App\Repository\PubsRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -43,11 +45,12 @@ class CartController extends AbstractController
         /**
          * @Route("/add/{id}", name="cart_add")
          */
-    public function add(SessionInterface $session, Products $product)
+    public function add(SessionInterface $session, Products $product, Pubs $pubs)
     {
         // on recupere le panier actuel
         $cart = $session->get("cart", []);
         $id = $product->getId();
+        // $pub = $pubs->getId();
 
         if (!empty($cart[$id])) {
             $cart[$id]++;
@@ -56,8 +59,12 @@ class CartController extends AbstractController
             $cart[$id] = 1;
         }
         $session->set("cart", $cart);
-
+ 
+// var_dump($cart);
+// die();
         return $this->redirectToRoute('cart_index');
+
+
     }
 
             /**

@@ -6,8 +6,17 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
+// ancienne annotation  erreur =>
+// =============================================================================================
+// The "App\Entity\Pubs" entity has a repositoryClass set to "App\Entity\PubsRepository",
+//  but this is not a valid class. Check your class naming. If this is meant to be a service id, 
+//  make sure this service exists and is tagged with "doctrine.repository_service".
+// @ORM\Entity(repositoryClass=PubsRepository::class)
+
+
 /**
- * @ORM\Entity(repositoryClass=PubsRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\PubsRepository")
  */
 class Pubs
 {
