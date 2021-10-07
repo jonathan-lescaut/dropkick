@@ -3,10 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Pubs;
-use App\Entity\Menus;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -34,10 +32,6 @@ class PubsType extends AbstractType
         ])
             ->add('contentPub')
             ->add('cityPub')
-            ->add('menus', EntityType::class, [
-                'class' => Menus::class,
-                'choice_label' => 'nameMenu',
-            ])
         ;
     }
 

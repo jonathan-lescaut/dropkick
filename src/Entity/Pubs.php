@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Repository\PubsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -55,18 +54,12 @@ class Pubs
      */
     private $products;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Menus::class, mappedBy="pubs")
-     */
-    private $menus;
-
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->products = new ArrayCollection();
-        $this->menus = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -206,36 +199,6 @@ class Pubs
             // set the owning side to null (unless already changed)
             if ($product->getPub() === $this) {
                 $product->setPub(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Menus[]
-     */
-    public function getMenus(): Collection
-    {
-        return $this->menus;
-    }
-
-    public function addMenu(Menus $menu): self
-    {
-        if (!$this->menus->contains($menu)) {
-            $this->menus[] = $menu;
-            $menu->setPubs($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMenu(Menus $menu): self
-    {
-        if ($this->menus->removeElement($menu)) {
-            // set the owning side to null (unless already changed)
-            if ($menu->getPubs() === $this) {
-                $menu->setPubs(null);
             }
         }
 

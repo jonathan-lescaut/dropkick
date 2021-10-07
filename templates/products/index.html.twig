@@ -17,7 +17,6 @@
                 <th>PriceProduct</th>
                 <th>ContentProduct</th>
                 <th>Category</th>
-                <th>Menus</th>
                 <th>Pub</th>
                 <th>actions</th>
             </tr>
@@ -30,11 +29,7 @@
                 <td>{{ product.priceProduct }}</td>
                 <td>{{ product.contentProduct }}</td>
                 <td>{{ product.categories.nameCategory }}</td>
-                <td>
-                {% for menu in product.menus %}   
-                    {{ menu.nameMenu }}
-                {% endfor %}
-                </td>
+
                 <td>
                 {{product.pub.namePub}}
                 </td>

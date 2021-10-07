@@ -40,10 +40,6 @@ class Products
      */
     private $categories;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Menus::class, inversedBy="products")
-     */
-    private $menus;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -55,10 +51,7 @@ class Products
      */
     private $pub;
 
-    public function __construct()
-    {
-        $this->menus = new ArrayCollection();
-    }
+//  constructeur avec menu supprimer
 
     public function getId(): ?int
     {
@@ -113,29 +106,6 @@ class Products
         return $this;
     }
 
-    /**
-     * @return Collection|Menus[]
-     */
-    public function getMenus(): Collection
-    {
-        return $this->menus;
-    }
-
-    public function addMenu(Menus $menu): self
-    {
-        if (!$this->menus->contains($menu)) {
-            $this->menus[] = $menu;
-        }
-
-        return $this;
-    }
-
-    public function removeMenu(Menus $menu): self
-    {
-        $this->menus->removeElement($menu);
-
-        return $this;
-    }
 
     public function getImgProduct(): ?string
     {

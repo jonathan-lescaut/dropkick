@@ -39,24 +39,8 @@
 			</p>
 		{% endif %}
 
-		{% endfor %}<h3>Menus
-		</h3>
-			<div class="row"> {% for menu in pub.menus %}
+		{% endfor %}
 
-
-				<div class="col-4 mt-4">
-					<div class="border border-dark rounded p-2 clearfix">
-						<p>{{menu.nameMenu}}</p>
-						<p>{{menu.priceMenu}}
-							Euros</p>
-						<a href="{{path('cart_add', {id: menu.id})}}" class="btn btn-success">
-							<i class="bi bi-cart-plus"></i>
-							Ajouter
-						</a>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
 
 
 		<h3>Product</h3>

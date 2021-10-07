@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Pubs;
-use App\Entity\Menus;
 use App\Entity\Category;
 use App\Entity\Products;
 use App\Entity\Categories;
@@ -25,12 +24,6 @@ class ProductsType extends AbstractType
             ->add('pub', EntityType::class, [
                 'class' => Pubs::class,
                 'choice_label' => 'namePub',
-            ])
-            ->add('menus', EntityType::class, [
-                'class' => Menus::class,
-                'multiple' => true,
-                'expanded' => true,
-                'choice_label' => 'nameMenu',
             ])
             ->add('categories', EntityType::class, [ 'class' => Categories::class, 'choice_label' => 'nameCategory',
             ])
