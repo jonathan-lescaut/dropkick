@@ -56,16 +56,17 @@ class Pubs
     private $products;
 
     /**
-     * @ORM\OneToMany(targetEntity=Menus::class, mappedBy="pub")
+     * @ORM\OneToMany(targetEntity=Menus::class, mappedBy="pubs")
      */
-    private $menuses;
+    private $menus;
+
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->products = new ArrayCollection();
-        $this->menuses = new ArrayCollection();
+        $this->menus = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -214,30 +215,31 @@ class Pubs
     /**
      * @return Collection|Menus[]
      */
-    public function getMenuses(): Collection
+    public function getMenus(): Collection
     {
-        return $this->menuses;
+        return $this->menus;
     }
 
-    public function addMenus(Menus $menus): self
+    public function addMenu(Menus $menu): self
     {
-        if (!$this->menuses->contains($menus)) {
-            $this->menuses[] = $menus;
-            $menus->setPub($this);
+        if (!$this->menus->contains($menu)) {
+            $this->menus[] = $menu;
+            $menu->setPubs($this);
         }
 
         return $this;
     }
 
-    public function removeMenus(Menus $menus): self
+    public function removeMenu(Menus $menu): self
     {
-        if ($this->menuses->removeElement($menus)) {
+        if ($this->menus->removeElement($menu)) {
             // set the owning side to null (unless already changed)
-            if ($menus->getPub() === $this) {
-                $menus->setPub(null);
+            if ($menu->getPubs() === $this) {
+                $menu->setPubs(null);
             }
         }
 
         return $this;
     }
+
 }

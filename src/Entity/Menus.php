@@ -34,15 +34,16 @@ class Menus
      */
     private $priceMenu;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Pubs::class, inversedBy="menuses")
-     */
-    private $pub;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $imgMenu;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Pubs::class, inversedBy="menus")
+     */
+    private $pubs;
 
     public function __construct()
     {
@@ -105,18 +106,6 @@ class Menus
         return $this;
     }
 
-    public function getPub(): ?Pubs
-    {
-        return $this->pub;
-    }
-
-    public function setPub(?Pubs $pub): self
-    {
-        $this->pub = $pub;
-
-        return $this;
-    }
-
     public function getImgMenu(): ?string
     {
         return $this->imgMenu;
@@ -125,6 +114,18 @@ class Menus
     public function setImgMenu(string $imgMenu): self
     {
         $this->imgMenu = $imgMenu;
+
+        return $this;
+    }
+
+    public function getPubs(): ?Pubs
+    {
+        return $this->pubs;
+    }
+
+    public function setPubs(?Pubs $pubs): self
+    {
+        $this->pubs = $pubs;
 
         return $this;
     }

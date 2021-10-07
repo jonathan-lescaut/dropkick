@@ -97,12 +97,31 @@ class PubsController extends AbstractController
      * @Route("/{id}/edit", name="pubs_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droits d'accés")
      */
-    public function edit(Request $request, Pubs $pub): Response
+    public function edit(Request $request, Pubs $pub, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(PubsType::class, $pub);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $imgPub = $form->get('imgPub')->getData();
+            if ($imgPub) {
+            $originalFilename = pathinfo($imgPub->getClientOriginalName(),
+            PATHINFO_FILENAME);
+
+            $safeFilename = $slugger->slug($originalFilename);
+            $newFilename = $safeFilename.'-'.uniqid().'.'.$imgPub->guessExtension();
+
+            try {
+            $imgPub->move(
+            $this->getParameter('photos_directory'),
+            $newFilename
+            );
+            } catch (FileException $e) {}
+                
+            
+            $pub->setImgPub($newFilename);
+        }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('pubs_index', [], Response::HTTP_SEE_OTHER);

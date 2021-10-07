@@ -90,12 +90,31 @@ class EventsController extends AbstractController
     /**
      * @Route("/{id}/edit", name="events_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Events $event): Response
+    public function edit(Request $request, Events $event, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(EventsType::class, $event);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imgEvent = $form->get('imgEvent')->getData();
+            if ($imgEvent) {
+            $originalFilename = pathinfo($imgEvent->getClientOriginalName(),
+            PATHINFO_FILENAME);
+
+            $safeFilename = $slugger->slug($originalFilename);
+            $newFilename = $safeFilename.'-'.uniqid().'.'.$imgEvent->guessExtension();
+
+            try {
+            $imgEvent->move(
+            $this->getParameter('photos_directory'),
+            $newFilename
+            );
+            } catch (FileException $e) {}
+                
+            
+            $event->setImgEvent($newFilename);
+        }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('events_index', [], Response::HTTP_SEE_OTHER);

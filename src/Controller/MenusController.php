@@ -27,7 +27,7 @@ class MenusController extends AbstractController
     public function index(MenusRepository $menusRepository): Response
     {
         return $this->render('menus/index.html.twig', [
-            'menuses' => $menusRepository->findAll(),
+            'menus' => $menusRepository->findAll(),
         ]);
     }
 
@@ -41,6 +41,8 @@ class MenusController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
             $imgMenu = $form->get('imgMenu')->getData();
             if ($imgMenu) {
                 $originalFilename = pathinfo($imgMenu->getClientOriginalName(), PATHINFO_FILENAME);
@@ -87,12 +89,33 @@ class MenusController extends AbstractController
     /**
      * @Route("/{id}/edit", name="menus_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Menus $menu): Response
+    public function edit(Request $request, Menus $menu, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(MenusType::class, $menu);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+              
+            $imgMenu = $form->get('imgMenu')->getData();
+            if ($imgMenu) {
+                $originalFilename = pathinfo($imgMenu->getClientOriginalName(), PATHINFO_FILENAME);
+
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imgMenu->guessExtension();
+
+
+                try {
+                    $imgMenu->move(
+                $this->getParameter('photos_directory'), $newFilename
+                    );
+                } catch (FileException $e) {
+
+                    }
+
+                        $menu->setImgMenu($newFilename);
+                    }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('menus_index', [], Response::HTTP_SEE_OTHER);

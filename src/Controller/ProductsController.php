@@ -91,12 +91,33 @@ class ProductsController extends AbstractController
      * @Route("/{id}/edit", name="products_edit", methods={"GET","POST"})
      * IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droits d'accés")
      */
-    public function edit(Request $request, Products $product): Response
+    public function edit(Request $request, Products $product, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(ProductsType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $imgProduct = $form->get('imgProduct')->getData();
+            if ($imgProduct) {
+            $originalFilename = pathinfo($imgProduct->getClientOriginalName(),
+            PATHINFO_FILENAME);
+
+            $safeFilename = $slugger->slug($originalFilename);
+            $newFilename = $safeFilename.'-'.uniqid().'.'.$imgProduct->guessExtension();
+
+            try {
+            $imgProduct->move(
+            $this->getParameter('photos_directory'),
+            $newFilename
+            );
+            } catch (FileException $e) {}
+                
+            
+            $product->setImgProduct($newFilename);
+        }
+
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('products_index', [], Response::HTTP_SEE_OTHER);

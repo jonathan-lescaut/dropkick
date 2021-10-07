@@ -18,12 +18,12 @@ class MenusType extends AbstractType
         $builder
             ->add('nameMenu')
             ->add('priceMenu')
-            ->add('pub', EntityType::class, [
+            ->add('pubs', EntityType::class, [
                 'class' => Pubs::class,
                 'choice_label' => 'namePub',
             ])
             ->add('imgMenu', FileType::class, [
-                'label' => 'image du menu',
+                'label' => 'Image du menu',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [

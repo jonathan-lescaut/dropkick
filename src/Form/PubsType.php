@@ -34,7 +34,7 @@ class PubsType extends AbstractType
         ])
             ->add('contentPub')
             ->add('cityPub')
-            ->add('menu', EntityType::class, [
+            ->add('menus', EntityType::class, [
                 'class' => Menus::class,
                 'choice_label' => 'nameMenu',
             ])

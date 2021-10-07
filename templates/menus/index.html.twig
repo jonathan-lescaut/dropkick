@@ -9,7 +9,6 @@
     <table class="table">
         <thead>
             <tr>
-
                 <th>NameMenu</th>
                 <th>priceMenu</th>
                 <th>pubMenu</th>
@@ -18,12 +17,11 @@
             </tr>
         </thead>
         <tbody>
-        {% for menu in menuses %}
+        {% for menu in menus %}
             <tr>
-
                 <td>{{ menu.nameMenu }}</td>
                 <td>{{ menu.priceMenu }}</td>
-                <td>{{ menu.pub.cityPub}}</td>
+                <td>{{ menu.pubs.cityPub}}</td>
                 <td><img src="{{ asset('uploads/photos/' ~ menu.imgMenu) }}" width="100"></td>
                 <td>
                     <a href="{{ path('menus_show', {'id': menu.id}) }}">show</a>
