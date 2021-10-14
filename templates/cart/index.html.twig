@@ -38,9 +38,6 @@
                     <a href="{{path("cart_remove", {id: element.product.id})}}" class="btn btn-warning">Enlever</a>
                     <a href="{{path("cart_delete", {id: element.product.id})}}" class="btn btn-danger">Supprimer</a>
                 </td>
-                <pre>
-                    {{ dump(element.pub.cityPub) }}
-                </pre>
 
             </tr>
             {% else %}
@@ -51,10 +48,15 @@
                     <td colspan ="6" class="text-center">Votre panier est vide</td>
                 </tr>
             {% endfor %}
+            <pre>
+                {{ dump(app.user.pubs.cityPub) }}
+            </pre>
         </tbody>
+                {# Voir pour la variable total qui s'incrémente avec les mauvais pubs #}
         <tfoot>
             <tr>
                 <td colspan="3">total</td>
+                
                 <td class="text-end">{{ total }} €</td>
                 <td> <a href="{{path("cart_delete_all")}}" class="btn btn-danger">Supprimer le panier</a></td>
             </tr>
