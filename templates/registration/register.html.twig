@@ -14,9 +14,9 @@
         {{ form_row(registrationForm.addressUser) }}
         {{ form_row(registrationForm.cityUser) }}
         {{ form_row(registrationForm.cpUser) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
+
+      {{ form_row(registrationForm.password.first) }}
+    {{ form_row(registrationForm.password.second) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
         <button type="submit" class="btn">Register</button>

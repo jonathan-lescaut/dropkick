@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
  * @Route("/events")
- * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droits d'accés")
  */
 class EventsController extends AbstractController
 {

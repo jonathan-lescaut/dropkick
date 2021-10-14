@@ -17,13 +17,11 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
  * @Route("/products")
- * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droits d'accés")
  */
 class ProductsController extends AbstractController
 {
     /**
      * @Route("/", name="products_index", methods={"GET"})
-     * IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droits d'accés")
      */
     public function index(ProductsRepository $productsRepository): Response
     {
@@ -34,7 +32,6 @@ class ProductsController extends AbstractController
 
     /**
      * @Route("/new", name="products_new", methods={"GET","POST"})
-     * IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droits d'accés")
      */
     public function new(Request $request, SluggerInterface $slugger): Response
     {

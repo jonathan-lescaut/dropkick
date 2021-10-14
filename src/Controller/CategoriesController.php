@@ -14,7 +14,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/categories")
- * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas les droits d'accés")
  */
 class CategoriesController extends AbstractController
 {

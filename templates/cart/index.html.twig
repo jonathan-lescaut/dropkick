@@ -34,7 +34,7 @@
                 <td>{{element.quantite}}</td>
                 <td>{{element.quantite * element.product.priceProduct}}</td>
                 <td>
-                    <a href="{{path("cart_add", {id: element.product.id})}}" class="btn btn-success">Ajouter</a>
+                    <a href="{{path("cart_add", {product: element.product.id})}}" class="btn btn-success">Ajouter</a>
                     <a href="{{path("cart_remove", {id: element.product.id})}}" class="btn btn-warning">Enlever</a>
                     <a href="{{path("cart_delete", {id: element.product.id})}}" class="btn btn-danger">Supprimer</a>
                 </td>

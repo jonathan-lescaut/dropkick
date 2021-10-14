@@ -43,14 +43,14 @@ class CartController extends AbstractController
     }
 
         /**
-         * @Route("/add/{id}", name="cart_add")
+         * @Route("/add/{product}/", name="cart_add", requirements={"product"="\d+"})
          */
-    public function add(SessionInterface $session, Products $product, Pubs $pubs)
+    public function add(SessionInterface $session, Products $product)
     {
         // on recupere le panier actuel
         $cart = $session->get("cart", []);
         $id = $product->getId();
-        // $pub = $pubs->getId();
+        $pub = $product->getPub();
 
         if (!empty($cart[$id])) {
             $cart[$id]++;
@@ -60,9 +60,7 @@ class CartController extends AbstractController
         }
         $session->set("cart", $cart);
  
-// var_dump($cart);
-// die();
-        return $this->redirectToRoute('cart_index');
+        return $this->redirectToRoute('pubs_show', array('id' => $pub->getId()));
 
 
     }

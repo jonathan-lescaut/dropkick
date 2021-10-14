@@ -29,7 +29,6 @@ class UserController extends AbstractController
 
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
-     * @IsGranted('ROLE_ADMIN', message="Vous n'avez pas les droits d'accés")
      */
     public function new(Request $request): Response
     {
