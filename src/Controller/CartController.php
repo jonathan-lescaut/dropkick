@@ -6,6 +6,7 @@ use App\Entity\Products;
 use App\Entity\Pubs;
 use App\Repository\ProductsRepository;
 use App\Repository\PubsRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -16,9 +17,8 @@ class CartController extends AbstractController
     /**
      * @Route("/cart", name="cart_index")
      */
-    public function index(SessionInterface $session, ProductsRepository $productsRepository)
+    public function index(SessionInterface $session, ProductsRepository $productsRepository, UserRepository $user)
     {
-
         $cart = $session->get("cart", []);
         // on fabrique les données
 
@@ -34,6 +34,7 @@ class CartController extends AbstractController
                 "product" => $product,
                 "quantite" => $quantite
             ];
+            
             $total += $product->getPriceProduct() * $quantite;
         }
 
@@ -61,7 +62,6 @@ class CartController extends AbstractController
         $session->set("cart", $cart);
  
         return $this->redirectToRoute('pubs_show', array('id' => $pub->getId()));
-
 
     }
 
@@ -104,7 +104,6 @@ class CartController extends AbstractController
             return $this->redirectToRoute('cart_index');
         }
 
-
         /**
          * @Route("/delete", name="cart_delete_all")
          */
@@ -112,7 +111,6 @@ class CartController extends AbstractController
         {
 
             $session->set("cart", []);
-    
             return $this->redirectToRoute('cart_index');
         }
 }
