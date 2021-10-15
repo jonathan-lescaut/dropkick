@@ -7,6 +7,7 @@ use App\Entity\Pubs;
 use App\Repository\ProductsRepository;
 use App\Repository\PubsRepository;
 use App\Repository\UserRepository;
+use DateTime;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -21,20 +22,20 @@ class CartController extends AbstractController
     {
         $cart = $session->get("cart", []);
         // on fabrique les données
-
         $dataCart = [];
         $total = 0;
-
+        $commande = new DateTime();
+        
         foreach ($cart as $id => $quantite) {
             $product = $productsRepository->find($id);
             $pub = $product->getPub();
-
+            
             $dataCart[] = [
                 "pub" => $pub,
                 "product" => $product,
-                "quantite" => $quantite
+                "quantite" => $quantite,
             ];
-            
+            $numCommande = strval($commande->format('m d')) . ' '. strval(random_int(1, 50));
             $total += $product->getPriceProduct() * $quantite;
         }
 
