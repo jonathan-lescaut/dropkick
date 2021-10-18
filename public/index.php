@@ -1,6 +1,8 @@
 <?php
 
+
 use App\Kernel;
+use Wohali\OAuth2\Client\Provider\Discord;
 
 require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
 

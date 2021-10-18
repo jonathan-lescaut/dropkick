@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
-use App\Entity\Products;
+use DateTime;
 use App\Entity\Pubs;
-use App\Repository\ProductsRepository;
+use App\Entity\Products;
 use App\Repository\PubsRepository;
 use App\Repository\UserRepository;
-use DateTime;
+use App\Repository\ProductsRepository;
+use Symfony\Config\MercuryseriesFlashyConfig;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -47,7 +49,7 @@ class CartController extends AbstractController
         /**
          * @Route("/add/{product}/", name="cart_add", requirements={"product"="\d+"})
          */
-    public function add(SessionInterface $session, Products $product)
+    public function add(SessionInterface $session, Products $product, FlashyNotifier $flashy)
     {
         // on recupere le panier actuel
         $cart = $session->get("cart", []);
@@ -61,6 +63,7 @@ class CartController extends AbstractController
             $cart[$id] = 1;
         }
         $session->set("cart", $cart);
+        $flashy->success('Ajouté au panier !');
  
         return $this->redirectToRoute('pubs_show', array('id' => $pub->getId()));
 
