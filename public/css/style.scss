@@ -30,6 +30,8 @@
     3. =PRODUITS
 
 */
+$colorCarte: rgba(0, 77, 4, 0.829);
+
 /* GLOBAL
 ==============================================*/
 
@@ -39,10 +41,10 @@ body{
   box-sizing: border-box;
   width: 100%;
 }
-@font-face {
-    font-family: 'irish';
-    src: url('/public/font/IrishUncialfabeta-Bold.ttf');
- }
+// @font-face {
+//     font-family: 'irish';
+//     src: url('../font/IrishUncialfabeta-Bold.ttf');
+//  }
 
 *{
     font-family: 'irish';
@@ -55,12 +57,35 @@ body{
 
 
 // NAVIGATION HOME ===================================================================================================
+.navBar{
+    width: 100%;
+    display: flex;
+    .nav{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-evenly;
+            .imgLogo{
+                width: 65px;
+            }
+
+        a{
+            display: flex;
+
+        }
+        .navH{
+            font-size: 2rem;
+            color: white !important;
+        }
+    }
+
+}
+
 nav{
     background-color: rgba(0, 0, 0, 0.61);
 }
-.navH{
-    font-size: 2rem;
-    color: white !important;
+.pageHome{
+    width: 100%;
 }
 
 .blocLienPubs{
@@ -76,17 +101,111 @@ nav{
     text-decoration: none;
     color: black;
     font-size: 4rem;
+    background-color: black;
+    color: white;
+    width: 100%;
+    text-align: center;
 }
 
 // CAROUSSEL =========================================================================================================
-header{
-  width: 100%;
-}
 
 .slide {
-    width: 100%;
+    position: relative;
     transition: transform .1s; /* Animation */
+    z-index:1;
   }
+
+
+  .containerSlider{
+    position: relative;
+      .carousselCarte{
+          display: flex;
+          position: absolute;
+          z-index:2;
+          top: 78%;
+          .lienCarte{
+                justify-content: space-around;
+                display: flex;
+                color: rgb(0, 0, 0);
+                border: rgb(0, 0, 0) 3px solid;
+                font-size: 2rem;
+                margin-right: 3em;
+                height: 4em;
+                font-weight: Bold;
+                background-color: rgba(12, 71, 22, 0.644);
+                font-size: 2.5rem;
+                width: 100%;
+                padding: 50px;
+                align-items: center;
+            }
+        }
+
+  }
+
+// ===================================================================================================================
+// HOME =========================================================================================================
+// Présentation ========
+.blocPresentation{
+    height: 20vh;
+    border: 2px black solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.blocPresentationTitle{
+    font-size: 3rem;
+}
+.lienMenu{
+    font-size: 5rem;
+}
+
+// Sports ========
+
+.sports{
+    margin-top: 50px;
+    height: 90vh;
+    background-image: url("../uploads/sports/telebar.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    h1{
+        font-family: 'Rock Salt', cursive;
+        color: rgb(255, 255, 255);
+        z-index: 1;
+        text-align: center;
+        padding: 25px;
+        margin: -34px auto;
+        background-color: #a7ab8896;
+        border: 1px solid #a7ab88;
+        border-radius: 5px;
+        text-transform: uppercase;
+        font-size: 3rem;
+    }
+    .blocS{
+            margin-top: 100px;
+            .imgS{
+            margin-top: 70px;
+                width: 100%;
+                height: 35vh;
+                opacity: 0.7;
+                border : 15px solid black;
+                border-radius: 5px;
+
+
+            }
+    }
+}
+// ======================
+// Caroussel footer =====
+
+
+// =====================
+
+
+
+
 // ===================================================================================================================
 // PANIER =========================================================================================================
 .cart {
@@ -95,4 +214,134 @@ header{
     }
 }
   // ===================================================================================================================
+
+// Page Product CARTE =========================================================================================================
+
+.pageProduct{
+    background-image: url(../uploads/fondEcanCarte.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+    opacity: 0.67;
+    margin-top: 80px;
+    color: white !important;
+    .pageProdOpacite{
+        opacity: 1 !important;
+    }
+}
+
+.blocCategory{
+    display: flex;
+    background-color: $colorCarte;
+    font-size: 3rem;
+    margin-bottom: 1em;
+    border-radius: 5px;
+}
+.admimCategory{
+    text-align: center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    a{
+        color: rgb(255, 255, 255); 
+        text-decoration: none;
+        font-size: 1rem;
+        text-transform: uppercase;
+    }
+    a:hover{    
+        background-color: black;
+        padding: 3px;
+        border-radius: 5px;
+    }
+
+}
+
+
+.blocProduct{
+    border: 1px solid rgba(255, 255, 255, 0);
+    margin-bottom: 1em;
+    .blocArticle{
+        background-color: $colorCarte;
+        height: 20vh;
+        border-radius: 10px;
+        padding: 5px;
+        .imgProduct{
+            display: flex;
+            height: 100%;
+            justify-content: flex-start;
+            align-items: flex-start;
+            img{
+                display: flex;
+                height: 8vh;
+                border-radius: 10px;
+            }
+        }
+        .blocProductSansBtn{
+            height: 10vh;
+        }
+        .blocBtnProduct{
+            display: flex;
+            justify-content: center;
+        }
+        .btnProduct{
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            margin: 1em;
+        }
+        .productAdmin{
+            text-align: center;
+            a{
+                color: rgb(255, 255, 255); 
+                text-decoration: none;
+                font-size: 1rem;
+                text-transform: uppercase;
+            }
+            a:hover{    
+                background-color: black;
+                padding: 3px;
+                border-radius: 5px;
+            }
+        }
+        
+    }
+    .blocArticle:hover{
+        transform:scale(1.13);
+        transition: all 1s;
+    
+    }
+}
+
+
+// accordion cart =====
+
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .accordion:hover {
+    background-color: $colorCarte;
+  }
+  
+  /* Style the accordion panel. Note: hidden by default */
+  .panel {
+    // overflow: visible;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+
+// =====================
+
+
+
+
+// ===================================================================================================================
+
+
   

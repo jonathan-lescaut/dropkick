@@ -38,11 +38,6 @@ body {
   width: 100%;
 }
 
-@font-face {
-  font-family: 'irish';
-  src: url("/public/font/IrishUncialfabeta-Bold.ttf");
-}
-
 * {
   font-family: 'irish';
 }
@@ -51,13 +46,47 @@ body {
   margin-top: 80px;
 }
 
+.navBar {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navBar .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.navBar .nav .imgLogo {
+  width: 65px;
+}
+
+.navBar .nav a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navBar .nav .navH {
+  font-size: 2rem;
+  color: white !important;
+}
+
 nav {
   background-color: rgba(0, 0, 0, 0.61);
 }
 
-.navH {
-  font-size: 2rem;
-  color: white !important;
+.pageHome {
+  width: 100%;
 }
 
 .blocLienPubs {
@@ -78,22 +107,269 @@ nav {
   text-decoration: none;
   color: black;
   font-size: 4rem;
-}
-
-header {
+  background-color: black;
+  color: white;
   width: 100%;
+  text-align: center;
 }
 
 .slide {
-  width: 100%;
+  position: relative;
   -webkit-transition: -webkit-transform .1s;
   transition: -webkit-transform .1s;
   transition: transform .1s;
   transition: transform .1s, -webkit-transform .1s;
   /* Animation */
+  z-index: 1;
+}
+
+.containerSlider {
+  position: relative;
+}
+
+.containerSlider .carousselCarte {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  z-index: 2;
+  top: 78%;
+}
+
+.containerSlider .carousselCarte .lienCarte {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: black;
+  border: black 3px solid;
+  font-size: 2rem;
+  margin-right: 3em;
+  height: 4em;
+  font-weight: Bold;
+  background-color: rgba(12, 71, 22, 0.644);
+  font-size: 2.5rem;
+  width: 100%;
+  padding: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.blocPresentation {
+  height: 20vh;
+  border: 2px black solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.blocPresentationTitle {
+  font-size: 3rem;
+}
+
+.lienMenu {
+  font-size: 5rem;
+}
+
+.sports {
+  margin-top: 50px;
+  height: 90vh;
+  background-image: url("../uploads/sports/telebar.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.sports h1 {
+  font-family: 'Rock Salt', cursive;
+  color: white;
+  z-index: 1;
+  text-align: center;
+  padding: 25px;
+  margin: -34px auto;
+  background-color: #a7ab8896;
+  border: 1px solid #a7ab88;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 3rem;
+}
+
+.sports .blocS {
+  margin-top: 100px;
+}
+
+.sports .blocS .imgS {
+  margin-top: 70px;
+  width: 100%;
+  height: 35vh;
+  opacity: 0.7;
+  border: 15px solid black;
+  border-radius: 5px;
 }
 
 .cart a {
   color: #000;
+}
+
+.pageProduct {
+  background-image: url(../uploads/fondEcanCarte.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+  opacity: 0.67;
+  margin-top: 80px;
+  color: white !important;
+}
+
+.pageProduct .pageProdOpacite {
+  opacity: 1 !important;
+}
+
+.blocCategory {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: rgba(0, 77, 4, 0.829);
+  font-size: 3rem;
+  margin-bottom: 1em;
+  border-radius: 5px;
+}
+
+.admimCategory {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.admimCategory a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.admimCategory a:hover {
+  background-color: black;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.blocProduct {
+  border: 1px solid rgba(255, 255, 255, 0);
+  margin-bottom: 1em;
+}
+
+.blocProduct .blocArticle {
+  background-color: rgba(0, 77, 4, 0.829);
+  height: 20vh;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.blocProduct .blocArticle .imgProduct {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.blocProduct .blocArticle .imgProduct img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 8vh;
+  border-radius: 10px;
+}
+
+.blocProduct .blocArticle .blocProductSansBtn {
+  height: 10vh;
+}
+
+.blocProduct .blocArticle .blocBtnProduct {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.blocProduct .blocArticle .btnProduct {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1em;
+}
+
+.blocProduct .blocArticle .productAdmin {
+  text-align: center;
+}
+
+.blocProduct .blocArticle .productAdmin a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.blocProduct .blocArticle .productAdmin a:hover {
+  background-color: black;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.blocProduct .blocArticle:hover {
+  -webkit-transform: scale(1.13);
+          transform: scale(1.13);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  cursor: pointer;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: rgba(0, 77, 4, 0.829);
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.2s ease-out;
+  transition: max-height 0.2s ease-out;
 }
 /*# sourceMappingURL=style.css.map */

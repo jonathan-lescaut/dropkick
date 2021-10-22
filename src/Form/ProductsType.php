@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Pubs;
-use App\Entity\Category;
 use App\Entity\Products;
 use App\Entity\Categories;
 use Symfony\Component\Form\AbstractType;

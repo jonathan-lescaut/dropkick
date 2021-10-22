@@ -5,6 +5,7 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\Pubs;
 use App\Entity\Products;
+use App\Service\SendMailService;
 use App\Repository\PubsRepository;
 use App\Repository\UserRepository;
 use App\Repository\ProductsRepository;
@@ -116,5 +117,35 @@ class CartController extends AbstractController
 
             $session->set("cart", []);
             return $this->redirectToRoute('cart_index');
+        }
+
+
+        /**
+         * @Route("/commande", name="commande")
+         */
+        public function Commande(SessionInterface $session, ProductsRepository $productsRepository, SendMailService $mail)
+        {
+
+            $form = $this->createForm(ContactType::class);
+
+            $contact = $form->handleRequest($request);
+
+
+            $cart = $session->get("cart", []);
+            // on fabrique les données
+            $dataCart = [];
+            $total = 0;
+            
+            foreach ($cart as $id => $quantite) {
+                $product = $productsRepository->find($id);
+                $pub = $product->getPub();
+                
+                $dataCart[] = [
+                    "pub" => $pub,
+                    "product" => $product,
+                    "quantite" => $quantite,
+                ];
+                $total += $product->getPriceProduct() * $quantite;
+            }
         }
 }

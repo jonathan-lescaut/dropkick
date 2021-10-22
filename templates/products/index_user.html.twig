@@ -11,28 +11,8 @@
             </div>
       <div class="cardUser container-fluid">
           <div class="container">
-              <div class="row">
-
-              {% for category in categories %}
-                    {% if (is_granted('ROLE_ADMIN')) %}
-                <div class="col-md-6 blocCategory">{{category.nameCategory}}</div>
-                <div class="col-md-6 blocCategory admimCategory"><a href="{{ path('categories_edit', {'id': category.id}) }}">Modifier</a></div>
-
-
-                    {% else %}
-                        
-                <div class="col-md-12 blocCategory">{{category.nameCategory}}</div>
-                    {% endif %}
-
-
-
-
+              <div class="row rowModif">
                 {% for product in products %}
-                {% if product.categories.id is same as category.id %}
-                
-                {# <pre>
-                    {{ dump(product.categories.nameCategory) }}
-                </pre> #}
 
                     <div class="col-md-4 blocProduct">
                         <div class="blocArticle">
@@ -57,21 +37,11 @@
                                         </div>  
                                         <div class="col-md-12 blocBtnProduct">
                                             <a class="btn btn-success btnProduct inscription" href="#">Ajouter au panier</a>
-                                        </div>   
-                                        {% if (is_granted('ROLE_ADMIN')) %}
-                                        <div class="col-md-6 productAdmin">
-                                        <a href="{{ path('products_show', {'id': product.id}) }}">Voir</a>
-                                        </div>
-                                        <div class="col-md-6 productAdmin">
-                                        <a href="{{ path('products_edit', {'id': product.id}) }}">Modifier</a>
-                                        </div>
-                                        {% endif %}
+                                        </div>    
                             </div>
                         </div>
                     </div>     
-                    {% endif %}
                     {% endfor %}
-              {% endfor %}
                 </div>
             </div>
 

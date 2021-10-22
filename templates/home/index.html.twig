@@ -4,9 +4,10 @@
 
 {% block body %}
 
+
     <section class="pageHome navbarMargin">
 
-    <div align="center">
+    <div align="center" class="containerSlider">
 
         <div id="slidertype1" class='slide' style="display:none">
 
@@ -24,24 +25,25 @@
 
             <img src="{{asset('uploads/reims.jpg')}}" alt="reims">
         </div>
+        <div class="container-fluid carousselCarte">
+            <div class="lienCarte">Poutines</div>
+            <div class="lienCarte">Menus</div>
+            <div class="lienCarte">Alcool et soft</div>
+            <div class="lienCarte">Starters</div>
+            <div class="lienCarte">Desserts</div>
+        </div>
+
     </div>
 
     <div class="blocLienPubs">
         <div class="lienPub">
         {% if app.user is same as null %}
-              {% for pub in pubs %}
-        <div class="lienPub">
-            <a href="{{ path('pubs_show', {'id': pub.id}) }}" class="cityPub">{{pub.cityPub}}</a>
-        </div>
-        {% endfor %}
+         <a href="{{ path('products_user_index')}}" class="cityPub"> Voir la carte de mon Dropkick</a>
+
         {% else %}  
-        <p>Mon Dropkick : </p>
-        <p>{{app.user.pubs.cityPub}} </p>
-              {% for pub in pubs %}
+                {% for pub in pubs %}
         {% if app.user.pubs.cityPub is same as pub.cityPub %}
-
-
-            <a href="{{ path('pubs_show', {'id': pub.id}) }}" class="cityPub">{{pub.cityPub}}</a>
+                <a href="{{ path('pubs_show', {'id': pub.id}) }}" class="cityPub"> Voir la carte de mon Dropkick :{{pub.cityPub}}</a>
 
         {% endif %}
              {% endfor %}
@@ -50,8 +52,53 @@
 
         </div>
     </div>
-</section>
+    </section>
+    <section class="presentation container-fluid">
+        <div class="row">
+            <div class="col-md-5 blocPresentation blocPresentationTitle">
+                Le dropkick c'est quoi ?
+            </div>
+            <div class="col-md-7 blocPresentation">
+                Le Dropkick est un pub chaleureux qui vous propose : un large choix de poutines/burgers/hot-dog, 20 bières pressions, une sélection de whiskys/rhums, des cocktails/shooters, billard/fléchettes/baby-foot, le tout accompagné de musique & sport live !
+            </div>
+        </div>
+        
+    </section>
+    <section class="presentation container-fluid">
+        <div class="row">
+            <div class="col-lg-7 blocPresentation">
+                La poutine est un plat de la cuisine québécoise composé, dans sa forme classique, de trois éléments : des frites, du fromage en grains et de la sauce brune. La poutine tire son origine du Centre-du-Québec à la fin des années 1950.
+            </div>
+            <div class="col-lg-5 blocPresentation blocPresentationTitle">
+                La poutine ?
+            </div>
+        </div>
+        <div class="row">
+            <a href="#" class="blocPresentation lienMenu">Nos menus</a>
+        </div>
+        <section class="sports color-body">
+            <h1>Nos actualités et evénements</h1>
+      <div class="container">
+         <div class="row blocS">
+            <div class="col-md-4"><img class="imgS" src="{{asset('uploads/sports/basket.jpg')}}" alt=""></div>
+            <div class="col-md-4"><img class="imgS" src="{{asset('uploads/sports/euro.jpg')}}" alt=""></div>
+            <div class="col-md-4"><img class="imgS" src="{{asset('uploads/sports/fa.jpg')}}" alt=""></div>
 
+         </div>
+      </div>
+              
+
+      
+         </section>
+        
+    </section>
+
+    <section class="carousselFooter">
+
+       
+
+
+    </section>
 
 
 

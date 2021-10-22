@@ -7,6 +7,7 @@ use App\Form\PubsType;
 use App\Repository\PubsRepository;
 use App\Repository\EventsRepository;
 use App\Repository\ProductsRepository;
+use App\Repository\CategoriesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,8 +30,6 @@ class PubsController extends AbstractController
     {
         return $this->render('pubs/index.html.twig', [
             'pubs' => $pubsRepository->findAll(),
-            
-
         ]);
     }
 
@@ -80,12 +79,13 @@ class PubsController extends AbstractController
     /**
      * @Route("/{id}", name="pubs_show", methods={"GET"})
      */
-    public function show(Pubs $pub, EventsRepository $eventsRepository, ProductsRepository $productsRepository): Response
+    public function show(Pubs $pub, EventsRepository $eventsRepository, ProductsRepository $productsRepository, CategoriesRepository $categoryRepository): Response
     {
         return $this->render('pubs/show.html.twig', [
             'pub' => $pub,
             'events' => $eventsRepository->findAll(),
             'products' => $productsRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 
@@ -138,7 +138,6 @@ class PubsController extends AbstractController
             $entityManager->remove($pub);
             $entityManager->flush();
         }
-
         return $this->redirectToRoute('pubs_index', [], Response::HTTP_SEE_OTHER);
     }
 }

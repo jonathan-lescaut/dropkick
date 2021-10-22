@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Products;
 use App\Form\ProductsType;
 use App\Repository\ProductsRepository;
+use App\Repository\CategoriesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,9 +24,19 @@ class ProductsController extends AbstractController
     /**
      * @Route("/", name="products_index", methods={"GET"})
      */
-    public function index(ProductsRepository $productsRepository): Response
+    public function index(ProductsRepository $productsRepository, CategoriesRepository $categoriesRepository): Response
     {
         return $this->render('products/index.html.twig', [
+            'products' => $productsRepository->findAll(),
+            'categories' => $categoriesRepository->findAll(),
+        ]);
+    }
+    /**
+     * @Route("/index_user", name="products_user_index", methods={"GET"})
+     */
+    public function indexShow(ProductsRepository $productsRepository): Response
+    {
+        return $this->render('products/index_user.html.twig', [
             'products' => $productsRepository->findAll(),
         ]);
     }

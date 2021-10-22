@@ -1,76 +1,74 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Pubs
-{% endblock %}
+{% block title %}Products index{% endblock %}
 
 {% block body %}
-	<section class="pagePub navbarMargin">
-
-		{# ============================ affichage d'origine du pub show  ============================#}
-
-		{# <h1>Pubs</h1>
-		
-				<table class="table">
-					<tbody>
-		
-						<tr>
-							<th>cityPub</th>
-							<td>{{ pub.cityPub }}</td>
-						</tr>
-						<tr>
-							<th>ImgPub</th>
-							<td>{{ pub.imgPub }}</td>
-						</tr>
-						<tr>
-							<th>ContentPub</th>
-							<td>{{ pub.contentPub }}</td>
-						</tr>
-					</tbody>
-				</table>
-		
-				<a href="{{ path('pubs_index') }}">back to list</a>
-		
-			{# =========================================================================================#}
-			<h3>Event</h3>
-
-			{% for event in events %}
-				{% if event.pubs.id is same as(pub.id)%}<p>{{event.nameEvent}}
-				</p><p>{{event.pubs.namePub}}
-			</p>
-		{% endif %}
-
-		{% endfor %}
-
-
+<section class="pageProduct navbarMargin container-fluid">
+    <div class="pageProdOpacite">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="">Dropkick Bar</h1>
+            </div>
+      <div class="cardUser container-fluid">
+          <div class="container">
+              <div class="row">
 {% if app.user.pubs.id is same as pub.id %}
 
-		<h3>Product</h3>
+              {% for category in categories %}
 
-		<div class="row">
-			{% for product in products %}
-				{% if product.pub.id is same as(pub.id)%}
-					<div class="col-4 mt-4">
-						<div class="border border-dark rounded p-2 clearfix">
-							<p>{{product.nameProduct}}</p>
-							<img class="w-100" src="{{ asset('uploads/photos/' ~ product.imgProduct) }}" width="100">
-							<p>{{product.priceProduct}}
-								Euros</p>
-							<a href="{{path('cart_add', {product: product.id})}}" class="btn btn-success">
+                <div class="col-md-12 blocCategory accordion">{{category.nameCategory}}</div>
+                <div class="panel row">
+                {% for product in products %}
+                {% if product.categories.id is same as category.id %}
+                
+
+                    <div class="col-md-4 blocProduct">
+                        <div class="blocArticle">
+                            <div class="row">
+                                <div class="row blocProductSansBtn">
+                                        <div class="col-md-4">
+                                            <div class="imgProduct"><img src="{{ asset('uploads/photos/' ~ product.imgProduct) }}" width="100"></div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="titleProduct">{{ product.nameProduct }}</div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="priceProduct">{{ product.priceProduct }} €</div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="contentProduct">{{ product.contentProduct }}</div>
+                                            </div>
+                                </div>
+                                        </div>  
+                                        <div class="col-md-12 blocBtnProduct">
+                                           <a href="{{path('cart_add', {product: product.id})}}" class="btn btn-success btnProduct">
 								<i class="bi bi-cart-plus"></i>
-								Ajouter
-							</a>
-						</div>
-					</div>
-				{% endif %}
-			{% endfor %}
-		</div>
-		{{ include('pubs/_delete_form.html.twig') }}
+								Ajouter</a>
+                                        </div>   
+                            </div>
+                        </div>
+                    </div>     
+                    {% endif %}
+                    {% endfor %}
+                </div>
+              {% endfor %}
+                </div>
+                {{ include('pubs/_delete_form.html.twig') }}
+            </div>
 
-	</section>
+
+    </div>
+
+</div>
+</section>
 	{% else %}
 
 	<a href="{{ path('home') }}">Retour</a>
 
 	{% endif %}
+
 
 {% endblock %}
