@@ -5,42 +5,32 @@
 {% block body %}
 <section class="pagePub navbarMargin">
 
-    <h1>Pubs index</h1>
+    <h1>Nos pubs</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>NamePub</th>
-                <th>ImgPub</th>
-                <th>ContentPub</th>
-                <th>cityPub</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
         {% for pub in pubs %}
-            <tr>
-                <td>{{ pub.id }}</td>
-                <td>{{ pub.namePub }}</td>
-                <td><img src="{{ asset('uploads/photos/' ~ pub.imgPub) }}" width="100"></td>
-                <td>{{ pub.contentPub }}</td>
-                <td>{{ pub.cityPub }}</td>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>{{ pub.namePub }}</div>
+                        <div>{{ pub.addressPub }}</div>
+                        <div>{{ pub.phonePub }}</div>
+                        <div><img src="{{ asset('uploads/photos/' ~ pub.imgPub) }}" width="100"></div>
+                        <div>{{ pub.contentPub }}</div>
+                    </div>
+                    <div class="col-md-6">
+                        {{ pub.iframePub }}
+                    </div>
+                </div>
+            
                 <td>
                     <a href="{{ path('pubs_show', {'id': pub.id}) }}">show</a>
                     <a href="{{ path('pubs_edit', {'id': pub.id}) }}">edit</a>
                 </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
+            {% endfor %}
+            
 
-        </tbody>
-    </table>
 
-    <a href="{{ path('pubs_new') }}">Create new</a>
-</section>
+        </section>
+        <a href="{{ path('pubs_new') }}">Create new</a>
 
 {% endblock %}

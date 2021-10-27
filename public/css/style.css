@@ -30,30 +30,41 @@
 */
 /* GLOBAL
 ==============================================*/
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  width: 100%;
+  max-width: 100%;
+  background-color: rgba(0, 77, 4, 0.267);
 }
 
 * {
   font-family: 'irish';
 }
 
-.navbarMargin {
-  margin-top: 80px;
+.navBarAdmin {
+  margin-bottom: 160px !important;
 }
 
-.navBar {
+.navBar, .navBarAdmin {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 80px;
 }
 
-.navBar .nav {
+.navBar .nav, .navBarAdmin .nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -66,19 +77,24 @@ body {
           justify-content: space-evenly;
 }
 
-.navBar .nav .imgLogo {
-  width: 65px;
+.navBar .nav .imgLogo, .navBarAdmin .nav .imgLogo {
+  width: 180px;
 }
 
-.navBar .nav a {
+.navBar .nav a, .navBarAdmin .nav a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.navBar .nav .navH {
+.navBar .nav .navHAdmin, .navBarAdmin .nav .navHAdmin {
+  color: black;
   font-size: 2rem;
-  color: white !important;
+}
+
+.navBar .nav .navH, .navBarAdmin .nav .navH {
+  font-size: 2rem;
+  color: white;
 }
 
 nav {
@@ -123,8 +139,13 @@ nav {
   z-index: 1;
 }
 
+.slide img {
+  width: 100%;
+}
+
 .containerSlider {
   position: relative;
+  background-color: black;
 }
 
 .containerSlider .carousselCarte {
@@ -144,17 +165,21 @@ nav {
   display: flex;
   color: black;
   border: black 3px solid;
+  background-color: rgba(12, 71, 22, 0.644);
   font-size: 2rem;
   margin-right: 3em;
   height: 4em;
   font-weight: Bold;
-  background-color: rgba(12, 71, 22, 0.644);
   font-size: 2.5rem;
   width: 100%;
   padding: 50px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.presentation {
+  margin-top: 1em;
 }
 
 .blocPresentation {
@@ -170,14 +195,92 @@ nav {
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
+  color: black;
+  border: black 3px solid;
+  background-color: rgba(12, 71, 22, 0.644);
+  border-radius: 5px;
 }
 
 .blocPresentationTitle {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .lienMenu {
   font-size: 5rem;
+}
+
+.uploadCard {
+  background-color: #062a00;
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+}
+
+.uploadCard a {
+  text-decoration: none;
+  color: white;
+}
+
+.lieuPub {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  color: white;
+  background-color: #062a00;
+}
+
+.lieuPub .lieu {
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 2rem;
+}
+
+.lieuPub .lieu a {
+  text-decoration: none;
+  color: white;
+}
+
+.blocCarousselProduct {
+  height: 20vh;
+}
+
+.carousselProduct {
+  position: absolute;
+  width: 100%;
+}
+
+ul > li {
+  width: 25%;
+  list-style-type: none;
+  position: absolute;
+  top: 0;
+  padding: 20px;
+  height: 200px;
+  opacity: 0;
+  padding-top: 40px;
+  text-align: center;
+  -webkit-transition: 1s opacity;
+  transition: 1s opacity;
+  color: white;
+}
+
+.active {
+  opacity: 1;
+}
+
+p {
+  font-family: sans-serif;
+  font-size: 1rem;
+  color: #646566;
+  line-height: 1.5em;
 }
 
 .sports {
@@ -219,6 +322,88 @@ nav {
 
 .cart a {
   color: #000;
+}
+
+.blocEvent {
+  border: 3px black solid;
+  padding: 1em;
+  border-radius: 15px;
+  background-color: #242526;
+  color: white;
+  margin-top: 6em;
+}
+
+.blocEvent .blocEventImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-height: 15em;
+}
+
+.blocEvent img {
+  border-radius: 15px;
+}
+
+.blocEvent .blocEventContent {
+  font-size: 1.5rem;
+  padding-top: 2em;
+}
+
+.blocEvent .blocEventContent #events_contentEvent {
+  width: 650px;
+}
+
+.createImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 5px white solid;
+}
+
+.createBlocRight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.createBlocRight .createNameDateEvent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.createBlocRight .blocEventContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.createBlocRight .blocEventPlace {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.createBlocRight .blocEventPub {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .pageProduct {
@@ -282,6 +467,9 @@ nav {
   height: 20vh;
   border-radius: 10px;
   padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .blocProduct .blocArticle .imgProduct {
@@ -309,7 +497,7 @@ nav {
   height: 10vh;
 }
 
-.blocProduct .blocArticle .blocBtnProduct {
+.blocProduct .blocArticle .blocBtnProduct, .blocProduct .blocArticle .blocProductStar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -318,7 +506,24 @@ nav {
           justify-content: center;
 }
 
+.blocProduct .blocArticle .btnProductAdmin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .blocProduct .blocArticle .btnProduct {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1em;
+}
+
+.blocProduct .blocArticle .productStar {
   width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -338,6 +543,9 @@ nav {
   text-decoration: none;
   font-size: 1rem;
   text-transform: uppercase;
+  background-color: #ff8800;
+  border-radius: 5px;
+  padding: .3em;
 }
 
 .blocProduct .blocArticle .productAdmin a:hover {
@@ -358,6 +566,12 @@ nav {
   cursor: pointer;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -369,7 +583,23 @@ nav {
 .panel {
   max-height: 0;
   overflow: hidden;
-  -webkit-transition: max-height 0.2s ease-out;
-  transition: max-height 0.2s ease-out;
+  -webkit-transition: max-height 0.9s ease-out;
+  transition: max-height 0.9s ease-out;
+}
+
+.accordion:after {
+  content: '\2795';
+  /* Unicode character for "plus" sign (+) */
+  font-size: 3rem;
+  color: #777;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+  /* Unicode character for "minus" sign (-) */
 }
 /*# sourceMappingURL=style.css.map */

@@ -41,6 +41,8 @@ class ProductsType extends AbstractType
                 ])
             ],
         ])
+            ->add('productStar')
+            
         ;
     }
 

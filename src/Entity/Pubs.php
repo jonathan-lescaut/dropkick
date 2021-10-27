@@ -63,6 +63,26 @@ class Pubs
      */
     private $products;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $cardPdf;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $addressPub;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $phonePub;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $iframePub;
+
 
     public function __construct()
     {
@@ -210,6 +230,54 @@ class Pubs
                 $product->setPub(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCardPdf(): ?string
+    {
+        return $this->cardPdf;
+    }
+
+    public function setCardPdf(string $cardPdf): self
+    {
+        $this->cardPdf = $cardPdf;
+
+        return $this;
+    }
+
+    public function getAddressPub(): ?string
+    {
+        return $this->addressPub;
+    }
+
+    public function setAddressPub(string $addressPub): self
+    {
+        $this->addressPub = $addressPub;
+
+        return $this;
+    }
+
+    public function getPhonePub(): ?int
+    {
+        return $this->phonePub;
+    }
+
+    public function setPhonePub(int $phonePub): self
+    {
+        $this->phonePub = $phonePub;
+
+        return $this;
+    }
+
+    public function getIframePub(): ?string
+    {
+        return $this->iframePub;
+    }
+
+    public function setIframePub(string $iframePub): self
+    {
+        $this->iframePub = $iframePub;
 
         return $this;
     }

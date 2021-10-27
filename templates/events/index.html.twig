@@ -3,49 +3,47 @@
 {% block title %}Events index{% endblock %}
 
 {% block body %}
+
 <section class="pageEvent navbarMargin">
 
-    <h1>Events index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>NameEvent</th>
-                <th>ImgEvent</th>
-                <th>DateEvent</th>
-                <th>ContentEvent</th>
-                <th>PlaceEvent</th>
-                <th>pub</th> 
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for event in events %}
-            <tr>
-                <td>{{ event.id }}</td>
-                <td>{{ event.nameEvent }}</td>
-                <td><img src="{{ asset('uploads/photos/' ~ event.imgEvent) }}" width="100"></td>
-                <td>{{ event.dateEvent ? event.dateEvent|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ event.contentEvent }}</td>
-                <td>{{ event.placeEvent }}</td>
-                <td>{{ event.pubs.namePub }}</td>
-
-
-                <td>
+    
+    {% for event in events %}
+    <div class="container blocEvent">
+        <div class="row">
+            <div class="col-md-3 blocEventImg">
+                <img src="{{ asset('uploads/photos/' ~ event.imgEvent) }}" width="300">
+            </div>
+            <div class="col-md-9 ">
+                <div class="row">
+                {{ event.nameEvent }}
+                </div>
+                <div class="row">
+                {{ event.dateEvent ? event.dateEvent|date('Y-m-d H:i:s') : '' }}
+                </div>
+                <div class="row blocEventContent">
+                {{ event.contentEvent|raw }}
+                </div>
+            </div>
+        </div>
+            {% if (is_granted('ROLE_ADMIN')) %}
+            <div class="row">
+                <div class="col-md-12">
                     <a href="{{ path('events_show', {'id': event.id}) }}">show</a>
                     <a href="{{ path('events_edit', {'id': event.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
+                </div>
+            </div>
+            {% endif %}
+        </div>
         {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('events_new') }}">Create new</a>
-    </section>
+
+    {% if (is_granted('ROLE_ADMIN')) %}
+        <a href="{{ path('events_new') }}">Create new</a>
+    {% endif %}
+
+
+</section>
+    
 
 {% endblock %}

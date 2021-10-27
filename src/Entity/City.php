@@ -2,28 +2,13 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ApiResource(
- *     normalizationContext={"groups"={"city:read"}},
- *     denormalizationContext={"groups"={"city:write"}},
- *     collectionOperations={
- *      "get"={},
- *      "post"={},
- *     },
- *     itemOperations={
- *       "get"={},
- *       "put"={},
- *       "delete"={},
- *     }
- * )
  * @ORM\Entity(repositoryClass="App\Repository\CityRepository")
- * @Vich\Uploadable
  */
 class City
 {
@@ -50,7 +35,6 @@ class City
     private $image;
 
     /**
-     * @Vich\UploadableField(mapping="city_images", fileNameProperty="image")
      * @var File
      */
     private $imageFile;

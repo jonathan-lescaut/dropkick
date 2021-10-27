@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Pubs;
 use App\Entity\Events;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\File;
@@ -37,7 +38,7 @@ class EventsType extends AbstractType
                 'placeholder' => [
                 'day' => 'Jour','Mois', 'day' => 'Jour','year' => 'Année',
                 ]])
-            ->add('contentEvent')
+            ->add('contentEvent', CKEditorType::class)
             ->add('placeEvent')
             ->add('pubs', EntityType::class, [ 'class' => Pubs::class, 'choice_label' => 'namePub',
 ])

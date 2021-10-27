@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Events index{% endblock %}
+
+{% block body %}
+<section class="pageEvent navbarMargin">
+
+    <h1>Events index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>NameEvent</th>
+                <th>ImgEvent</th>
+                <th>DateEvent</th>
+                <th>ContentEvent</th>
+                <th>PlaceEvent</th>
+                <th>pub</th> 
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+            <tr>
+                <td>{{ event.nameEvent }}</td>
+                <td><img src="{{ asset('uploads/photos/' ~ event.imgEvent) }}" width="100"></td>
+                <td>{{ event.dateEvent ? event.dateEvent|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ event.contentEvent }}</td>
+                <td>{{ event.placeEvent }}</td>
+                <td>{{ event.pubs.namePub }}</td>
+
+
+                <td>
+                    <a href="{{ path('events_show', {'id': event.id}) }}">show</a>
+                    <a href="{{ path('events_edit', {'id': event.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('events_new') }}">Create new</a>
+    </section>
+
+{% endblock %}

@@ -11,21 +11,26 @@
             </div>
       <div class="cardUser container-fluid">
           <div class="container">
+        {% if (is_granted('ROLE_ADMIN')) %}
+                <div class="col-md-12 blocCategory"><a href="{{ path('products_new') }}">Create new product</a></div>
+        {% endif %}
+
               <div class="row">
 
               {% for category in categories %}
                     {% if (is_granted('ROLE_ADMIN')) %}
+                <div class="row">
+
                 <div class="col-md-6 blocCategory">{{category.nameCategory}}</div>
                 <div class="col-md-6 blocCategory admimCategory"><a href="{{ path('categories_edit', {'id': category.id}) }}">Modifier</a></div>
-
-
+                </div>
+            
                     {% else %}
-                        
+                <div class="row">
                 <div class="col-md-12 blocCategory">{{category.nameCategory}}</div>
+                </div>
+
                     {% endif %}
-
-
-
 
                 {% for product in products %}
                 {% if product.categories.id is same as category.id %}
@@ -55,15 +60,21 @@
                                             </div>
                                 </div>
                                         </div>  
-                                        <div class="col-md-12 blocBtnProduct">
-                                            <a class="btn btn-success btnProduct inscription" href="#">Ajouter au panier</a>
+                                        {% if product.productStar %}
+                                        <div class="col-md-12 blocProductStar">
+                                            <p class="ProductStar">Affichage page d'accueil</a>
                                         </div>   
+                                        {% endif %}
                                         {% if (is_granted('ROLE_ADMIN')) %}
-                                        <div class="col-md-6 productAdmin">
-                                        <a href="{{ path('products_show', {'id': product.id}) }}">Voir</a>
-                                        </div>
-                                        <div class="col-md-6 productAdmin">
-                                        <a href="{{ path('products_edit', {'id': product.id}) }}">Modifier</a>
+                
+                                        <div class="row btnProductAdmin">
+
+                                            <div class="col-md-6 productAdmin">
+                                            <a href="{{ path('products_show', {'id': product.id}) }}">Voir</a>
+                                            </div>
+                                            <div class="col-md-6 productAdmin">
+                                            <a href="{{ path('products_edit', {'id': product.id}) }}">Modifier</a>
+                                            </div>
                                         </div>
                                         {% endif %}
                             </div>

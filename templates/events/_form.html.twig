@@ -1,4 +1,39 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+<section class="pageEvent navbarMargin">
+{% if (is_granted('ROLE_ADMIN')) %}
+   <a href="{{ path('events_new') }}">Create new</a>
+{% endif %}
+
+    <div class="container blocEvent">
+        <div class="row">
+            <div class="col-md-3 createImg">
+                {{ form_row(form.imgEvent) }}
+            </div>
+            <div class="col-md-9 createBlocRight">
+                <div class="col-md-2 createNameDateEvent">
+                        {{ form_row(form.nameEvent) }}
+                        {{ form_row(form.dateEvent) }}
+                </div>
+                <div class="col-md-10 blocEventContent">
+                    {{ form_row(form.contentEvent) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.placeEvent) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.pubs) }}
+            </div>
+        </div>
+    </div>
+ 
+</section>
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

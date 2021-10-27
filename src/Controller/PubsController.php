@@ -59,7 +59,6 @@ class PubsController extends AbstractController
                 );
                 } catch (FileException $e) {}
                     
-                
                 $pub->setImgPub($newFilename);
             }
 
@@ -118,6 +117,37 @@ class PubsController extends AbstractController
             $pub->setImgPub($newFilename);
         }
             $this->getDoctrine()->getManager()->flush();
+
+            // ====================================
+
+
+            $cardPdf = $form->get('cardPdf')->getData();
+
+            // this condition is needed because the 'brochure' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($cardPdf) {
+                $originalFilename = pathinfo($cardPdf->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$cardPdf->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $cardPdf->move(
+                        $this->getParameter('brochures_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $pub->setCardPdf($newFilename);
+            }
+            $this->getDoctrine()->getManager()->flush();
+            // ====================================
+
 
             return $this->redirectToRoute('pubs_index', [], Response::HTTP_SEE_OTHER);
         }

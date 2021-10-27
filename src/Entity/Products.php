@@ -51,7 +51,10 @@ class Products
      */
     private $pub;
 
-//  constructeur avec menu supprimer
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $productStar;
 
     public function getId(): ?int
     {
@@ -127,6 +130,18 @@ class Products
     public function setPub(?Pubs $pub): self
     {
         $this->pub = $pub;
+
+        return $this;
+    }
+
+    public function getProductStar(): ?bool
+    {
+        return $this->productStar;
+    }
+
+    public function setProductStar(bool $productStar): self
+    {
+        $this->productStar = $productStar;
 
         return $this;
     }

@@ -1,0 +1,36 @@
+{{ form_start(form) }}
+
+
+
+
+<section class="presentation container">
+			<div class="row">
+				<div class="col-md-4 blocPresentation blocPresentationTitle">
+					{{ form_row(form.titleLeft) }}
+
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-6 blocPresentation">
+					{{ form_row(form.textRight) }}
+
+				</div>
+			</div>
+			<div class="row"></div>
+
+		</section>
+		<section class="presentation container">
+			<div class="row">
+				<div class="col-lg-6 blocPresentation">
+					{{ form_row(form.textLeft) }}
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-lg-4 blocPresentation">
+					{{ form_row(form.titleRight) }}
+				</div>
+			</div>
+
+		</section>
+
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

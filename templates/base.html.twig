@@ -28,44 +28,39 @@
     <body>
 
         <header>
+            
+            {% if (is_granted('ROLE_ADMIN')) %}
+            <section class="navBarAdmin">
+            {% else %}
             <section class="navBar">
+            {% endif %}
+
                 <nav id="mynav" class="navbar fixed-top navbar-expand-lg ">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href=""><img src="" class="" alt=""></i>
-                        </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav ms-auto nav">
                                 <img src="{{asset('uploads/logo.jpg')}}" class="imgLogo" alt="logo">
-                                <a class="nav-link navH" href="{{ path('home') }}">Home</a>
 
                                 {% if (is_granted('ROLE_ADMIN')) %}
                                 <h2>Administration</h2>
-                                <a class="nav-link navH" href="{{ path('events_index') }}">Evènements</a>
-                                <a class="nav-link navH" href="{{ path('categories_index') }}">Catégories</a>
-                                <a class="nav-link navH" href="{{ path('pubs_index') }}">Pubs</a>
-                                <a class="nav-link navH" href="{{ path('products_index') }}">Produits</a>
-                                <a class="nav-link navH" href="{{ path('user_index') }}">Utilisateurs</a>
+                                <a class="nav-link navHAdmin" href="{{ path('categories_index') }}">Catégories</a>
+                                <a class="nav-link navHAdmin" href="{{ path('pubs_index') }}">Pubs</a>
+                                <a class="nav-link navHAdmin" href="{{ path('products_index') }}">Produits</a>
+                                <a class="nav-link navHAdmin" href="{{ path('user_index') }}">Utilisateurs</a>
                                 {% endif %}
 
                                 {% if (is_granted('ROLE_USER')) %}
-                                <a class="nav-link navH" href="{{ ('/logout') }}">Déconnexion</a>
-                                {# mettre le path ?? #}
-                                <a class="nav-link navH" href="{{ ('/cart') }}">Panier</a>
-                                <a class="nav-link navH" href="#">Nos Pubs</a>
+                                <a class="nav-link navH" href="{{ path('home') }}">Nos Pubs</a>
                                 <a class="nav-link navH" href="{{ path('pubs_show', {'id': app.user.pubs.id})}}"> La carte</a>
-                                <a class="nav-link navH" href="#">Nos Events</a>
+                                <a class="nav-link navH" href="{{ path('events_index') }}">Evènements</a>
+                                <a class="nav-link navH" href="{{ ('/cart') }}">Panier</a>
                                 <a class="nav-link navH" href="{{ path('user_edit', {id: app.user.id})}}">Mon compte</a>
+                                <a class="nav-link navH" href="{{ ('/logout') }}">Déconnexion</a>
 
                                 {% else %}
+                                <a class="nav-link navH" href="{{ path('home') }}">Nos Pubs</a>
                                 <a class="nav-link navH" href="{{ path('products_index') }}">La carte</a>
-                                <a class="nav-link navH" href="#">Nos Pubs</a>
-                                <a class="nav-link navH" href="#">Nos Events</a>
+                                <a class="nav-link navH" href="{{ path('events_index') }}">Nos Events</a>
                                 <a class="nav-link navH btn btn-success" href="{{ '/login' }}">Commander</a>
                                 {% endif %}
                             </div>

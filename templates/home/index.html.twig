@@ -5,7 +5,9 @@
 {% block body %}
 
 
-    <section class="pageHome navbarMargin">
+    <section class="pageHome">
+
+
 
     <div align="center" class="containerSlider">
 
@@ -28,7 +30,6 @@
         <div class="container-fluid carousselCarte">
             <div class="lienCarte">Poutines</div>
             <div class="lienCarte">Menus</div>
-            <div class="lienCarte">Alcool et soft</div>
             <div class="lienCarte">Starters</div>
             <div class="lienCarte">Desserts</div>
         </div>
@@ -37,48 +38,110 @@
 
     <div class="blocLienPubs">
         <div class="lienPub">
-        {% if app.user is same as null %}
-         <a href="{{ path('products_user_index')}}" class="cityPub"> Voir la carte de mon Dropkick</a>
+        <div class="container-fluid">
+            {% if app.user is same as null %}
+                <div class="row">
+                    <a href="{{ path('products_user_index')}}" class="cityPub"> Commander</a>
+                </div>
+            <div class="row">
+                <div class="uploadCard">Télécharger notre carte</div>
+                <div class="lieuPub">
+                    {% for pub in pubs %}
+
+                        <div class="lieu"><a href="{{ asset('uploads/brochures/' ~ pub.cardPdf) }}">{{pub.cityPub}}</a></div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
 
         {% else %}  
                 {% for pub in pubs %}
         {% if app.user.pubs.cityPub is same as pub.cityPub %}
-                <a href="{{ path('pubs_show', {'id': pub.id}) }}" class="cityPub"> Voir la carte de mon Dropkick :{{pub.cityPub}}</a>
+            <div class="row">
+                <a href="{{ path('pubs_show', {'id': pub.id}) }}" class="cityPub"> Je commande dans mon Dropkick :{{pub.cityPub}}</a>
+            </div>
+            <div class="row">
+                    <div class="uploadCard"><a href="{{ asset('uploads/brochures/' ~ pub.cardPdf) }}">Télécharger notre carte</a></div>
+            </div>
 
         {% endif %}
-             {% endfor %}
+                {% endfor %}
         {% endif %}
+
    
 
         </div>
     </div>
     </section>
-    <section class="presentation container-fluid">
-        <div class="row">
-            <div class="col-md-5 blocPresentation blocPresentationTitle">
-                Le dropkick c'est quoi ?
-            </div>
-            <div class="col-md-7 blocPresentation">
-                Le Dropkick est un pub chaleureux qui vous propose : un large choix de poutines/burgers/hot-dog, 20 bières pressions, une sélection de whiskys/rhums, des cocktails/shooters, billard/fléchettes/baby-foot, le tout accompagné de musique & sport live !
-            </div>
+
+
+
+
+        <section class="container-fluid blocCarousselProduct">
+    <div class="row">
+            
+            <ul id="c" class="carousselProduct"> 
+                {% for product in products %}
+                    {% if product.productStar %}
+                    
+                    <li>
+                        <p>
+                            <img src="{{ asset('uploads/photos/' ~ product.imgProduct) }}" width="200">
+                        </p>
+                        <p>{{ product.nameProduct }}</p>
+                    </li>
+                    {% endif %}
+                
+                {% endfor %}
+                
+            
+            </ul>
         </div>
-        
+
+
     </section>
-    <section class="presentation container-fluid">
-        <div class="row">
-            <div class="col-lg-7 blocPresentation">
-                La poutine est un plat de la cuisine québécoise composé, dans sa forme classique, de trois éléments : des frites, du fromage en grains et de la sauce brune. La poutine tire son origine du Centre-du-Québec à la fin des années 1950.
+
+    {% for presentation in presentation %}
+        <section class="presentation container">
+            <div class="row">
+                <div class="col-md-4 blocPresentation blocPresentationTitle">
+                {{ presentation.titleLeft|raw }}
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-6 blocPresentation">
+                    {{ presentation.textRight|raw }}            
+                </div>
             </div>
-            <div class="col-lg-5 blocPresentation blocPresentationTitle">
-                La poutine ?
+                    <div class="row">
+
             </div>
+            
+        </section>
+        <section class="presentation container">
+            <div class="row">
+                <div class="col-lg-6 blocPresentation">
+                    {{ presentation.textLeft|raw }}
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-lg-4 blocPresentation blocPresentationTitle">
+                    {{ presentation.titleRight|raw }}
+                </div>
+            </div>
+
+        </section>
+    {% endfor %}
+
+
+
+        <section class="sports color-body container-fluid">
+        <div class="lienPub">
+            <a href="{{ path('events_index')}}" class="cityPub"> Nos actualités et evénements</a>
         </div>
-        <div class="row">
-            <a href="#" class="blocPresentation lienMenu">Nos menus</a>
-        </div>
-        <section class="sports color-body">
-            <h1>Nos actualités et evénements</h1>
-      <div class="container">
+
+
+      <div class="container-fluid">
          <div class="row blocS">
             <div class="col-md-4"><img class="imgS" src="{{asset('uploads/sports/basket.jpg')}}" alt=""></div>
             <div class="col-md-4"><img class="imgS" src="{{asset('uploads/sports/euro.jpg')}}" alt=""></div>
@@ -87,11 +150,10 @@
          </div>
       </div>
               
-
       
          </section>
         
-    </section>
+   
 
     <section class="carousselFooter">
 
