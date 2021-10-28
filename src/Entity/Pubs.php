@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Validator\Constraints\Collection;
 
 
@@ -74,14 +75,24 @@ class Pubs
     private $addressPub;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=50)
      */
     private $phonePub;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $iframePub;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $cpPub;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $schedulePub;
 
 
     public function __construct()
@@ -258,12 +269,12 @@ class Pubs
         return $this;
     }
 
-    public function getPhonePub(): ?int
+    public function getPhonePub(): ?string
     {
         return $this->phonePub;
     }
 
-    public function setPhonePub(int $phonePub): self
+    public function setPhonePub(string $phonePub): self
     {
         $this->phonePub = $phonePub;
 
@@ -279,6 +290,29 @@ class Pubs
     {
         $this->iframePub = $iframePub;
 
+        return $this;
+    }
+
+    public function getCpPub(): ?int
+    {
+        return $this->cpPub;
+    }
+
+    public function setCpPub(int $cpPub): self
+    {
+        $this->cpPub = $cpPub;
+
+        return $this;
+    }
+
+    public function getSchedulePub(): ?string
+    {
+        return $this->schedulePub;
+    }
+
+    public function setSchedulePub(string $schedulePub): self
+    {
+        $this->schedulePub = $schedulePub;
         return $this;
     }
 

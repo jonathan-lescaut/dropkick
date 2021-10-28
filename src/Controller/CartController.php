@@ -9,12 +9,14 @@ use App\Service\SendMailService;
 use App\Repository\PubsRepository;
 use App\Repository\UserRepository;
 use App\Repository\ProductsRepository;
+use GuzzleHttp\Psr7\Request;
 use Symfony\Config\MercuryseriesFlashyConfig;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
 
 class CartController extends AbstractController
 {
@@ -123,7 +125,7 @@ class CartController extends AbstractController
         /**
          * @Route("/commande", name="commande")
          */
-        public function Commande(SessionInterface $session, ProductsRepository $productsRepository, SendMailService $mail)
+        public function Commande(SessionInterface $session, ProductsRepository $productsRepository, SendMailService $mail, Request $request)
         {
 
             $form = $this->createForm(ContactType::class);

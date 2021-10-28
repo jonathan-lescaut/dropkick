@@ -84,7 +84,7 @@ body{
 
         }
         .navHAdmin{
-            color: rgb(0, 0, 0);
+            color: white;
             font-size: 2rem;
         }
         .navH{
@@ -96,7 +96,7 @@ body{
 }
 
 nav{
-    background-color: rgba(0, 0, 0, 0.61);
+    background-color: rgb(0, 0, 0);
 }
 .pageHome{
     width: 100%;
@@ -139,17 +139,17 @@ nav{
       .carousselCarte{
           display: flex;
           position: absolute;
+          flex-direction: column;
           z-index:2;
           top: 78%;
-          .lienCarte{
+          width: 100%;
+          .textCarte{
                 justify-content: space-around;
                 display: flex;
-                color: rgb(0, 0, 0);
-                border: rgb(0, 0, 0) 3px solid;
-                background-color: rgba(12, 71, 22, 0.644);
+                flex-direction: row;
+                color: rgb(255, 255, 255);
                 font-size: 2rem;
                 margin-right: 3em;
-                height: 4em;
                 font-weight: Bold;
                 font-size: 2.5rem;
                 width: 100%;
@@ -217,8 +217,49 @@ nav{
         }
     }
 }
+// Page PUB ===================================
 
-// carroussel poutine ===================================
+// .blocPub{
+//     display: flex;
+// }
+
+    .pubName{
+        text-transform: uppercase;
+        font-size: 3rem;
+        display: flex;
+        margin-top: 120px;
+        margin-left: 50px;
+    }
+    .pubAddress{
+        font-size: 2rem;
+        display: flex;
+        margin-left: 50px;
+    }
+    .pubPhone{
+        font-size: 1.5rem;
+        display: flex;
+        margin-left: 50px;
+    }
+    .pubImg{
+        margin-left: 50px;
+    }
+    .schedulePub{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+
+
+// ============================================
+
+
+
+
+
+// carroussel Product star  ===================================
 
 
 .blocCarousselProduct{
@@ -247,11 +288,15 @@ ul > li {
     opacity: 1;
 }
 
-p {
+.blocImgCaroussel {
     font-family: sans-serif;
     font-size: 1rem;
     color: #646566;
     line-height: 1.5em;
+    .imgCarousselProductStar{
+        width: 200px;
+        height: 25vh;
+    }
 }
 
 // fin page carroussel poutine  ===============
@@ -490,7 +535,7 @@ p {
   }
   
   /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  .active, .accordion:hover {
+  .active .accordion:hover {
     background-color: $colorCarte;
   }
   

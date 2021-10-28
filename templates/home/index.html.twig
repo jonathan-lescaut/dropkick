@@ -8,31 +8,32 @@
     <section class="pageHome">
 
 
-
     <div align="center" class="containerSlider">
-
         <div id="slidertype1" class='slide' style="display:none">
-
             <img src="{{asset('uploads/Orleans.jpg')}}" alt="orleans">
         </div>
-
-
         <div id="slidertype2" class='slide' style="display:none">
-
             <img src="{{asset('uploads/troyes.jpg')}}" alt="troyes">
         </div>
-
-
         <div id="slidertype3" class='slide' style="display:none">
-
-            <img src="{{asset('uploads/reims.jpg')}}" alt="reims">
+           <img src="{{asset('uploads/reims.jpg')}}" alt="reims">
         </div>
         <div class="container-fluid carousselCarte">
+                <div class="textCarte">Large choix de poutines burgers hot-dog</div>
+                 <div class="textCarte">Bières pressions</div>
+                 <div class="textCarte">Sélection de whiskys rhums</div>
+                 <div class="textCarte">Cocktails shooters</div>
+                 <div class="textCarte">Fléchettes/jeux</div>
+        </div>
+
+        
+{# ========== on dégage la div pour l'instant========== #}
+        {# <div class="container-fluid carousselCarte">
             <div class="lienCarte">Poutines</div>
             <div class="lienCarte">Menus</div>
             <div class="lienCarte">Starters</div>
             <div class="lienCarte">Desserts</div>
-        </div>
+        </div> #}
 
     </div>
 
@@ -87,16 +88,14 @@
                     {% if product.productStar %}
                     
                     <li>
-                        <p>
-                            <img src="{{ asset('uploads/photos/' ~ product.imgProduct) }}" width="200">
+                        <p class="blocImgCaroussel">
+                            <img class="imgCarousselProductStar" src="{{ asset('uploads/photos/' ~ product.imgProduct) }}">
                         </p>
                         <p>{{ product.nameProduct }}</p>
                     </li>
                     {% endif %}
                 
                 {% endfor %}
-                
-            
             </ul>
         </div>
 

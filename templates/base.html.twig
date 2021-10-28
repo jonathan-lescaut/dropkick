@@ -39,7 +39,7 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav ms-auto nav">
-                                <img src="{{asset('uploads/logo.jpg')}}" class="imgLogo" alt="logo">
+                                <a href="{{ path('home') }}"> <img src="{{asset('uploads/logo.jpg')}}" href="{{ path('home') }}" class="imgLogo" alt="logo"></a>
 
                                 {% if (is_granted('ROLE_ADMIN')) %}
                                 <h2>Administration</h2>
@@ -48,7 +48,6 @@
                                 <a class="nav-link navHAdmin" href="{{ path('products_index') }}">Produits</a>
                                 <a class="nav-link navHAdmin" href="{{ path('user_index') }}">Utilisateurs</a>
                                 {% endif %}
-
                                 {% if (is_granted('ROLE_USER')) %}
                                 <a class="nav-link navH" href="{{ path('home') }}">Nos Pubs</a>
                                 <a class="nav-link navH" href="{{ path('pubs_show', {'id': app.user.pubs.id})}}"> La carte</a>
@@ -58,7 +57,7 @@
                                 <a class="nav-link navH" href="{{ ('/logout') }}">Déconnexion</a>
 
                                 {% else %}
-                                <a class="nav-link navH" href="{{ path('home') }}">Nos Pubs</a>
+                                <a class="nav-link navH" href="{{ path('pubs_index') }}">Nos Pubs</a>
                                 <a class="nav-link navH" href="{{ path('products_index') }}">La carte</a>
                                 <a class="nav-link navH" href="{{ path('events_index') }}">Nos Events</a>
                                 <a class="nav-link navH btn btn-success" href="{{ '/login' }}">Commander</a>

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Pubs;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -28,6 +29,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(message = "Votre email '{{ value }}' n'est pas valide")
      */
     private $email;
 

@@ -4,11 +4,13 @@ namespace App\Form;
 
 use App\Entity\Pubs;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\File;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class PubsType extends AbstractType
 {
@@ -16,7 +18,8 @@ class PubsType extends AbstractType
     {
         $builder
             ->add('namePub')
-            ->add('addressPub')
+            ->add('addressPub', TelType::class)
+            ->add('cpPub')
             ->add('phonePub')
             ->add('iframePub')
             ->add('imgPub', FileType::class, [
@@ -35,6 +38,8 @@ class PubsType extends AbstractType
         ])
             ->add('contentPub')
             ->add('cityPub')
+            ->add('schedulePub', CKEditorType::class)
+
             ->add('cardPdf', FileType::class, [
                 'label' => 'cardPdf (PDF file)',
                 'mapped' => false,
