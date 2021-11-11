@@ -45,63 +45,180 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   max-width: 100%;
-  background-color: rgba(0, 77, 4, 0.267);
+  background-color: #707070;
 }
 
-* {
+a {
+  text-decoration: none;
+  text-transform: none;
+  color: #000;
+}
+
+@font-face {
   font-family: 'irish';
+  src: url("../font/IrishUncialfabeta-Bold.ttf");
 }
 
-.navBarAdmin {
-  margin-bottom: 160px !important;
+@font-face {
+  font-family: 'kelt';
+  src: url("../font/Kelt Caps Freehand.ttf");
 }
 
-.navBar, .navBarAdmin {
+@font-face {
+  font-family: 'junius';
+  src: url("../font//JuniusIrish.ttf");
+}
+
+header {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 80px;
-}
-
-.navBar .nav, .navBarAdmin .nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-}
-
-.navBar .nav .imgLogo, .navBarAdmin .nav .imgLogo {
-  width: 180px;
-}
-
-.navBar .nav a, .navBarAdmin .nav a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.navBar .nav .navHAdmin, .navBarAdmin .nav .navHAdmin {
-  color: white;
-  font-size: 2rem;
-}
-
-.navBar .nav .navH, .navBarAdmin .nav .navH {
-  font-size: 2rem;
   color: white;
 }
 
-nav {
+.navbar {
+  height: 10vh;
   background-color: black;
 }
 
+.navbar img {
+  max-width: 12em;
+  height: 10vh;
+}
+
+.navbar .navH {
+  font-family: 'kelt';
+}
+
+.navbar .navH .logoNavBarGif {
+  border-radius: 50px;
+}
+
+.navbar .navVisiteur {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 5em;
+}
+
+.navbar .nav-link {
+  font-size: 1.5rem;
+  padding: 0px;
+  text-align: center;
+  font-size: 24px;
+  margin-right: 2em;
+}
+
+.navbar-nav {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #a7a5a5 !important;
+}
+
+.navbar-light .navbar-toggler {
+  border-color: white;
+}
+
+.navbar-toggler-icon {
+  background-color: white;
+}
+
+header .navbar-toggler {
+  background-color: white;
+}
+
+.navbar-expand-lg .navbar-collapse {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.typewriter h2 {
+  overflow: hidden;
+  /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange;
+  /* The typwriter cursor */
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  margin: 0px;
+  /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em;
+  /* Adjust as needed */
+  -webkit-animation: typing 6.5s steps(30, end), blink-caret 0.5s infinite;
+          animation: typing 6.5s steps(30, end), blink-caret 0.5s infinite;
+  padding-left: 24px;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.navBarRight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 10px;
+  margin-top: 10px;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  margin-left: auto;
+}
+
+.navBarRight img {
+  margin-bottom: 5px;
+}
+
+/* The typing effect */
+@-webkit-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 105%;
+  }
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 105%;
+  }
+}
+
+/* The typewriter cursor effect */
+@-webkit-keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #005204;
+  }
+}
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #005204;
+  }
+}
+
 .pageHome {
+  margin-top: 50px;
   width: 100%;
 }
 
@@ -109,24 +226,28 @@ nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 80%;
+  margin: auto;
+  margin-top: 2em;
 }
 
-.lienPub {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-.cityPub {
-  text-transform: none;
-  text-decoration: none;
+.lienActu {
   color: black;
   font-size: 4rem;
   background-color: black;
-  color: white;
   width: 100%;
   text-align: center;
+}
+
+.lienActu a {
+  color: white;
+  text-transform: none;
+  text-decoration: none;
+  font-family: 'Kelt';
+}
+
+.lienActu a:hover {
+  color: #a7a5a5;
 }
 
 .slide {
@@ -158,8 +279,112 @@ nav {
       -ms-flex-direction: column;
           flex-direction: column;
   z-index: 2;
-  top: 78%;
+  top: 15%;
   width: 100%;
+}
+
+.containerSlider .carousselCarte .blocTextCarte {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-top: 3em;
+}
+
+.containerSlider .carousselCarte .blocTextCarte .text1 {
+  font-size: 1rem;
+  width: 40%;
+  background-color: #fff;
+  padding-bottom: 0px;
+  -webkit-clip-path: polygon(50% -16%, 89% 122%, -8% 148%, 27% 45%);
+          clip-path: polygon(50% -16%, 89% 122%, -8% 148%, 27% 45%);
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
+}
+
+.containerSlider .carousselCarte .blocTextCarte .text2 {
+  width: 40%;
+  font-size: 2rem;
+  background-color: #fff;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  -webkit-clip-path: polygon(88% 0%, 98% 145%, 17% 140%, 1% -11%);
+          clip-path: polygon(88% 0%, 98% 145%, 17% 140%, 1% -11%);
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
+}
+
+.containerSlider .carousselCarte .blocTextCarte .text3 {
+  width: 40%;
+}
+
+.containerSlider .carousselCarte .blocTextCarte .text3 a {
+  text-decoration: none;
+  padding: 10px;
+  background-color: #fff;
+  color: black;
+  font-weight: bold;
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
+  border-radius: 3em;
+}
+
+.containerSlider .carousselCarte .blocTextCarte .text3 a:hover {
+  -webkit-box-shadow: -9px -4px 39px 10px white;
+          box-shadow: -9px -4px 39px 10px white;
+  background-color: black;
+  color: white;
+}
+
+.containerSlider .carousselCarte .blocDetailPub {
+  background-color: rgba(0, 0, 0, 0.69);
+  max-width: 45%;
+  border-radius: 20px;
+  margin-left: 1em;
+  -webkit-clip-path: polygon(88% 0%, 98% 145%, 17% 140%, 1% -11%);
+          clip-path: polygon(88% 0%, 98% 145%, 17% 140%, 1% -11%);
+}
+
+.containerSlider .carousselCarte .lienCaroussel {
+  background-color: #fff;
+  border-radius: 2px;
+  color: black;
+  text-transform: none;
+  font-size: 2rem;
+}
+
+.containerSlider .carousselCarte .textCarteLeft {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  color: white;
+  font-size: 2rem;
+  font-weight: Bold;
+  font-size: 2rem;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+  padding-left: 2em;
+  font-family: 'kelt';
 }
 
 .containerSlider .carousselCarte .textCarte {
@@ -168,51 +393,41 @@ nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  color: white;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  color: black;
   font-size: 2rem;
   margin-right: 3em;
   font-weight: Bold;
   font-size: 2.5rem;
   width: 100%;
-  padding: 50px;
+  padding: 15px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-transform: uppercase;
 }
 
-.presentation {
-  margin-top: 1em;
+.cityPub {
+  text-transform: none;
+  color: white;
+  text-decoration: none;
+  font-family: 'Kelt';
 }
 
-.blocPresentation {
-  height: 20vh;
-  border: 2px black solid;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  text-align: center;
-  color: black;
-  border: black 3px solid;
-  background-color: rgba(12, 71, 22, 0.644);
-  border-radius: 5px;
+.cityPub:hover {
+  color: #a7a5a5;
 }
 
-.blocPresentationTitle {
-  font-size: 2.5rem;
-}
-
-.lienMenu {
-  font-size: 5rem;
+.cardDropkick {
+  margin-top: .5em;
+  margin-bottom: .5em;
+  font-family: 'Kelt';
 }
 
 .uploadCard {
@@ -224,7 +439,123 @@ nav {
 
 .uploadCard a {
   text-decoration: none;
+  font-family: 'Kelt';
   color: white;
+}
+
+.lienPub {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.commandeDropkick {
+  background-color: black;
+  -webkit-clip-path: polygon(100% 0%, 87% 145%, 17% 140%, 1% -11%);
+          clip-path: polygon(100% 0%, 87% 145%, 17% 140%, 1% -11%);
+  text-align: center;
+  font-size: 4rem;
+}
+
+.cardDropkick {
+  -webkit-clip-path: polygon(106% 140%, 66% 100%, -16% 224%, 52% -263%);
+          clip-path: polygon(106% 140%, 66% 100%, -16% 224%, 52% -263%);
+}
+
+.titleProductstar {
+  -webkit-clip-path: polygon(73% 0%, 98% 101%, 0% 100%, 32% -11%);
+          clip-path: polygon(73% 0%, 98% 101%, 0% 100%, 32% -11%);
+  background-color: black;
+  text-align: center;
+  font-size: 4rem;
+  color: white;
+  font-family: 'Kelt';
+}
+
+.titleProductstar .lienPub {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.titleProductstar .commandeDropkick, .titleProductstar .cardDropkick {
+  text-transform: none;
+  text-decoration: none;
+  color: black;
+  font-size: 4rem;
+  background-color: black;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
+.presentation {
+  margin-top: 2em;
+  width: 80%;
+  margin: auto;
+}
+
+.presentation .rowPresentation {
+  margin-bottom: 1em;
+}
+
+.blocPresentation p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1em;
+  height: 25vh;
+  border: 2px black solid;
+  padding: 3em;
+  text-align: center;
+  color: white;
+  border: #707070 10px solid;
+  border-radius: 5px;
+  max-width: 100%;
+}
+
+.blocPresentationTextRight, .blocPresentationTextLeft {
+  font-size: 1.5rem;
+}
+
+.blocPresentationTextRight .textRight, .blocPresentationTextRight .textLeft, .blocPresentationTextLeft .textRight, .blocPresentationTextLeft .textLeft {
+  background-color: #707070;
+  text-align: justify;
+  font-family: 'junius';
+}
+
+.blocPresentationTitleRight p {
+  -webkit-clip-path: polygon(34% 0, 96% 0, 66% 100%, 0 100%);
+          clip-path: polygon(34% 0, 96% 0, 66% 100%, 0 100%);
+  background-color: #062a00;
+}
+
+.blocPresentationTitleLeft p {
+  -webkit-clip-path: polygon(2% 0, 74% 0, 98% 100%, 26% 100%);
+          clip-path: polygon(2% 0, 74% 0, 98% 100%, 26% 100%);
+  background-color: #062a00;
+}
+
+.blocPresentationText {
+  margin: auto;
+}
+
+.blocPresentationTitle {
+  margin: auto;
+  font-size: 2rem;
+  font-family: 'Kelt';
+}
+
+.lienMenu {
+  font-size: 5rem;
 }
 
 .lieuPub {
@@ -254,6 +585,10 @@ nav {
   color: white;
 }
 
+.lieuPub .lieu a:hover {
+  color: #a7a5a5;
+}
+
 .pubName {
   text-transform: uppercase;
   font-size: 3rem;
@@ -262,6 +597,7 @@ nav {
   display: flex;
   margin-top: 120px;
   margin-left: 50px;
+  font-family: 'kelt';
 }
 
 .pubAddress {
@@ -284,6 +620,10 @@ nav {
   margin-left: 50px;
 }
 
+.pubImg img {
+  width: 300px;
+}
+
 .schedulePub {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -296,28 +636,43 @@ nav {
           align-items: center;
 }
 
+.iFramePub {
+  text-align: end;
+}
+
+ul {
+  list-style-type: none;
+}
+
 .blocCarousselProduct {
-  height: 20vh;
+  height: 40vh;
+  width: 80%;
+  list-style-type: none;
 }
 
 .carousselProduct {
   position: absolute;
-  width: 100%;
+  width: 86%;
+  margin-top: 1em;
+  list-style-type: none;
 }
 
-ul > li {
-  width: 25%;
+.liCaroussel {
+  width: 15%;
   list-style-type: none;
   position: absolute;
   top: 0;
-  padding: 20px;
   height: 200px;
   opacity: 0;
-  padding-top: 40px;
   text-align: center;
   -webkit-transition: 1s opacity;
   transition: 1s opacity;
   color: white;
+}
+
+.liCaroussel .pImgCaroussel {
+  text-transform: uppercase;
+  font-family: 'Kelt';
 }
 
 .active {
@@ -333,7 +688,8 @@ ul > li {
 
 .blocImgCaroussel .imgCarousselProductStar {
   width: 200px;
-  height: 25vh;
+  height: 15vh;
+  border-radius: 70px;
 }
 
 .sports {
@@ -395,6 +751,7 @@ ul > li {
 
 .blocEvent img {
   border-radius: 15px;
+  width: 50%;
 }
 
 .blocEvent .blocEventContent {
@@ -457,6 +814,14 @@ ul > li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+#scrollUp {
+  position: absolute;
+}
+
+.fontFooter {
+  font-family: 'Kelt';
 }
 
 .pageProduct {
@@ -654,5 +1019,145 @@ ul > li {
 .active:after {
   content: "\2212";
   /* Unicode character for "minus" sign (-) */
+}
+
+/* Full-width input fields */
+.loginPage input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: block;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

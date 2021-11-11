@@ -1,0 +1,50 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+<section class="pageUser navbarMargin">
+        {% if (is_granted('ROLE_ADMIN')) %}
+    <h1>User index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>LastNameUser</th>
+                <th>FirstNameUser</th>
+                <th>AddressUser</th>
+                <th>CityUser</th>
+                <th>CpUser</th>
+                <th>Pub choisis</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.lastNameUser }}</td>
+                <td>{{ user.firstNameUser }}</td>
+                <td>{{ user.addressUser }}</td>
+                <td>{{ user.cityUser }}</td>
+                <td>{{ user.cpUser }}</td>
+                <td>{{ user.pubs.namePub}}</td>
+                <td>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}" class="btnModifUser">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        {% endif %}
+    </section>
+
+{% endblock %}

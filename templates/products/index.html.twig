@@ -3,6 +3,7 @@
 {% block title %}Products index{% endblock %}
 
 {% block body %}
+
 <section class="pageProduct navbarMargin container-fluid">
     <div class="pageProdOpacite">
         <div class="row">
@@ -11,33 +12,15 @@
             </div>
       <div class="cardUser container-fluid">
           <div class="container">
-        {% if (is_granted('ROLE_ADMIN')) %}
-                <div class="col-md-12 blocCategory"><a href="{{ path('products_new') }}">Create new product</a></div>
-        {% endif %}
-
               <div class="row">
 
               {% for category in categories %}
-                    {% if (is_granted('ROLE_ADMIN')) %}
-                <div class="row">
 
-                <div class="col-md-6 blocCategory">{{category.nameCategory}}</div>
-                <div class="col-md-6 blocCategory admimCategory"><a href="{{ path('categories_edit', {'id': category.id}) }}">Modifier</a></div>
-                </div>
-            
-                    {% else %}
-                <div class="row">
-                <div class="col-md-12 blocCategory">{{category.nameCategory}}</div>
-                </div>
-
-                    {% endif %}
-
+                <div class="col-md-12 blocCategory accordion">{{category.nameCategory}}</div>
+                <div class="panel row collapse show">
                 {% for product in products %}
                 {% if product.categories.id is same as category.id %}
                 
-                {# <pre>
-                    {{ dump(product.categories.nameCategory) }}
-                </pre> #}
 
                     <div class="col-md-4 blocProduct">
                         <div class="blocArticle">
@@ -60,34 +43,24 @@
                                             </div>
                                 </div>
                                         </div>  
-                                        {% if product.productStar %}
-                                        <div class="col-md-12 blocProductStar">
-                                            <p class="ProductStar">Affichage page d'accueil</a>
-                                        </div>   
-                                        {% endif %}
-                                        {% if (is_granted('ROLE_ADMIN')) %}
-                
-                                        <div class="row btnProductAdmin">
-
-                                            <div class="col-md-6 productAdmin">
-                                            <a href="{{ path('products_show', {'id': product.id}) }}">Voir</a>
-                                            </div>
-                                            <div class="col-md-6 productAdmin">
-                                            <a href="{{ path('products_edit', {'id': product.id}) }}">Modifier</a>
-                                            </div>
+                                        <div class="col-md-12 blocBtnProduct">
+                                            <a class="btn btn-success btnProduct inscription" href="#">Ajouter au panier</a>
                                         </div>
-                                        {% endif %}
                             </div>
                         </div>
                     </div>     
                     {% endif %}
                     {% endfor %}
+                </div>
               {% endfor %}
                 </div>
             </div>
 
 
     </div>
+
+</div>
+</section>
 
             <script>
             console.log($('.inscription'));
@@ -99,7 +72,4 @@
               };	
             });
             </script>
-</div>
-</section>
-
 {% endblock %}

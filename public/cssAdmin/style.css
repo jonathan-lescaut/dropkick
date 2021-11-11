@@ -1,0 +1,514 @@
+@font-face {
+  font-family: 'irish';
+  src: url("../font/IrishUncialfabeta-Bold.ttf");
+}
+
+@font-face {
+  font-family: 'kelt';
+  src: url("../font/Kelt Caps Freehand.ttf");
+}
+
+@font-face {
+  font-family: 'junius';
+  src: url("../font//JuniusIrish.ttf");
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  text-transform: none;
+  color: #000;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.pageProduct {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+  opacity: 0.67;
+  margin-top: 80px;
+}
+
+.pageProduct .cardUser {
+  color: white !important;
+}
+
+.pageProduct .pageProdOpacite {
+  opacity: 1 !important;
+}
+
+.blocCategory {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: rgba(0, 77, 4, 0.829);
+  font-size: 3rem;
+  margin-bottom: 1em;
+  border-radius: 5px;
+}
+
+.admimCategory {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.admimCategory a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.admimCategory a:hover {
+  background-color: black;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.createProduct a, .seeCategories a {
+  margin: auto;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #999999;
+  font-weight: bold;
+}
+
+.createProduct a:hover, .seeCategories a:hover {
+  color: white;
+}
+
+.blocProduct {
+  border: 1px solid rgba(255, 255, 255, 0);
+  margin-bottom: 1em;
+}
+
+.blocProduct .blocArticle {
+  background-color: rgba(0, 77, 4, 0.829);
+  height: 20vh;
+  border-radius: 10px;
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.blocProduct .blocArticle .imgProduct {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.blocProduct .blocArticle .imgProduct img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 8vh;
+  border-radius: 10px;
+}
+
+.blocProduct .blocArticle .blocProductSansBtn {
+  height: 10vh;
+}
+
+.blocProduct .blocArticle .blocBtnProduct, .blocProduct .blocArticle .blocProductStar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.blocProduct .blocArticle .btnProductAdmin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.blocProduct .blocArticle .btnProduct {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1em;
+}
+
+.blocProduct .blocArticle .productStar {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1em;
+}
+
+.blocProduct .blocArticle .productAdmin, .blocProduct .blocArticle .lienEventEdit {
+  text-align: center;
+}
+
+.blocProduct .blocArticle .productAdmin button, .blocProduct .blocArticle .productAdmin a, .blocProduct .blocArticle .lienEventEdit button, .blocProduct .blocArticle .lienEventEdit a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  background-color: #ff8800;
+  border-radius: 5px;
+  padding: .3em;
+}
+
+.blocProduct .blocArticle .productAdmin button:hover, .blocProduct .blocArticle .productAdmin a:hover, .blocProduct .blocArticle .lienEventEdit button:hover, .blocProduct .blocArticle .lienEventEdit a:hover {
+  background-color: black;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.blocProduct .blocArticle .productAdmin .btnProductDelete, .blocProduct .blocArticle .lienEventEdit .btnProductDelete {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  background-color: red;
+  border-radius: 5px;
+  padding: .3em;
+}
+
+.blocProduct .blocArticle .productAdmin .btnProductDelete:hover, .blocProduct .blocArticle .lienEventEdit .btnProductDelete:hover {
+  background-color: black;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.blocProduct .blocArticle:hover {
+  -webkit-transform: scale(1.13);
+          transform: scale(1.13);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.presentation {
+  margin-top: 2em;
+  width: 80%;
+  margin: auto;
+  background-color: #707070;
+}
+
+.presentation .rowPresentation {
+  margin-bottom: 1em;
+}
+
+.blocPresentation p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1em;
+  height: 25vh;
+  border: 2px black solid;
+  padding: 3em;
+  text-align: center;
+  color: white;
+  border: #707070 10px solid;
+  border-radius: 5px;
+  max-width: 100%;
+}
+
+.blocPresentationTextRight, .blocPresentationTextLeft {
+  font-size: 1.5rem;
+}
+
+.blocPresentationTextRight .textRight, .blocPresentationTextRight .textLeft, .blocPresentationTextLeft .textRight, .blocPresentationTextLeft .textLeft {
+  background-color: #707070;
+  text-align: justify;
+  font-family: 'junius';
+}
+
+.blocPresentationTitleRight p {
+  -webkit-clip-path: polygon(34% 0, 96% 0, 66% 100%, 0 100%);
+          clip-path: polygon(34% 0, 96% 0, 66% 100%, 0 100%);
+  background-color: #062a00;
+}
+
+.blocPresentationTitleLeft p {
+  -webkit-clip-path: polygon(2% 0, 74% 0, 98% 100%, 26% 100%);
+          clip-path: polygon(2% 0, 74% 0, 98% 100%, 26% 100%);
+  background-color: #062a00;
+}
+
+.blocPresentationText {
+  margin: auto;
+}
+
+.blocPresentationTitle {
+  margin: auto;
+  font-size: 2rem;
+  font-family: 'Kelt';
+}
+
+.lienMenu {
+  font-size: 5rem;
+}
+
+.lieuPub {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  color: white;
+  background-color: #062a00;
+}
+
+.lieuPub .lieu {
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 2rem;
+}
+
+.lieuPub .lieu a {
+  text-decoration: none;
+  color: white;
+}
+
+.lieuPub .lieu a:hover {
+  color: #a7a5a5;
+}
+
+.editPresentation {
+  margin-top: 1em;
+}
+
+.pagePub img {
+  width: 350px;
+}
+
+.pubName {
+  font-family: 'Kelt';
+  font-size: 2rem;
+}
+
+.pubAddress, .pubPhone {
+  font-size: 1.4rem;
+}
+
+.editPub, .editPresentation {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 2em;
+}
+
+.editPub a, .editPresentation a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.createPub, .createEvent {
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 2em;
+}
+
+.EventPubModif {
+  margin-top: 2em;
+}
+
+.blocEvent {
+  border: 3px black solid;
+  padding: 1em;
+  border-radius: 15px;
+  background-color: #242526;
+  color: white;
+  margin-top: 6em;
+}
+
+.blocEvent .blocEventImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-height: 15em;
+}
+
+.blocEvent img {
+  border-radius: 15px;
+}
+
+.blocEvent .blocEventContent {
+  font-size: 1.5rem;
+  padding-top: 2em;
+}
+
+.blocEvent .blocEventContent #events_contentEvent {
+  width: 650px;
+}
+
+.blocLienEventEdit {
+  margin-top: 2em;
+}
+
+.lienEventEdit {
+  text-align: center;
+}
+
+.lienEventEdit button, .lienEventEdit a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  background-color: #ff8800;
+  border-radius: 5px;
+  padding: .3em;
+}
+
+.lienEventEdit button:hover, .lienEventEdit a:hover {
+  background-color: #7a7a7a;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.lienEventEdit .btnProductDelete {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  background-color: red;
+  border-radius: 5px;
+  padding: .3em;
+}
+
+.lienEventEdit .btnProductDelete:hover {
+  background-color: black;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.createImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 5px white solid;
+}
+
+.createBlocRight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.createBlocRight .createNameDateEvent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.createBlocRight .blocEventContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.createBlocRight .blocEventPlace {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.createBlocRight .blocEventPub {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.lienEventEdit a, .lienEventEdit button {
+  text-decoration: none;
+  color: white;
+}
+
+.btnModifUser {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  background-color: #ff8800;
+  border-radius: 5px;
+  padding: .3em;
+}
+/*# sourceMappingURL=style.css.map */

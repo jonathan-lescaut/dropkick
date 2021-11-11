@@ -32,12 +32,13 @@ class ProductsController extends AbstractController
         ]);
     }
     /**
-     * @Route("/index_user", name="products_user_index", methods={"GET"})
+     * @Route("/admin", name="productsAdmin_index", methods={"GET"})
      */
-    public function indexShow(ProductsRepository $productsRepository): Response
+    public function indexAdmin(ProductsRepository $productsRepository, CategoriesRepository $categoriesRepository): Response
     {
-        return $this->render('products/index_user.html.twig', [
+        return $this->render('products/admin.html.twig', [
             'products' => $productsRepository->findAll(),
+            'categories' => $categoriesRepository->findAll(),
         ]);
     }
 
@@ -128,7 +129,7 @@ class ProductsController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('products_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('productsAdmin_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('products/edit.html.twig', [

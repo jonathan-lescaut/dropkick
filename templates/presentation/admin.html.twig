@@ -1,15 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Presentation index
 {% endblock %}
 
 {% block body %}
-	<h1>Presentation index</h1>
 
 	{% for presentation in presentations %}
 		<section class="presentation container">
 			<div class="row">
-				<div class="col-md-4 blocPresentation blocPresentationTitle">
+				<div class="col-md-4 blocPresentation blocPresentationTitle blocPresentationTitleLeft">
 					{{ presentation.titleLeft|raw }}
 
 				</div>
@@ -24,15 +23,21 @@
 		</section>
 		<section class="presentation container">
 			<div class="row">
-				<div class="col-lg-6 blocPresentation">
+				<div class="col-lg-6 blocPresentation"> 
 					{{ presentation.textLeft|raw }}
 				</div>
 				<div class="col-md-1"></div>
-				<div class="col-lg-4 blocPresentation">
+				<div class="col-lg-4 blocPresentation blocPresentationTitleRight">
 					{{ presentation.titleRight|raw }}
 				</div>
 			</div>
+
 		</section>
 
+			<div class="row editPresentation">
+		            <a href="{{ path('presentation_edit', {'id': presentation.id}) }}" class="btn btn-warning">Modifier</a>
+			</div>
 	{% endfor %}
+
+
 {% endblock %}

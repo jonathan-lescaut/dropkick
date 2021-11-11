@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}New Products{% endblock %}
 
@@ -9,7 +9,7 @@
 
     {{ include('products/_form.html.twig') }}
 
-    <a href="{{ path('products_index') }}">back to list</a>
+    <a href="{{ path('productsAdmin_index') }}">Retour liste</a>
     </section>
 
 

@@ -1,28 +1,25 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Categories index{% endblock %}
 
 {% block body %}
 <section class="pageCategorie navbarMargin">
 
-    <h1>Categories index</h1>
+    <h1>Toutes les categories</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NameCategory</th>
+                <th>Nom</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for category in categories %}
             <tr>
-                <td>{{ category.id }}</td>
                 <td>{{ category.nameCategory }}</td>
                 <td>
-                    <a href="{{ path('categories_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('categories_edit', {'id': category.id}) }}">edit</a>
+                    <a href="{{ path('categories_edit', {'id': category.id}) }}" class="btnModifUser">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -33,7 +30,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('categories_new') }}">Create new</a>
+    <a href="{{ path('categories_new') }}" class="btn btn-primary">Créer nouvelle catégorie</a>
     </section>
 
 {% endblock %}

@@ -20,6 +20,13 @@ class PresentationController extends AbstractController
             'presentations' => $presentationRepository->findAll(),
         ]);
     }
+    #[Route('/admin', name: 'presentationAdmin_index', methods: ['GET'])]
+    public function indexAdmin(PresentationRepository $presentationRepository): Response
+    {
+        return $this->render('presentation/admin.html.twig', [
+            'presentations' => $presentationRepository->findAll(),
+        ]);
+    }
 
     #[Route('/{id}', name: 'presentation_show', methods: ['GET'])]
     public function show(Presentation $presentation): Response

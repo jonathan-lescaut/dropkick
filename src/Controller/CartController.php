@@ -2,70 +2,39 @@
 
 namespace App\Controller;
 
-use DateTime;
-use App\Entity\Pubs;
 use App\Entity\Products;
-use App\Service\SendMailService;
-use App\Repository\PubsRepository;
-use App\Repository\UserRepository;
-use App\Repository\ProductsRepository;
+use App\Service\CartService;
 use GuzzleHttp\Psr7\Request;
-use Symfony\Config\MercuryseriesFlashyConfig;
+use App\Service\SendMailService;
+use App\Repository\ProductsRepository;
 use MercurySeries\FlashyBundle\FlashyNotifier;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
+
 
 class CartController extends AbstractController
 {
     /**
      * @Route("/cart", name="cart_index")
      */
-    public function index(SessionInterface $session, ProductsRepository $productsRepository, UserRepository $user)
+    public function index(CartService $cartService)
     {
-        $cart = $session->get("cart", []);
-        // on fabrique les données
-        $dataCart = [];
-        $total = 0;
-        $commande = new DateTime();
-        
-        foreach ($cart as $id => $quantite) {
-            $product = $productsRepository->find($id);
-            $pub = $product->getPub();
-            
-            $dataCart[] = [
-                "pub" => $pub,
-                "product" => $product,
-                "quantite" => $quantite,
-            ];
-            $numCommande = strval($commande->format('m d')) . ' '. strval(random_int(1, 50));
-            $total += $product->getPriceProduct() * $quantite;
-        }
-
-        
-
-        return $this->render('cart/index.html.twig', compact("dataCart", "total"));
+        return $this->render('cart/index.html.twig', [
+            'dataCart' => $cartService->getFullCart(),
+            'total' => $cartService->getTotal()
+        ]);
     }
 
         /**
          * @Route("/add/{product}/", name="cart_add", requirements={"product"="\d+"})
          */
-    public function add(SessionInterface $session, Products $product, FlashyNotifier $flashy)
+    public function add(CartService $cartService, Products $product, FlashyNotifier $flashy)
     {
-        // on recupere le panier actuel
-        $cart = $session->get("cart", []);
-        $id = $product->getId();
-        $pub = $product->getPub();
+        // on recupere le panier actuel avec le service
+        $cartService->add($product);
 
-        if (!empty($cart[$id])) {
-            $cart[$id]++;
-            
-        }else {
-            $cart[$id] = 1;
-        }
-        $session->set("cart", $cart);
+        $pub = $product->getPub();
         $flashy->success('Ajouté au panier !');
  
         return $this->redirectToRoute('pubs_show', array('id' => $pub->getId()));
@@ -75,21 +44,10 @@ class CartController extends AbstractController
             /**
          * @Route("/remove/{id}", name="cart_remove")
          */
-        public function remove(SessionInterface $session, Products $product)
+        public function remove(CartService $cartService, Products $product)
         {
             // on recupere le panier actuel
-            $cart = $session->get("cart", []);
-            $id = $product->getId();
-    
-            if (!empty($cart[$id])) {
-                if ($cart[$id] > 1) {
-                    $cart[$id]--;
-                }else {
-                    unset($cart[$id]);
-                }
-                
-            }
-            $session->set("cart", $cart);
+            $cartService->remove($product);
     
             return $this->redirectToRoute('cart_index');
         }

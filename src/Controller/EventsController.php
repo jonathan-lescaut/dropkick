@@ -28,6 +28,15 @@ class EventsController extends AbstractController
             'events' => $eventsRepository->findAll(),
         ]);
     }
+        /**
+     * @Route("/admin", name="eventsAdmin_index", methods={"GET"})
+     */
+    public function indexAdmin(EventsRepository $eventsRepository): Response
+    {
+        return $this->render('events/admin.html.twig', [
+            'events' => $eventsRepository->findAll(),
+        ]);
+    }
 
     /**
      * @Route("/new", name="events_new", methods={"GET","POST"})
@@ -116,7 +125,7 @@ class EventsController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('events_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('eventsAdmin_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('events/edit.html.twig', [

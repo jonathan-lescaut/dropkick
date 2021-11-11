@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}New Events{% endblock %}
 
@@ -9,7 +9,7 @@
 
     {{ include('events/_form.html.twig') }}
 
-    <a href="{{ path('events_index') }}">back to list</a>
+    <a href="{{ path('events_index') }}">Retour liste</a>
     </section>
 
 {% endblock %}

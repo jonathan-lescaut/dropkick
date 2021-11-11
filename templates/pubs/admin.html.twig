@@ -1,0 +1,42 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Pubs index
+{% endblock %}
+
+{% block body %}
+			<div class="titrePub"> Nos Pubs</div>
+	<section class="pagePub navbarMargin">
+
+
+
+
+		{% for pub in pubs %}
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="pubName">{{ pub.namePub }}</div>
+						<div class="pubAddress">{{ pub.addressPub }}
+							{{ pub.cpPub }}
+							{{ pub.cityPub }}</div>
+						<div class="pubPhone">{{ pub.phonePub }}</div>
+						<div class="pubImg"><img src="{{ asset('uploads/photos/' ~ pub.imgPub) }}"></div>
+						<div class="pubContent">{{ pub.contentPub }}</div>
+					</div>
+					<div class="col-md-2 schedulePub">
+						<div>{{ pub.schedulePub|raw }}</div>
+					</div>
+					<div class="col-md-6 iFramePub">
+						{{ pub.iframePub|raw }}
+					</div>
+				</div>
+				<div class="row editPub">
+					<a href="{{ path('pubs_edit', {'id': pub.id}) }}" class="btn btn-warning">modifier</a>
+				</div>
+			{% endfor %}
+			<div class="row">
+				<a href="{{ path('pubs_new') }}" class="btn btn-primary createPub">Créer un nouveau Pub !</a>
+			</div>
+
+		</section>
+
+	{% endblock %}

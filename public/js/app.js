@@ -112,9 +112,9 @@ for (i = 0; i < acc.length; i++) {
     this.classList.toggle("active");
     var panel = this.nextElementSibling;
     if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
+		panel.style.maxHeight = null;
+	} else {
+		panel.style.maxHeight = panel.scrollHeight + "px";
     } 
   });
 }
@@ -163,4 +163,36 @@ console.log(max);
 	}, timer);
  
 // ==========================================
+//  bouton footer remonter en haut
 
+jQuery(function(){
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 200 ) { 
+				$('#scrollUp').css('right','10px');
+			} else { 
+				$('#scrollUp').removeAttr( 'style' );
+			}
+
+		});
+	});
+});
+
+
+//================
+// page login
+// ==============
+
+var modal = document.getElementById('id01');
+console.log(modal);
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+		
+    }
+	console.log(event.target);
+	console.log(modal);
+
+}

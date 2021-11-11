@@ -11,10 +11,6 @@
     {% for event in events %}
     <div class="container blocEvent">
         <div class="row">
-            <div class="col-md-3 blocEventImg">
-                <img src="{{ asset('uploads/photos/' ~ event.imgEvent) }}" width="300">
-            </div>
-            <div class="col-md-9 ">
                 <div class="row">
                 {{ event.nameEvent }}
                 </div>
@@ -25,22 +21,21 @@
                 {{ event.contentEvent|raw }}
                 </div>
             </div>
-        </div>
+            <div class="row blocEventImg">
+                <img src="{{ asset('uploads/photos/' ~ event.imgEvent) }}">
+            </div>
             {% if (is_granted('ROLE_ADMIN')) %}
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 lienAdminEvent">
                     <a href="{{ path('events_show', {'id': event.id}) }}">show</a>
                     <a href="{{ path('events_edit', {'id': event.id}) }}">edit</a>
                 </div>
             </div>
             {% endif %}
         </div>
+    </div>
+    
         {% endfor %}
-
-
-    {% if (is_granted('ROLE_ADMIN')) %}
-        <a href="{{ path('events_new') }}">Create new</a>
-    {% endif %}
 
 
 </section>

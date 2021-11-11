@@ -1,80 +1,234 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="UTF-8">
-        <title>
-            {% block title %}Welcome!
-            {% endblock %}
-        </title>
+<head>
+	<meta charset="UTF-8">
+	<title>
+		{% block title %}Dropkick
+		{% endblock %}
+	</title>
+	<!--FONTS-->
+	{# ../public/font #}
+	<!-- ICONS -->
+	<script src="https://kit.fontawesome.com/e6187d3d12.js" crossorigin="anonymous"></script>
+	{% block stylesheets %}
+	<!-- LINKS -->
+	<link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ asset('css/style.css')}}">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	{% endblock %}
 
-        <!--FONTS-->
+	{% block javascripts %}
+	{#{{ encore_entry_script_tags('app') }}#}
+	{% endblock %}
+</head>
 
-        <!-- ICONS -->
-        <script src="https://kit.fontawesome.com/e6187d3d12.js" crossorigin="anonymous"></script>
-        {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        {% endblock %}
+<body>
+	<header>
+		<nav class="navbar fixed-top  navbar-expand-lg navbar-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse navBar" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item nav-item-img">
+						<a href="{{ path('home') }}">
+							<img src="{{asset('uploads/logo.jpg')}}" href="{{ path('home') }}" class="imgLogo"
+								alt="logo">
+						</a>
+					</li>
+				</ul>
+				{% if (is_granted('ROLE_ADMIN')) %}
+				<ul class="navbar-nav">
 
-        {% block javascripts %}
-        {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
+					<li class="nav-item navH">
+						<a class="nav-link" href="{{ path('homeAdmin') }}">Mon administration</a>
+					</li>
+				</ul>
 
-    <body>
+				{% endif %}
 
-        <header>
-            
-            {% if (is_granted('ROLE_ADMIN')) %}
-            <section class="navBarAdmin">
-            {% else %}
-            <section class="navBar">
-            {% endif %}
+				{% if (is_granted('ROLE_USER')) %}
+				<ul class="navbar-nav">
+					<li class="nav-item navH">
+						<a class="nav-link" href="{{ path('pubs_index') }}">Nos Pubs</a>
+					</li>
+					<li class="nav-item navH">
+						<a class="nav-link" href="{{ path('pubs_show', {'id': app.user.pubs.id})}}">La carte</a>
+					</li>
+					<li class="nav-item navH">
+						<a class="nav-link" href="{{ path('events_index') }}">Evenements</a>
+					</li>
+					<li class="nav-item navH dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Suivez nous sur nos reseaux !
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="https://www.facebook.com/ledropkickbartroyes">Troyes</a>
+							<a class="dropdown-item" href="https://www.facebook.com/ledropkickbarorleans">Orléans</a>
+							<a class="dropdown-item" href="https://www.facebook.com/ledropkickbar">Reims</a>
+						</div>
+					</li>
+				</ul>
+				<div class="navBar fixed-top navBarRight">
 
-                <nav id="mynav" class="navbar fixed-top navbar-expand-lg ">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <div class="navbar-nav ms-auto nav">
-                                <a href="{{ path('home') }}"> <img src="{{asset('uploads/logo.jpg')}}" href="{{ path('home') }}" class="imgLogo" alt="logo"></a>
+					{% if uuid.getFullCart %}
 
-                                {% if (is_granted('ROLE_ADMIN')) %}
-                                <h2>Administration</h2>
-                                <a class="nav-link navHAdmin" href="{{ path('categories_index') }}">Catégories</a>
-                                <a class="nav-link navHAdmin" href="{{ path('pubs_index') }}">Pubs</a>
-                                <a class="nav-link navHAdmin" href="{{ path('products_index') }}">Produits</a>
-                                <a class="nav-link navHAdmin" href="{{ path('user_index') }}">Utilisateurs</a>
-                                {% endif %}
-                                {% if (is_granted('ROLE_USER')) %}
-                                <a class="nav-link navH" href="{{ path('home') }}">Nos Pubs</a>
-                                <a class="nav-link navH" href="{{ path('pubs_show', {'id': app.user.pubs.id})}}"> La carte</a>
-                                <a class="nav-link navH" href="{{ path('events_index') }}">Evènements</a>
-                                <a class="nav-link navH" href="{{ ('/cart') }}">Panier</a>
-                                <a class="nav-link navH" href="{{ path('user_edit', {id: app.user.id})}}">Mon compte</a>
-                                <a class="nav-link navH" href="{{ ('/logout') }}">Déconnexion</a>
+					<div class="nav-item navH">
+						<p>Bon appetit {{app.user.firstNameUser}}</p>
+					</div>
 
-                                {% else %}
-                                <a class="nav-link navH" href="{{ path('pubs_index') }}">Nos Pubs</a>
-                                <a class="nav-link navH" href="{{ path('products_index') }}">La carte</a>
-                                <a class="nav-link navH" href="{{ path('events_index') }}">Nos Events</a>
-                                <a class="nav-link navH btn btn-success" href="{{ '/login' }}">Commander</a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </section>
-        </header>
+					<div class="nav-item navH">
+						<a class="nav-link" href="{{ ('/cart') }}"><img src="{{ asset('uploads/logoNavbar/cart.gif')}}"
+								class="logoNavBar logoNavBarGif"></a>
+					</div>
+					{% else %}
+					<div class="nav-item navH">
+						<p>Bienvenue {{app.user.firstNameUser}}</p>
+					</div>
+					<div class="nav-item navH">
+						<a class="nav-link" href="{{ ('/cart') }}"><img src="{{ asset('uploads/logoNavbar/cart.png')}}"
+								class="logoNavBar logoNavBarGif"></a>
+					</div>
+					{% endif %}
+					<div class="nav-item navH">
+						<a class="nav-link" href="{{ path('userBase_edit', {id: app.user.id})}}"><img
+								src="{{ asset('uploads/logoNavbar/compte.png')}}" class="logoNavBar"></a>
+					</div>
+					<div class="nav-item navH">
+						<a class="nav-link" href="{{ ('/logout') }}"><img
+								src="{{ asset('uploads/logoNavbar/deconnexion.png')}}" class="logoNavBar"></a>
+					</div>
 
-        {% block body %}{% endblock %}
-        <script src="//code.jquery.com/jquery.js"></script>
-        <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
-        <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-        <script src="{{asset('js/app.js')}}"></script>
-        {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
-    </body>
+
+					{% else %}
+				</div>
+				<ul class="navbar-nav navVisiteur">
+					<li class="nav-item navH">
+						<a class="nav-link" href="{{ path('pubs_index') }}">Nos Pubs</a>
+					</li>
+					<li class="nav-item navH">
+						<a class="nav-link" href="{{ path('products_index') }}">La carte</a>
+					</li>
+					<li class="nav-item navH">
+						<a class="nav-link" href="{{ path('events_index') }}">Nos Events</a>
+					</li>
+					<li class="nav-item navH dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Suivez nous sur nos reseaux !
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="https://www.facebook.com/ledropkickbartroyes">Troyes</a>
+							<a class="dropdown-item" href="https://www.facebook.com/ledropkickbarorleans">Orléans</a>
+							<a class="dropdown-item" href="https://www.facebook.com/ledropkickbar">Reims</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div class="navBar fixed-top navBarRight">
+
+			<div class="nav-item navH typewriter">
+				<h2>Bienvenue au Dropkick !</h2>
+			</div>
+			<div class="nav-item navH btnCommander">
+				<a onclick="document.getElementById('id01').style.display='block'" class="nav-link navH btn btn-success"
+					href="{{ '/login' }}">Commander</a>
+				{# <a class="nav-link navH btn btn-success" href="{{ '/login' }}">Commander</a> #}
+			</div>
+		</div>
+		{% endif %}
+
+
+	</header>
+
+
+
+
+	{% block body %}{% endblock %}
+
+	<div id="scrollUp">
+		<a href="#top"><img src="{{asset('uploads/to_top.png')}}" /></a>
+	</div>
+	<footer class="bg-black text-center text-white">
+		<!-- Grid container -->
+		<div class="container p-4">
+			<!-- Section: Social media -->
+			<section class="mb-4">
+				<!-- Facebook -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+						class="fab fa-facebook-f"></i></a>
+				<!-- Twitter -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+						class="fab fa-twitter"></i></a>
+				<!-- Instagram -->
+				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+						class="fab fa-instagram"></i></a>
+			</section>
+			<!-- Section: Social media -->
+
+			<!-- Section: Text -->
+			<section class="mb-4 fontFooter">
+				<p>
+					Suivez nos actualites sur nos reseaux !
+				</p>
+			</section>
+			<!-- Section: Text -->
+
+			<!-- Section: Links -->
+			<section class="">
+				<!--Grid row-->
+				<div class="row">
+					<!--Grid column-->
+					<div class="col-lg-4 col-md-6 mb-4 mb-md-0 fontFooter">
+						<h5 class="text-uppercase">La carte</h5>
+
+
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-4 col-md-6 mb-4 mb-md-0 fontFooter">
+						<h5 class="text-uppercase">Nos Pubs</h5>
+
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<div class="col-lg-4 col-md-6 mb-4 mb-md-0 fontFooter">
+						<h5 class="text-uppercase">Nos events</h5>
+
+
+					</div>
+					<!--Grid column-->
+				</div>
+				<!--Grid row-->
+			</section>
+			<!-- Section: Links -->
+		</div>
+		<!-- Grid container -->
+
+		<!-- Copyright -->
+		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+			<div>Mentions légales CGU CGV</div>
+			<div>Cookies Politique de Confidentialité</div>
+		</div>
+		<!-- Copyright -->
+	</footer>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+	</script>
+
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script src="{{asset('js/app.js')}}"></script>
+	{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+</body>
 
 </html>

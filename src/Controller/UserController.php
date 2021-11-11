@@ -25,6 +25,15 @@ class UserController extends AbstractController
             'users' => $userRepository->findAll(),
         ]);
     }
+    /**
+     * @Route("/admin", name="userAdmin_index", methods={"GET"})
+     */
+    public function indexAdmin(UserRepository $userRepository): Response
+    {
+        return $this->render('user/admin.html.twig', [
+            'users' => $userRepository->findAll(),
+        ]);
+    }
 
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
@@ -71,10 +80,30 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('userAdmin_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('user/edit.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    }
+    /**
+     * @Route("/{id}/edit", name="userBase_edit", methods={"GET","POST"})
+     */
+    public function editBase(Request $request, User $user): Response
+    {
+
+        $form = $this->createForm(UserType::class, $user, ['role' => $this->getUser()->getRoles()]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('userBase_edit', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('user/editBase.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);

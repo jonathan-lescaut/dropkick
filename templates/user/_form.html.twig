@@ -1,17 +1,59 @@
-
 {{ form_start(form) }}
+<form>
+  <div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+		{{ form_widget(form.email) }}
+    </div>
+  </div>
 
-        {{ form_row(form.email) }}
-        {{ form_row(form.firstNameUser) }}
-        {{ form_row(form.lastNameUser) }}
-        {{ form_row(form.addressUser) }}
-        {{ form_row(form.cityUser) }}
-        {{ form_row(form.cpUser) }}
-        {{ form_row(form.pubs) }}
+<div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Prénom</label>
+    <div class="col-sm-10">
+	{{ form_widget(form.firstNameUser) }}
+    </div>
 
-        {% if (is_granted('ROLE_ADMIN')) %}
-        {{ form_row(form.roles) }}
-        {% endif %}
+</div>
+<div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Nom</label>
+    <div class="col-sm-10">
+	{{ form_widget(form.lastNameUser) }}
+    </div>
 
-    <button class="btn">{{ button_label|default('Save') }}</button>
+</div>
+<div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Adresse</label>
+    <div class="col-sm-10">
+	{{ form_widget(form.addressUser) }}
+    </div>
+
+</div>
+<div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Code postal</label>
+    <div class="col-sm-10">
+	{{ form_widget(form.cpUser) }}
+    </div>
+
+</div>
+<div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Ville</label>
+    <div class="col-sm-10">
+	{{ form_widget(form.cityUser) }}
+    </div>
+
+</div>
+<div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Choix de Pub</label>
+    <div class="col-sm-10">
+	{{ form_widget(form.pubs) }}
+    </div>
+
+</div>
+
+{% if (is_granted('ROLE_ADMIN')) %}
+	{{ form_row(form.roles) }}
+{% endif %}
+
+<button class="btn btn-success">{{ button_label|default('Save') }}</button>
+
 {{ form_end(form) }}

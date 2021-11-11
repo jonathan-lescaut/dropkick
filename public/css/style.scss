@@ -48,80 +48,157 @@ body{
   padding: 0;
   box-sizing: border-box;
   max-width: 100%;
-  background-color: rgba(0, 77, 4, 0.267);
+  background-color: #707070;
 }
-// @font-face {
-//     font-family: 'irish';
-//     src: url('../font/IrishUncialfabeta-Bold.ttf');
-//  }
-
-*{
+a{
+    text-decoration: none;
+    text-transform: none;
+    color: #000;
+}
+@font-face {
     font-family: 'irish';
-}
-
-
+    src: url('../font/IrishUncialfabeta-Bold.ttf');
+ }
+ @font-face {
+    font-family: 'kelt';
+    src: url('../font/Kelt\ Caps\ Freehand.ttf');
+ }
+ @font-face {
+    font-family: 'junius';
+    src: url('../font//JuniusIrish.ttf');
+ }
 
 // NAVIGATION HOME ===================================================================================================
-.navBarAdmin{
-    margin-bottom: 160px !important;
-}
 
-.navBar, .navBarAdmin{
+header{
     width: 100%;
-    display: flex;
-    margin-bottom: 80px;
-    .nav{
-        display: flex;
-        align-items: center;
-        width: 100%;
-        justify-content: space-evenly;
-            .imgLogo{
-                width: 180px;
-            }
-
-        a{
-            display: flex;
-
-        }
-        .navHAdmin{
-            color: white;
-            font-size: 2rem;
-        }
-        .navH{
-            font-size: 2rem;
-            color: white;
+    color: white;
+}
+.navbar{
+    height: 10vh;
+    background-color: rgb(0, 0, 0);
+    img{
+        max-width: 12em;
+        height: 10vh;
+    }
+    .navH{
+        font-family: 'kelt';
+        .logoNavBarGif{
+            border-radius: 50px;
         }
     }
 
+    .navVisiteur{
+        display: flex;
+        margin-left: 5em;
+    }
+    .nav-link{
+        font-size: 1.5rem;
+        padding: 0px;
+        text-align: center;
+        font-size: 24px;
+        margin-right: 2em;
+    }
+}
+.navbar-nav{
+    align-items: center;
+    color: white;
 }
 
-nav{
-    background-color: rgb(0, 0, 0);
+.navbar-light .navbar-nav .nav-link {
+    color: white ;
+    font-weight: bold;
 }
+.nav-link:hover{
+    color: rgb(167, 165, 165) !important;
+}
+.navbar-light .navbar-toggler {
+    border-color: white;
+}
+.navbar-toggler-icon {
+    background-color: white;
+}
+
+header .navbar-toggler {
+    background-color: white;
+
+}
+.navbar-expand-lg .navbar-collapse {
+    display: flex!important;
+    flex-grow: 0;
+    justify-content: flex-end;
+}
+.typewriter h2 {
+    // margin-left: 7em !important;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0px; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 6.5s steps(30, end),
+      blink-caret .5s infinite;
+      padding-left: 24px;
+      animation-iteration-count: infinite;
+}
+.navBarRight{
+    display: flex;
+    margin-right: 10px;
+    margin-top: 10px;
+    max-width: fit-content;
+    margin-left: auto;
+    img{
+        margin-bottom: 5px;
+    }
+}
+    
+
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 105% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgb(0, 82, 4) }
+  }
+
+//==================================================================================================================
+// HEADER SLIDER ===================================================================================================
+
 .pageHome{
+    margin-top: 50px;
     width: 100%;
 }
 
 .blocLienPubs{
     display: flex;
+    width: 80%;
+    margin: auto;
+    margin-top: 2em;
 }
-.lienPub{
-    display: flex;
-    width: 100%;
 
-}
-.cityPub{
-    text-transform: none;
-    text-decoration: none;
+.lienActu{
     color: black;
     font-size: 4rem;
     background-color: black;
-    color: white;
     width: 100%;
     text-align: center;
+    a{
+        color: white;
+        text-transform: none;
+        text-decoration: none;
+        font-family: 'Kelt';
+    }
+    a:hover{
+        color: rgb(167, 165, 165)
+    }
 }
-
-// CAROUSSEL =========================================================================================================
+//====================================================================================================================
+// CAROUSSEL HEADER =========================================================================================================
 
 .slide {
     position: relative;
@@ -132,7 +209,6 @@ nav{
     }
   }
 
-
   .containerSlider{
     position: relative;
     background-color: rgb(0, 0, 0);
@@ -141,20 +217,96 @@ nav{
           position: absolute;
           flex-direction: column;
           z-index:2;
-          top: 78%;
+          top: 15%;
           width: 100%;
+          .blocTextCarte{
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+              margin-top: 3em;
+              .text1{
+                font-size: 1rem;
+                width: 40%;
+                background-color: #fff;
+                padding-bottom: 0px;
+                clip-path: polygon(50% -16%, 89% 122%, -8% 148%, 27% 45%);
+                transform: rotate(10deg);
+              }
+              .text2{
+                width: 40%;
+                font-size: 2rem;
+                background-color: #fff;
+                padding-top: 0px;
+                padding-bottom: 0px;
+                clip-path: polygon(88% 0%, 98% 145%, 17% 140%, 1% -11%);
+                transform: rotate(10deg);
+              }
+              .text3{
+                width: 40%;
+                a {
+                    text-decoration: none;
+                    padding: 10px;
+                    background-color: #fff; 
+                    color: black;
+                    font-weight: bold;
+                    transform: rotate(10deg);
+                    border-radius: 3em;
+                    
+                }
+                a:hover{
+                    box-shadow: -9px -4px 39px 10px white;
+                    background-color: black; 
+                    color: white;
+                }
+              }
+        }
+        .blocDetailPub{
+              background-color: rgba(0, 0, 0, 0.69);
+              max-width: 45%;
+              border-radius: 20px;
+              margin-left: 1em;
+              clip-path: polygon(88% 0%, 98% 145%, 17% 140%, 1% -11%);
+          }
+          .lienCaroussel{
+              background-color: #fff;
+              border-radius: 2px;
+              color: black;
+              text-transform: none;
+              font-size: 2rem;
+
+          }
+          .textCarteLeft{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            color: rgb(255, 255, 255);
+            font-size: 2rem;
+            font-weight: Bold;
+            font-size: 2rem;
+            width: 100%;
+            align-items: center;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            margin-left: 1em;
+            margin-bottom: 0.5em;
+            padding-left: 2em;
+            font-family: 'kelt';
+          }
           .textCarte{
                 justify-content: space-around;
                 display: flex;
-                flex-direction: row;
-                color: rgb(255, 255, 255);
+                flex-direction: column;
+                justify-content: flex-end;
+                color: rgb(0, 0, 0);
                 font-size: 2rem;
                 margin-right: 3em;
                 font-weight: Bold;
                 font-size: 2.5rem;
-                width: 100%;
-                padding: 50px;
+                width:100%;
+                padding: 15px;
                 align-items: center;
+                text-transform: uppercase;
             }
         }
 
@@ -162,29 +314,22 @@ nav{
 
 // ===================================================================================================================
 // HOME =========================================================================================================
-// Présentation ========
-.presentation{
-    margin-top: 1em;
+// Lien Commande et Upload Carte ========
+.cityPub{
+    text-transform: none;
+    color: white;
+    text-decoration: none;
+    font-family: 'Kelt';
 }
+.cityPub:hover{
+    color: rgb(167, 165, 165);
+}
+.cardDropkick{
+    margin-top: .5em;
+    margin-bottom: .5em;
+    font-family: 'Kelt';
 
 
-.blocPresentation{
-    height: 20vh;
-    border: 2px black solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: rgb(0, 0, 0);
-    border: rgb(0, 0, 0) 3px solid;
-    background-color: rgba(12, 71, 22, 0.644);
-    border-radius: 5px;
-}
-.blocPresentationTitle{
-    font-size: 2.5rem;
-}
-.lienMenu{
-    font-size: 5rem;
 }
 .uploadCard{
     background-color: rgb(6, 42, 0);
@@ -193,11 +338,105 @@ nav{
     color: white;
     a{
         text-decoration: none;
-        color: white;
-
+    font-family: 'Kelt';
+    color: white;
     }
 
+}
+.lienPub{
+    display: flex;
+    width: 100%;
 
+}
+.commandeDropkick{
+    background-color: rgb(0, 0, 0);
+    // height: 20vh;
+    clip-path: polygon(100% 0%, 87% 145%, 17% 140%, 1% -11%);
+    text-align: center;
+    font-size: 4rem;
+}
+.cardDropkick{
+    clip-path: polygon(106% 140%, 66% 100%, -16% 224%, 52% -263%);
+}
+
+.titleProductstar{
+    clip-path: polygon(73% 0%, 98% 101%, 0% 100%, 32% -11%);
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 4rem;
+    color: white;
+    font-family: 'Kelt';
+    .lienPub{
+    display: flex;
+    width: 100%;
+
+}
+
+.commandeDropkick, .cardDropkick{
+        text-transform: none;
+        text-decoration: none;
+        color: black;
+        font-size: 4rem;
+        background-color: black;
+        color: white;
+        width: 100%;
+        text-align: center;
+}
+}
+
+// Présentation ========
+.presentation{
+    margin-top: 2em;
+    width: 80%;
+    margin: auto;
+    .rowPresentation{
+        margin-bottom: 1em;
+    }
+}
+.blocPresentation p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+    height: 25vh;
+    border: 2px black solid;
+    padding: 3em;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    border: #707070 10px solid;
+    border-radius: 5px;
+    max-width: 100%;
+
+}
+.blocPresentationTextRight, .blocPresentationTextLeft{
+    font-size: 1.5rem;
+    .textRight, .textLeft{
+        background-color: #707070;
+        text-align: justify;
+        font-family: 'junius';
+    }
+
+}
+
+
+.blocPresentationTitleRight p{
+    clip-path: polygon(34% 0, 96% 0, 66% 100%, 0 100%);
+    background-color: #062a00;
+}
+.blocPresentationTitleLeft p{
+    clip-path: polygon(2% 0, 74% 0, 98% 100%, 26% 100%);
+    background-color: #062a00;
+}
+.blocPresentationText{
+    margin: auto;
+}
+.blocPresentationTitle{
+    margin: auto;
+    font-size: 2rem;
+    font-family: 'Kelt';
+}
+.lienMenu{
+    font-size: 5rem;
 }
 
 .lieuPub{
@@ -213,22 +452,20 @@ nav{
         a{
             text-decoration: none;
             color: white;
-
+        }
+        a:hover{
+            color: rgb(167, 165, 165)
         }
     }
 }
 // Page PUB ===================================
-
-// .blocPub{
-//     display: flex;
-// }
-
     .pubName{
         text-transform: uppercase;
         font-size: 3rem;
         display: flex;
         margin-top: 120px;
         margin-left: 50px;
+        font-family: 'kelt';
     }
     .pubAddress{
         font-size: 2rem;
@@ -242,46 +479,49 @@ nav{
     }
     .pubImg{
         margin-left: 50px;
+        img{
+            width: 300px;
+        }
     }
     .schedulePub{
         display: flex;
         justify-content: center;
         align-items: center;
     }
-
-
-
-
-
+    .iFramePub{
+        text-align: end;
+    }
 // ============================================
-
-
-
-
-
 // carroussel Product star  ===================================
-
-
+ul {
+    list-style-type: none;
+    }
 .blocCarousselProduct{
-    height: 20vh;
+    height: 40vh;
+    width: 80%;
+    list-style-type:none;
 }
 .carousselProduct {
     position: absolute;
-    width: 100%;
+    width: 86%;
+    margin-top: 1em;
+    list-style-type:none;
 }
 
-ul > li {
-    width: 25%;
+.liCaroussel{
+    width: 15%;
     list-style-type: none;
     position: absolute;
     top: 0;
-    padding: 20px;
     height: 200px; 
     opacity: 0;
-    padding-top: 40px;
     text-align: center;
     transition: 1s opacity; 
     color: white;
+    .pImgCaroussel{
+        text-transform: uppercase;
+        font-family: 'Kelt';
+    }
 }
 
 .active {
@@ -295,11 +535,13 @@ ul > li {
     line-height: 1.5em;
     .imgCarousselProductStar{
         width: 200px;
-        height: 25vh;
+        height: 15vh;
+        border-radius: 70px;
     }
+
 }
 
-// fin page carroussel poutine  ===============
+// fin page carroussel product star  ===============
 // Sports ========
 
 .sports{
@@ -332,7 +574,6 @@ ul > li {
                 opacity: 0.7;
                 border : 15px solid black;
                 border-radius: 5px;
-
 
             }
     }
@@ -368,6 +609,7 @@ ul > li {
     }
     img{
         border-radius:15px;
+        width: 50%;
     }
     .blocEventContent{
         font-size: 1.5rem;
@@ -406,6 +648,17 @@ ul > li {
         display: flex;
 
     }
+}
+
+
+// FOOTER ==================
+
+#scrollUp
+{
+position: absolute;
+}
+.fontFooter{
+    font-family: 'Kelt';
 }
 
 // =======================
@@ -512,6 +765,7 @@ ul > li {
                 padding: 3px;
                 border-radius: 5px;
             }
+
         }
         
     }
@@ -521,8 +775,6 @@ ul > li {
     
     }
 }
-
-
 // accordion cart =====
 
 
@@ -546,9 +798,6 @@ ul > li {
     overflow: hidden;
     transition: max-height 0.9s ease-out;
   }
-
-// Icones ==========================
-
   .accordion:after {
     content: '\2795'; /* Unicode character for "plus" sign (+) */
     font-size: 3rem;
@@ -560,10 +809,130 @@ ul > li {
   .active:after {
     content: "\2212"; /* Unicode character for "minus" sign (-) */
   }
-
+// =====================
+//  PAGE LOGIN TEST
 // =====================
 
 
+
+/* Full-width input fields */
+.loginPage input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Set a style for all buttons */
+  button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Extra styles for the cancel button */
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  }
+  
+  /* Center the image and position the close button */
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+  }
+  
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+  
+  .container {
+    padding: 16px;
+  }
+  
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+  
+  /* The Modal (background) */
+  .modal {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button (x) */
+  .close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+  
+  /* Add Zoom Animation */
+  .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
+  
+  @-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+  }
+    
+  @keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+  }
+  
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+  }
 
 
 // ===================================================================================================================

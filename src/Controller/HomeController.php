@@ -20,10 +20,19 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
             'pubs' => $pubsRepository->findAll(),
             'products' => $productsRepository->findAll(),
+            'presentation' => $presentationRepository->findAll()
+        ]);
+    }
+        /**
+     * @Route("/admin", name="homeAdmin")
+     */
+    public function indexAdmin(PubsRepository $pubsRepository, ProductsRepository $productsRepository, PresentationRepository $presentationRepository): Response
+    {
+        return $this->render('home/admin.html.twig', [
+            'controller_name' => 'HomeController',
+            'pubs' => $pubsRepository->findAll(),
+            'products' => $productsRepository->findAll(),
             'presentation' => $presentationRepository->findAll(),
-
-
-
         ]);
     }
 }

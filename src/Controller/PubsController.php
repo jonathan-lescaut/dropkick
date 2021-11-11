@@ -32,6 +32,15 @@ class PubsController extends AbstractController
             'pubs' => $pubsRepository->findAll(),
         ]);
     }
+        /**
+     * @Route("/admin", name="pubsAdmin_index", methods={"GET"})
+     */
+    public function indexAdmin(PubsRepository $pubsRepository): Response
+    {
+        return $this->render('pubs/admin.html.twig', [
+            'pubs' => $pubsRepository->findAll(),
+        ]);
+    }
 
     /**
      * @Route("/new", name="pubs_new", methods={"GET","POST"})
