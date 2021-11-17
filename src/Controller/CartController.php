@@ -25,10 +25,9 @@ class CartController extends AbstractController
             'total' => $cartService->getTotal()
         ]);
     }
-
         /**
-         * @Route("/add/{product}/", name="cart_add", requirements={"product"="\d+"})
-         */
+        * @Route("/add/{product}/", name="cart_add", requirements={"product"="\d+"})
+        */
     public function add(CartService $cartService, Products $product, FlashyNotifier $flashy)
     {
         // on recupere le panier actuel avec le service
@@ -36,9 +35,13 @@ class CartController extends AbstractController
 
         $pub = $product->getPub();
         $flashy->success('Ajouté au panier !');
- 
-        return $this->redirectToRoute('pubs_show', array('id' => $pub->getId()));
-
+        if ($_SERVER["PATH_INFO"] === "/cart"){
+            return $this->redirectToRoute('cart_index');
+        }else {
+            
+            return $this->redirectToRoute('pubs_show', array('id' => $pub->getId()));
+        }
+        
     }
 
             /**

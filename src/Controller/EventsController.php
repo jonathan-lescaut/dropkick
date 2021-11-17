@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Events;
 use App\Form\EventsType;
+use App\Repository\PubsRepository;
 use App\Repository\EventsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,10 +23,12 @@ class EventsController extends AbstractController
     /**
      * @Route("/", name="events_index", methods={"GET"})
      */
-    public function index(EventsRepository $eventsRepository): Response
+    public function index(EventsRepository $eventsRepository, PubsRepository $pubsRepository): Response
     {
         return $this->render('events/index.html.twig', [
             'events' => $eventsRepository->findAll(),
+            'pubs' => $pubsRepository->findAll(),
+
         ]);
     }
         /**

@@ -114,6 +114,13 @@ header {
   color: white;
 }
 
+.btnCommander a {
+  text-decoration: none;
+  color: white;
+  font-family: 'kelt';
+  font-size: 2rem;
+}
+
 .navbar-light .navbar-nav .nav-link {
   color: white;
   font-weight: bold;
@@ -181,6 +188,10 @@ header .navbar-toggler {
   margin-bottom: 5px;
 }
 
+.dropdownTitle {
+  color: white !important;
+}
+
 /* The typing effect */
 @-webkit-keyframes typing {
   from {
@@ -215,6 +226,10 @@ header .navbar-toggler {
   50% {
     border-color: #005204;
   }
+}
+
+.navbarMargin {
+  margin-top: 6em;
 }
 
 .pageHome {
@@ -327,13 +342,14 @@ header .navbar-toggler {
 
 .containerSlider .carousselCarte .blocTextCarte .text3 a {
   text-decoration: none;
-  padding: 10px;
+  padding: 20px;
   background-color: #fff;
   color: black;
   font-weight: bold;
   -webkit-transform: rotate(10deg);
           transform: rotate(10deg);
   border-radius: 3em;
+  font-size: 2rem;
 }
 
 .containerSlider .carousselCarte .blocTextCarte .text3 a:hover {
@@ -523,7 +539,7 @@ header .navbar-toggler {
 }
 
 .blocPresentationTextRight, .blocPresentationTextLeft {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .blocPresentationTextRight .textRight, .blocPresentationTextRight .textLeft, .blocPresentationTextLeft .textRight, .blocPresentationTextLeft .textLeft {
@@ -733,6 +749,44 @@ ul {
   color: #000;
 }
 
+.cart table {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.pageEvent {
+  margin-top: 7em;
+}
+
+.pageEvent .containerEvent {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.cityEvent {
+  background-color: #242526;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: 'Kelt';
+  text-transform: uppercase;
+  border-radius: 10px;
+  padding: 1em;
+  width: 80%;
+  margin: auto;
+  margin-top: 5em;
+  font-size: 2rem;
+}
+
 .blocEvent {
   border: 3px black solid;
   padding: 1em;
@@ -740,18 +794,23 @@ ul {
   background-color: #242526;
   color: white;
   margin-top: 6em;
+  margin-right: 1em;
+  margin-left: 1em;
 }
 
 .blocEvent .blocEventImg {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  max-height: 15em;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .blocEvent img {
+  bottom: 0;
   border-radius: 15px;
-  width: 50%;
+  width: 100%;
 }
 
 .blocEvent .blocEventContent {
@@ -761,6 +820,23 @@ ul {
 
 .blocEvent .blocEventContent #events_contentEvent {
   width: 650px;
+}
+
+.blocEvent .lienFbEvent {
+  text-decoration: none;
+  color: white;
+  padding-bottom: 1em;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.blocEvent .lienFbEvent:hover {
+  -webkit-transform: scale(1.13);
+          transform: scale(1.13);
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 .createImg {

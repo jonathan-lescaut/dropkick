@@ -16,6 +16,7 @@ class HomeController extends AbstractController
      */
     public function index(PubsRepository $pubsRepository, ProductsRepository $productsRepository, PresentationRepository $presentationRepository): Response
     {
+
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'pubs' => $pubsRepository->findAll(),
@@ -27,7 +28,10 @@ class HomeController extends AbstractController
      * @Route("/admin", name="homeAdmin")
      */
     public function indexAdmin(PubsRepository $pubsRepository, ProductsRepository $productsRepository, PresentationRepository $presentationRepository): Response
+
     {
+
+
         return $this->render('home/admin.html.twig', [
             'controller_name' => 'HomeController',
             'pubs' => $pubsRepository->findAll(),

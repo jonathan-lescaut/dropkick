@@ -88,6 +88,7 @@ header{
         }
     }
 
+
     .navVisiteur{
         display: flex;
         margin-left: 5em;
@@ -103,6 +104,12 @@ header{
 .navbar-nav{
     align-items: center;
     color: white;
+}
+.btnCommander a{
+    text-decoration: none;
+    color: white;
+    font-family: 'kelt';
+    font-size: 2rem;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -151,6 +158,9 @@ header .navbar-toggler {
         margin-bottom: 5px;
     }
 }
+.dropdownTitle{
+    color: white !important;
+}
     
 
   
@@ -164,6 +174,10 @@ header .navbar-toggler {
   @keyframes blink-caret {
     from, to { border-color: transparent }
     50% { border-color: rgb(0, 82, 4) }
+  }
+
+  .navbarMargin{
+      margin-top: 6em;
   }
 
 //==================================================================================================================
@@ -246,13 +260,13 @@ header .navbar-toggler {
                 width: 40%;
                 a {
                     text-decoration: none;
-                    padding: 10px;
-                    background-color: #fff; 
+                    padding: 20px;
+                    background-color: #fff;
                     color: black;
                     font-weight: bold;
                     transform: rotate(10deg);
                     border-radius: 3em;
-                    
+                    font-size: 2rem;
                 }
                 a:hover{
                     box-shadow: -9px -4px 39px 10px white;
@@ -409,7 +423,7 @@ header .navbar-toggler {
 
 }
 .blocPresentationTextRight, .blocPresentationTextLeft{
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     .textRight, .textLeft{
         background-color: #707070;
         text-align: justify;
@@ -593,9 +607,35 @@ ul {
     a{
         color: #000;
     }
+    table{
+        color: white;
+        font-size: 1.5rem;
+    }
 }
   // ===================================================================================================================
 // EVENEMENTS =========================================================================================================
+.pageEvent{
+    margin-top: 7em;
+    .containerEvent{
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
+}
+.cityEvent{
+    background-color: #242526;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-family: 'Kelt';
+    text-transform: uppercase;
+    border-radius: 10px;
+    padding: 1em;
+    width: 80%;
+    margin: auto;
+    margin-top: 5em;
+    font-size: 2rem;
+}
 .blocEvent{
     border: 3px black solid;
     padding: 1em;
@@ -603,13 +643,16 @@ ul {
     background-color: #242526;
     color: white;
     margin-top: 6em;
+    margin-right: 1em;
+    margin-left: 1em;
     .blocEventImg{
         display: flex;
-        max-height: 15em;
+        justify-content: center;
     }
     img{
+        bottom: 0;
         border-radius:15px;
-        width: 50%;
+        width: 100%;
     }
     .blocEventContent{
         font-size: 1.5rem;
@@ -617,7 +660,18 @@ ul {
         #events_contentEvent{
             width: 650px;
         }
-        
+    }
+    .lienFbEvent{
+        text-decoration: none;
+        color: white;
+        padding-bottom: 1em;
+        width: 50%;
+        margin: auto;
+        text-align: center;
+        font-size: 1.5rem;
+    }.lienFbEvent:hover{
+        transform:scale(1.13);
+        transition: all 1s;
     }
 }
 
@@ -642,15 +696,11 @@ ul {
     }
     .blocEventPlace{
         display: flex;
-
     }
     .blocEventPub{
         display: flex;
-
     }
 }
-
-
 // FOOTER ==================
 
 #scrollUp

@@ -96,7 +96,7 @@
 					</div>
 					{% endif %}
 					<div class="nav-item navH">
-						<a class="nav-link" href="{{ path('userBase_edit', {id: app.user.id})}}"><img
+						<a class="nav-link" href="{{ path('user_edit', {id: app.user.id})}}"><img
 								src="{{ asset('uploads/logoNavbar/compte.png')}}" class="logoNavBar"></a>
 					</div>
 					<div class="nav-item navH">
@@ -117,8 +117,8 @@
 					<li class="nav-item navH">
 						<a class="nav-link" href="{{ path('events_index') }}">Nos Events</a>
 					</li>
-					<li class="nav-item navH dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+					<li class="nav-item navH dropdown dropdownTitle">
+						<a class="nav-link dropdown-toggle dropdownTitle" href="#" id="navbarDropdown" role="button"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Suivez nous sur nos reseaux !
 						</a>
@@ -139,7 +139,7 @@
 			<div class="nav-item navH btnCommander">
 				<a onclick="document.getElementById('id01').style.display='block'" class="nav-link navH btn btn-success"
 					href="{{ '/login' }}">Commander</a>
-				{# <a class="nav-link navH btn btn-success" href="{{ '/login' }}">Commander</a> #}
+
 			</div>
 		</div>
 		{% endif %}

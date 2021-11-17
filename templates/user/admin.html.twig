@@ -34,7 +34,7 @@
                 <td>{{ user.cpUser }}</td>
                 <td>{{ user.pubs.namePub}}</td>
                 <td>
-                    <a href="{{ path('user_edit', {'id': user.id}) }}" class="btnModifUser">Modifier</a>
+                    <a href="{{ path('userAdmin_edit', {'id': user.id}) }}" class="btnModifUser">Modifier</a>
                 </td>
             </tr>
         {% else %}

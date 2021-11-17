@@ -80,7 +80,7 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('userAdmin_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('user/edit.html.twig', [
@@ -89,9 +89,9 @@ class UserController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{id}/edit", name="userBase_edit", methods={"GET","POST"})
+     * @Route("/{id}/editAdmin", name="userAdmin_edit", methods={"GET","POST"})
      */
-    public function editBase(Request $request, User $user): Response
+    public function editAdmin(Request $request, User $user): Response
     {
 
         $form = $this->createForm(UserType::class, $user, ['role' => $this->getUser()->getRoles()]);
@@ -100,10 +100,10 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('userBase_edit', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('userAdmin_edit', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('user/editBase.html.twig', [
+        return $this->renderForm('user/editAdmin.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);

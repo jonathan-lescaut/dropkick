@@ -47,6 +47,11 @@ class Events
      */
     private $pubs;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $fbEvent;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class Events
     public function setPubs(?Pubs $pubs): self
     {
         $this->pubs = $pubs;
+
+        return $this;
+    }
+
+    public function getFbEvent(): ?string
+    {
+        return $this->fbEvent;
+    }
+
+    public function setFbEvent(string $fbEvent): self
+    {
+        $this->fbEvent = $fbEvent;
 
         return $this;
     }

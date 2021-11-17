@@ -30,7 +30,7 @@
 					{% for pub in pubs %}
 						{% if app.user.pubs.cityPub is same as pub.cityPub %}
 							<div class="textCarte text3">
-								<a href="{{ path('pubs_show', {'id': pub.id}) }}" class="lienCaroussel">
+								<a href="{{ path('pubs_show', {'id': pub.id}) }}" class="lienCaroussel commandeSansCo">
 									Je commande</a>
 							</div>
 						</div>

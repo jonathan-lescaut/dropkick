@@ -1,44 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Events index{% endblock %}
+{% block title %}Les évènements
+{% endblock %}
 
 {% block body %}
 
-<section class="pageEvent navbarMargin">
-
-
-    
-    {% for event in events %}
-    <div class="container blocEvent">
-        <div class="row">
+<section class="container-fluid pageEvent navbarMargin">
+    {% for pub in pubs %}
+    <div class="row cityEvent">
+        {{ pub.cityPub }}
+    </div>
+    <div class="row containerEvent">
+        {% for event in events %}
+        {% if event.pubs.id is same as pub.id %}
+        <div class="col-md-5 blocEvent">
+            <div class="row">
                 <div class="row">
-                {{ event.nameEvent }}
+                    {{ event.nameEvent }}
                 </div>
                 <div class="row">
-                {{ event.dateEvent ? event.dateEvent|date('Y-m-d H:i:s') : '' }}
+                    {{ event.dateEvent ? event.dateEvent|date("d/m/Y") : '' }}
                 </div>
                 <div class="row blocEventContent">
-                {{ event.contentEvent|raw }}
+                    {{ event.contentEvent|u.truncate(300, '   ...')|raw }}
+                </div>
+                <div class="row">
+                   <a href="{{ event.fbEvent}}" class="lienFbEvent">Voir sur facebook</a>
                 </div>
             </div>
             <div class="row blocEventImg">
-                <img src="{{ asset('uploads/photos/' ~ event.imgEvent) }}">
-            </div>
-            {% if (is_granted('ROLE_ADMIN')) %}
-            <div class="row">
-                <div class="col-md-12 lienAdminEvent">
-                    <a href="{{ path('events_show', {'id': event.id}) }}">show</a>
-                    <a href="{{ path('events_edit', {'id': event.id}) }}">edit</a>
+                <div class="col-md-12">
+                    <img src="{{ asset('uploads/photos/' ~ event.imgEvent) }}" class="imgEvent">
                 </div>
             </div>
-            {% endif %}
         </div>
-    </div>
-    
+        {% endif %}
+
         {% endfor %}
+    </div>
+
+    {% endfor %}
 
 
-</section>
-    
-
-{% endblock %}
+</section>{% endblock %}

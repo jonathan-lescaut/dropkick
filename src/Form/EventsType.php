@@ -19,6 +19,7 @@ class EventsType extends AbstractType
     {
         $builder
             ->add('nameEvent')
+            ->add('fbEvent')
             ->add('imgEvent', FileType::class, [
                 'label' => 'Photo Event',
                 'mapped' => false,
