@@ -72,9 +72,6 @@ class EventsController extends AbstractController
             $event->setImgEvent($newFilename);
         }
 
-
-
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($event);
             $entityManager->flush();
@@ -128,7 +125,7 @@ class EventsController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('eventsAdmin_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('homeAdmin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('events/edit.html.twig', [

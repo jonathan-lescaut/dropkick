@@ -1,66 +1,80 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!{% endblock %}
+{% block title %}Votre panier{% endblock %}
 
 {% block body %}
 
 <section class="cart navbarMargin">
-<h1>Votre panier {{app.user.pubs.cityPub}}</h1>
+    <h1>Votre panier {{app.user.pubs.cityPub}}</h1>
 
     <a href=javascript:history.go(-1)>Revenir au pub</a>
 
-    <table class="table">
+    <table class="table-cart table-cart-mobile">
         <thead>
-            <tr>
-                <th>Produit</th>
-                <th>Image</th>
-                <th>Prix</th>
-                <th>quantité</th>
-                <th>total</th>
-                <th>Action</th>
+            <tr class="product-title">
+                <th scope="col">Produit</th>
+                <th scope="col"></th>
+                <th scope="col">Prix</th>
+                <th scope="col">Quantite</th>
+                <th scope="col">Total</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for element in dataCart %}
             {% if element.pub.cityPub ==  app.user.pubs.cityPub %}
-            
-            <tr>
-                <td>{{element.product.nameProduct}}</td>
-                <td><img src="{{ asset('uploads/photos/' ~ element.product.imgProduct) }}" width="100"></td>
-                <td>{{element.product.priceProduct}} €</td>
-                <td>{{element.quantite}}</td>
-                <td>{{element.quantite * element.product.priceProduct}}</td>
-                <td>
-                    <a href="{{path("cart_add", {product: element.product.id})}}" class="btn btn-success">Ajouter</a>
-                    <a href="{{path("cart_remove", {id: element.product.id})}}" class="btn btn-warning">Enlever</a>
-                    <a href="{{path("cart_delete", {id: element.product.id})}}" class="btn btn-danger">Supprimer</a>
-                </td>
+            <tr class="product-cart">
 
-            </tr>
-            {% else %}
 
-                {% endif %}
-            {% else %}
-                <tr>
-                    <td colspan ="6" class="text-center">Votre panier est vide</td>
+                    <td class="name-product" scope="row">{{element.product.nameProduct}}</td>
+                    <td><img src="{{ asset('uploads/photos/' ~ element.product.imgProduct) }}" class="img-cart"></td>
+                    <td>{{element.product.priceProduct}} €</td>
+                    <td>{{element.quantite}}</td>
+                    <td class="total-product">{{element.quantite * element.product.priceProduct}} €</td>
+                    <td>
+                        <a href="{{path("cart_add", {product: element.product.id})}}" class="btn btn-success"><i class="fas fa-plus"></i></a>
+                        <a href="{{path("cart_remove", {id: element.product.id})}}" class="btn btn-warning"><i class="fas fa-minus"></i></a>
+                        <a href="{{path("cart_delete", {id: element.product.id})}}" class="btn btn-danger">Supprimer</a>
+                    </td>
+
                 </tr>
+            {% else %}
+
+            {% endif %}
+            {% else %}
+            <tr>
+                <td colspan="6" class="text-center">Votre panier est vide</td>
+            </tr>
             {% endfor %}
         </tbody>
 
         <tfoot>
             <tr>
-                <td colspan="3">total</td>
-                
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="td-total">Total</td>
                 <td class="text-end">{{ total }} €</td>
-                <td> <a href="{{path("cart_delete_all")}}" class="btn btn-danger">Supprimer le panier</a></td>
+                <td></td>
             </tr>
 
         </tfoot>
     </table>
+     <div class="btn-sup-cart"> <a href="{{path("cart_delete_all")}}" class="btn btn-danger">Supprimer le panier</a></div>
+
+    
+    {# <a href="{{ path("payment", {'id': app.user.id }) }}" class="btn btn-success btn-valid-paiement">valider le paiement {{total}} €</a> #}
+
+
+    <div class="btn-valid">
+        <a href="{{ path("cart_order_new") }}" class="btn btn-danger btn-valid-cart">valider le panier</a>
+        <a href="{{ path("cart_order_index") }}" class="btn btn-success btn-valid-commandes">Voir mes commandes</a>
+    </div>
+
+
+
+
 </section>
-
-
-
 
 
 {% endblock %}

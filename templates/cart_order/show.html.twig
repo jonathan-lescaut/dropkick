@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block body %}
+    <h1>Cart</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cart.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('cart_order_edit', {'id': cart.id}) }}">edit</a>
+
+    {{ include('cart_order/_delete_form.html.twig') }}
+{% endblock %}

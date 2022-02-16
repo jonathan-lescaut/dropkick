@@ -15,6 +15,7 @@
 
 body {
   margin: 0;
+  background-color: #e2dac1;
 }
 
 a {
@@ -28,10 +29,28 @@ ul {
   margin: 0;
   padding: 0;
   width: 25%;
-  background-color: #f1f1f1;
+  background-color: #b1a685;
   position: fixed;
   height: 100%;
   overflow: auto;
+}
+
+ul li {
+  margin-bottom: 1em;
+}
+
+ul li h2 {
+  text-align: center;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+  font-family: 'kelt';
+}
+
+.retour {
+  text-align: end;
+  text-transform: uppercase;
+  font-family: 'kelt';
+  font-size: 2rem;
 }
 
 li a {
@@ -104,7 +123,8 @@ li a:hover:not(.active) {
   border-radius: 5px;
 }
 
-.createProduct a, .seeCategories a {
+.createProduct a,
+.seeCategories a {
   margin: auto;
   text-decoration: none;
   text-transform: uppercase;
@@ -112,7 +132,8 @@ li a:hover:not(.active) {
   font-weight: bold;
 }
 
-.createProduct a:hover, .seeCategories a:hover {
+.createProduct a:hover,
+.seeCategories a:hover {
   color: white;
 }
 
@@ -156,7 +177,8 @@ li a:hover:not(.active) {
   height: 10vh;
 }
 
-.blocProduct .blocArticle .blocBtnProduct, .blocProduct .blocArticle .blocProductStar {
+.blocProduct .blocArticle .blocBtnProduct,
+.blocProduct .blocArticle .blocProductStar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -193,11 +215,15 @@ li a:hover:not(.active) {
   margin: 1em;
 }
 
-.blocProduct .blocArticle .productAdmin, .blocProduct .blocArticle .lienEventEdit {
+.blocProduct .blocArticle .productAdmin,
+.blocProduct .blocArticle .lienEventEdit {
   text-align: center;
 }
 
-.blocProduct .blocArticle .productAdmin button, .blocProduct .blocArticle .productAdmin a, .blocProduct .blocArticle .lienEventEdit button, .blocProduct .blocArticle .lienEventEdit a {
+.blocProduct .blocArticle .productAdmin button,
+.blocProduct .blocArticle .productAdmin a,
+.blocProduct .blocArticle .lienEventEdit button,
+.blocProduct .blocArticle .lienEventEdit a {
   color: white;
   text-decoration: none;
   font-size: 1rem;
@@ -207,13 +233,17 @@ li a:hover:not(.active) {
   padding: .3em;
 }
 
-.blocProduct .blocArticle .productAdmin button:hover, .blocProduct .blocArticle .productAdmin a:hover, .blocProduct .blocArticle .lienEventEdit button:hover, .blocProduct .blocArticle .lienEventEdit a:hover {
+.blocProduct .blocArticle .productAdmin button:hover,
+.blocProduct .blocArticle .productAdmin a:hover,
+.blocProduct .blocArticle .lienEventEdit button:hover,
+.blocProduct .blocArticle .lienEventEdit a:hover {
   background-color: black;
   padding: 3px;
   border-radius: 5px;
 }
 
-.blocProduct .blocArticle .productAdmin .btnProductDelete, .blocProduct .blocArticle .lienEventEdit .btnProductDelete {
+.blocProduct .blocArticle .productAdmin .btnProductDelete,
+.blocProduct .blocArticle .lienEventEdit .btnProductDelete {
   color: white;
   text-decoration: none;
   font-size: 1rem;
@@ -223,7 +253,8 @@ li a:hover:not(.active) {
   padding: .3em;
 }
 
-.blocProduct .blocArticle .productAdmin .btnProductDelete:hover, .blocProduct .blocArticle .lienEventEdit .btnProductDelete:hover {
+.blocProduct .blocArticle .productAdmin .btnProductDelete:hover,
+.blocProduct .blocArticle .lienEventEdit .btnProductDelete:hover {
   background-color: black;
   padding: 3px;
   border-radius: 5px;
@@ -268,11 +299,15 @@ li a:hover:not(.active) {
   max-width: 100%;
 }
 
-.blocPresentationTextRight, .blocPresentationTextLeft {
+.blocPresentationTextRight,
+.blocPresentationTextLeft {
   font-size: 1.5rem;
 }
 
-.blocPresentationTextRight .textRight, .blocPresentationTextRight .textLeft, .blocPresentationTextLeft .textRight, .blocPresentationTextLeft .textLeft {
+.blocPresentationTextRight .textRight,
+.blocPresentationTextRight .textLeft,
+.blocPresentationTextLeft .textRight,
+.blocPresentationTextLeft .textLeft {
   background-color: #707070;
   text-align: justify;
   font-family: 'junius';
@@ -348,24 +383,28 @@ li a:hover:not(.active) {
   font-size: 2rem;
 }
 
-.pubAddress, .pubPhone {
+.pubAddress,
+.pubPhone {
   font-size: 1.4rem;
 }
 
-.editPub, .editPresentation {
+.editPub,
+.editPresentation {
   text-align: center;
   text-transform: uppercase;
   margin-bottom: 2em;
 }
 
-.editPub a, .editPresentation a {
+.editPub a,
+.editPresentation a {
   text-decoration: none;
   color: white;
   font-weight: bold;
   font-size: 1.2rem;
 }
 
-.createPub, .createEvent {
+.createPub,
+.createEvent {
   text-decoration: none;
   font-weight: bold;
   margin-bottom: 2em;
@@ -412,7 +451,8 @@ li a:hover:not(.active) {
   text-align: center;
 }
 
-.lienEventEdit button, .lienEventEdit a {
+.lienEventEdit button,
+.lienEventEdit a {
   color: white;
   text-decoration: none;
   font-size: 1rem;
@@ -422,7 +462,8 @@ li a:hover:not(.active) {
   padding: .3em;
 }
 
-.lienEventEdit button:hover, .lienEventEdit a:hover {
+.lienEventEdit button:hover,
+.lienEventEdit a:hover {
   background-color: #7a7a7a;
   padding: 3px;
   border-radius: 5px;
@@ -497,7 +538,8 @@ li a:hover:not(.active) {
   display: flex;
 }
 
-.lienEventEdit a, .lienEventEdit button {
+.lienEventEdit a,
+.lienEventEdit button {
   text-decoration: none;
   color: white;
 }

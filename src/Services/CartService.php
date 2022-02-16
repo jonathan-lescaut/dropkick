@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Service;
+namespace App\Services;
 
+use App\Entity\Cart;
 use App\Entity\Products;
 use App\Repository\ProductsRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use DateTime;
 
 class CartService {
 
@@ -16,7 +16,6 @@ class CartService {
     {
         $this->session = $session;
         $this->productsRepository = $productsRepository;
-
     }
 
     function add(Products $product)
@@ -28,6 +27,8 @@ class CartService {
             $cart[$id]++;
             
         }else {
+
+            
             $cart[$id] = 1;
         }
         $this->session->set("cart", $cart);
@@ -47,8 +48,6 @@ class CartService {
             
         }
         $this->session->set("cart", $cart);
-
-
     }
     function getFullCart(): array
     {
@@ -56,6 +55,7 @@ class CartService {
         // on fabrique les données
         $dataCart = [];
         foreach ($cart as $id => $quantite) {
+
             $product = $this->productsRepository->find($id);
             $pub = $product->getPub();
             
@@ -64,14 +64,9 @@ class CartService {
                 "product" => $product,
                 "quantite" => $quantite,
             ];
-
-
         }
         return $dataCart;
     }
-
-
-
     function getTotal(): float
     {
         $total = 0;
@@ -79,6 +74,5 @@ class CartService {
             $total += $item['product']->getPriceProduct() * $item['quantite'];
         }
         return $total;
-
     }
 }

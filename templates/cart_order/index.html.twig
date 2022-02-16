@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart index{% endblock %}
+
+{% block body %}
+    <h1>Cart index</h1>
+<section class="navbarMargin">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Numéro Commande</th>
+                <th>Contenu</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        
+        {% for cart in carts %}
+        {% if app.user.id is same as cart.userCart.id %}
+            <tr>
+                <td>{{ cart.id }}</td>
+                <td>{{ cart.contentCart }}</td>
+                <td>
+                    <a href="{{ path("payment", {'id': cart.id }) }}" class="btn btn-success">valider le paiement {{cart.totalCart}} €</a>
+                </td>
+            </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+    </section>
+
+{% endblock %}

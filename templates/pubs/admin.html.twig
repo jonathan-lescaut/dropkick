@@ -7,9 +7,6 @@
 			<div class="titrePub"> Nos Pubs</div>
 	<section class="pagePub navbarMargin">
 
-
-
-
 		{% for pub in pubs %}
 			<div class="container-fluid">
 				<div class="row">
@@ -30,7 +27,7 @@
 					</div>
 				</div>
 				<div class="row editPub">
-					<a href="{{ path('pubs_edit', {'id': pub.id}) }}" class="btn btn-warning">modifier</a>
+					<a href="{{ path('pubs_edit', {'id': pub.id}) }}" class="btn btn-warning">Modifier</a>
 				</div>
 			{% endfor %}
 			<div class="row">

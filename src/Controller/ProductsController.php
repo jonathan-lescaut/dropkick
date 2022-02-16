@@ -129,7 +129,7 @@ class ProductsController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('productsAdmin_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('homeAdmin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('products/edit.html.twig', [

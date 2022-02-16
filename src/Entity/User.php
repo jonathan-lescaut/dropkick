@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Entity\Pubs;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
@@ -74,8 +76,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $pubs;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="user")
+     */
+    private $orders;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Cart::class, mappedBy="userCart")
+     */
+    private $carts;
+
     public function __construct(){ 
         $this->roles = [self::ROLE_USER];
+        $this->orders = new ArrayCollection();
+        $this->carts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -235,6 +249,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPubs(?Pubs $pubs): self
     {
         $this->pubs = $pubs;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Order[]
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Order $order): self
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Order $order): self
+    {
+        if ($this->orders->removeElement($order)) {
+            // set the owning side to null (unless already changed)
+            if ($order->getUser() === $this) {
+                $order->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Cart[]
+     */
+    public function getCarts(): Collection
+    {
+        return $this->carts;
+    }
+
+    public function addCart(Cart $cart): self
+    {
+        if (!$this->carts->contains($cart)) {
+            $this->carts[] = $cart;
+            $cart->setUserCart($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCart(Cart $cart): self
+    {
+        if ($this->carts->removeElement($cart)) {
+            // set the owning side to null (unless already changed)
+            if ($cart->getUserCart() === $this) {
+                $cart->setUserCart(null);
+            }
+        }
 
         return $this;
     }

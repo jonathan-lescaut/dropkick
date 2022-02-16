@@ -4,10 +4,12 @@ $colorCarte: rgba(0, 77, 4, 0.829);
   font-family: 'irish';
   src: url('../font/IrishUncialfabeta-Bold.ttf');
 }
+
 @font-face {
   font-family: 'kelt';
   src: url('../font/Kelt\ Caps\ Freehand.ttf');
 }
+
 @font-face {
   font-family: 'junius';
   src: url('../font//JuniusIrish.ttf');
@@ -15,194 +17,242 @@ $colorCarte: rgba(0, 77, 4, 0.829);
 
 
 body {
-    margin: 0;
-  }
-a{
-    text-decoration: none;
-    text-transform: none;
-    color: #000;
-}
-  
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 25%;
-    background-color: #f1f1f1;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-  }
-  
-  li a {
-    display: block;
-    color: #000;
-    padding: 8px 16px;
-    text-decoration: none;
-  }
-  
-  li a.active {
-    background-color: #04AA6D;
-    color: white;
-  }
-  
-  li a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-  }
-
-  .pageProduct{
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: scroll;
-    opacity: 0.67;
-    margin-top: 80px;
-
-    .cardUser{
-      color: white !important;
-
-    }
-    .pageProdOpacite{
-        opacity: 1 !important;
-    }
+  margin: 0;
+  background-color: #e2dac1;
 }
 
-.blocCategory{
-    display: flex;
-    background-color: $colorCarte;
-    font-size: 3rem;
+a {
+  text-decoration: none;
+  text-transform: none;
+  color: #000;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: #b1a685;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+
+  li {
     margin-bottom: 1em;
-    border-radius: 5px;
-}
-.admimCategory{
-    text-align: center;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    a{
-        color: rgb(255, 255, 255); 
-        text-decoration: none;
-        font-size: 1rem;
-        text-transform: uppercase;
-    }
-    a:hover{    
-        background-color: black;
-        padding: 3px;
-        border-radius: 5px;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1em;
+      text-transform: uppercase;
+      font-family: 'kelt';
     }
 
+    
+  }
 }
+.retour {
+  text-align: end;
+  text-transform: uppercase;
+  font-family: 'kelt';
+  font-size: 2rem;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.pageProduct {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+  opacity: 0.67;
+  margin-top: 80px;
+
+  .cardUser {
+    color: white !important;
+
+  }
+
+  .pageProdOpacite {
+    opacity: 1 !important;
+  }
+}
+
+.blocCategory {
+  display: flex;
+  background-color: $colorCarte;
+  font-size: 3rem;
+  margin-bottom: 1em;
+  border-radius: 5px;
+}
+
+.admimCategory {
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  a:hover {
+    background-color: black;
+    padding: 3px;
+    border-radius: 5px;
+  }
+
+}
+
 // page product admin ===========================================================
 
-.createProduct, .seeCategories{
-  a{
+.createProduct,
+.seeCategories {
+  a {
     margin: auto;
     text-decoration: none;
     text-transform: uppercase;
     color: rgb(153, 153, 153);
     font-weight: bold;
   }
-  a:hover{
+
+  a:hover {
     color: white;
   }
 }
 
-.blocProduct{
-    border: 1px solid rgba(255, 255, 255, 0);
-    margin-bottom: 1em;
-    .blocArticle{
-        background-color: $colorCarte;
-        height: 20vh;
-        border-radius: 10px;
-        padding: 5px;
-        display: flex;
-        .imgProduct{
-            display: flex;
-            height: 100%;
-            justify-content: flex-start;
-            align-items: flex-start;
-            img{
-                display: flex;
-                height: 8vh;
-                border-radius: 10px;
-            }
-        }
-        .blocProductSansBtn{
-            height: 10vh;
-        }
-        .blocBtnProduct, .blocProductStar{
-            display: flex;
-            justify-content: center;
-        }
-        .btnProductAdmin{
-            display: flex;
-        }
-        .btnProduct{
-            width: 50%;
-            display: flex;
-            justify-content: center;
-            margin: 1em;
-        }
-        .productStar{
-            width: 50%;
-            display: flex;
-            justify-content: center;
-            margin: 1em;
-        }
-        .productAdmin, .lienEventEdit{
-            text-align: center;
-            button, a{
-                color: rgb(255, 255, 255); 
-                text-decoration: none;
-                font-size: 1rem;
-                text-transform: uppercase;
-                background-color: rgb(255, 136, 0);
-                border-radius: 5px;
-                padding: .3em;
+.blocProduct {
+  border: 1px solid rgba(255, 255, 255, 0);
+  margin-bottom: 1em;
 
-            }
-            button:hover, a:hover{     
-                background-color: black;
-                padding: 3px;
-                border-radius: 5px;
-            }
-            .btnProductDelete{
-              color: rgb(255, 255, 255); 
-              text-decoration: none;
-              font-size: 1rem;
-              text-transform: uppercase;
-              background-color: rgb(255, 0, 0);
-              border-radius: 5px;
-              padding: .3em;
-          }
-          .btnProductDelete:hover{    
-              background-color: black;
-              padding: 3px;
-              border-radius: 5px;
-          }
-        }
-        
+  .blocArticle {
+    background-color: $colorCarte;
+    height: 20vh;
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+
+    .imgProduct {
+      display: flex;
+      height: 100%;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      img {
+        display: flex;
+        height: 8vh;
+        border-radius: 10px;
+      }
     }
-    .blocArticle:hover{
-        transform:scale(1.13);
-        transition: all 1s;
-    
+
+    .blocProductSansBtn {
+      height: 10vh;
     }
+
+    .blocBtnProduct,
+    .blocProductStar {
+      display: flex;
+      justify-content: center;
+    }
+
+    .btnProductAdmin {
+      display: flex;
+    }
+
+    .btnProduct {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      margin: 1em;
+    }
+
+    .productStar {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      margin: 1em;
+    }
+
+    .productAdmin,
+    .lienEventEdit {
+      text-align: center;
+
+      button,
+      a {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        font-size: 1rem;
+        text-transform: uppercase;
+        background-color: rgb(255, 136, 0);
+        border-radius: 5px;
+        padding: .3em;
+
+      }
+
+      button:hover,
+      a:hover {
+        background-color: black;
+        padding: 3px;
+        border-radius: 5px;
+      }
+
+      .btnProductDelete {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        font-size: 1rem;
+        text-transform: uppercase;
+        background-color: rgb(255, 0, 0);
+        border-radius: 5px;
+        padding: .3em;
+      }
+
+      .btnProductDelete:hover {
+        background-color: black;
+        padding: 3px;
+        border-radius: 5px;
+      }
+    }
+
+  }
+
+  .blocArticle:hover {
+    transform: scale(1.13);
+    transition: all 1s;
+
+  }
 }
 
 // page présentation Admin ===========================================================
 
-.presentation{
+.presentation {
   margin-top: 2em;
   width: 80%;
   margin: auto;
   background-color: #707070;
-  .rowPresentation{
-      margin-bottom: 1em;
+
+  .rowPresentation {
+    margin-bottom: 1em;
   }
 }
-.blocPresentation p{
+
+.blocPresentation p {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -217,189 +267,230 @@ a{
   max-width: 100%;
 
 }
-.blocPresentationTextRight, .blocPresentationTextLeft{
+
+.blocPresentationTextRight,
+.blocPresentationTextLeft {
   font-size: 1.5rem;
-  .textRight, .textLeft{
-      background-color: #707070;
-      text-align: justify;
-      font-family: 'junius';
+
+  .textRight,
+  .textLeft {
+    background-color: #707070;
+    text-align: justify;
+    font-family: 'junius';
   }
 
 }
 
-.blocPresentationTitleRight p{
+.blocPresentationTitleRight p {
   clip-path: polygon(34% 0, 96% 0, 66% 100%, 0 100%);
   background-color: #062a00;
 }
-.blocPresentationTitleLeft p{
+
+.blocPresentationTitleLeft p {
   clip-path: polygon(2% 0, 74% 0, 98% 100%, 26% 100%);
   background-color: #062a00;
 }
-.blocPresentationText{
+
+.blocPresentationText {
   margin: auto;
 }
-.blocPresentationTitle{
+
+.blocPresentationTitle {
   margin: auto;
   font-size: 2rem;
   font-family: 'Kelt';
 }
-.lienMenu{
+
+.lienMenu {
   font-size: 5rem;
 }
 
 
 
-.lieuPub{
+.lieuPub {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
   color: white;
   background-color: rgb(6, 42, 0);
-  .lieu{
-      justify-content: space-evenly;
-      align-items: center;
-      font-size: 2rem;
-      a{
-          text-decoration: none;
-          color: white;
-      }
-      a:hover{
-          color: rgb(167, 165, 165)
-      }
+
+  .lieu {
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 2rem;
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    a:hover {
+      color: rgb(167, 165, 165)
+    }
   }
 }
-.editPresentation{
+
+.editPresentation {
   margin-top: 1em;
 }
+
 // page Pub Admin ==============================================
 
-.pagePub img{
+.pagePub img {
   width: 350px;
 }
-.pubName{
+
+.pubName {
   font-family: 'Kelt';
   font-size: 2rem;
 }
-.pubAddress, .pubPhone{
+
+.pubAddress,
+.pubPhone {
   font-size: 1.4rem;
 
 }
-.editPub, .editPresentation{
+
+.editPub,
+.editPresentation {
   text-align: center;
   text-transform: uppercase;
   margin-bottom: 2em;
-  a{
+
+  a {
     text-decoration: none;
     color: white;
     font-weight: bold;
     font-size: 1.2rem;
   }
 }
-.createPub, .createEvent{
+
+.createPub,
+.createEvent {
   text-decoration: none;
   font-weight: bold;
   margin-bottom: 2em;
 }
-.EventPubModif{
+
+.EventPubModif {
   margin-top: 2em;
 }
 
 // EVENEMENTS =========================================================================================================
-.blocEvent{
+.blocEvent {
   border: 3px black solid;
   padding: 1em;
-  border-radius: 15px;  
+  border-radius: 15px;
   background-color: #242526;
   color: white;
   margin-top: 6em;
-  .blocEventImg{
-      display: flex;
-      max-height: 15em;
+
+  .blocEventImg {
+    display: flex;
+    max-height: 15em;
   }
-  img{
-      border-radius:15px;
+
+  img {
+    border-radius: 15px;
   }
-  .blocEventContent{
-      font-size: 1.5rem;
-      padding-top: 2em;
-      #events_contentEvent{
-          width: 650px;
-      }
+
+  .blocEventContent {
+    font-size: 1.5rem;
+    padding-top: 2em;
+
+    #events_contentEvent {
+      width: 650px;
+    }
   }
 }
-.blocLienEventEdit{
+
+.blocLienEventEdit {
   margin-top: 2em;
 }
 
-.lienEventEdit{
+.lienEventEdit {
   text-align: center;
-  button, a{
-      color: rgb(255, 255, 255); 
-      text-decoration: none;
-      font-size: 1rem;
-      text-transform: uppercase;
-      background-color: rgb(255, 136, 0);
-      border-radius: 5px;
-      padding: .3em;
+
+  button,
+  a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+    background-color: rgb(255, 136, 0);
+    border-radius: 5px;
+    padding: .3em;
 
   }
-  button:hover, a:hover{     
-      background-color: rgb(122, 122, 122);
-      padding: 3px;
-      border-radius: 5px;
+
+  button:hover,
+  a:hover {
+    background-color: rgb(122, 122, 122);
+    padding: 3px;
+    border-radius: 5px;
   }
-  .btnProductDelete{
-    color: rgb(255, 255, 255); 
+
+  .btnProductDelete {
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 1rem;
     text-transform: uppercase;
     background-color: rgb(255, 0, 0);
     border-radius: 5px;
     padding: .3em;
-}
-.btnProductDelete:hover{    
+  }
+
+  .btnProductDelete:hover {
     background-color: black;
     padding: 3px;
     border-radius: 5px;
+  }
 }
-}
+
 // Form Event =============
 
-.createImg{
+.createImg {
   display: flex;
   align-items: center;
   border: 5px white solid;
 }
-.createBlocRight{
+
+.createBlocRight {
   display: flex;
   flex-direction: row;
-  .createNameDateEvent{
-      display: flex;
-      align-content: flex-start;
-      justify-content: flex-start;
-      flex-direction: column;
+
+  .createNameDateEvent {
+    display: flex;
+    align-content: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
   }
-  .blocEventContent{
-      display: flex;
+
+  .blocEventContent {
+    display: flex;
   }
-  .blocEventPlace{
-      display: flex;
+
+  .blocEventPlace {
+    display: flex;
 
   }
-  .blocEventPub{
-      display: flex;
+
+  .blocEventPub {
+    display: flex;
 
   }
 }
-.lienEventEdit a, .lienEventEdit button{
+
+.lienEventEdit a,
+.lienEventEdit button {
   text-decoration: none;
   color: white;
 }
 
 
 //  User admin =================================================
-.btnModifUser{
-  color: rgb(255, 255, 255); 
+.btnModifUser {
+  color: rgb(255, 255, 255);
   text-decoration: none;
   font-size: 1rem;
   text-transform: uppercase;

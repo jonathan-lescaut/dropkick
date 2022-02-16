@@ -28,14 +28,16 @@ class PubsType extends AbstractType
                 'required' => false,
                 'constraints' => [
                     new File([
+                        'maxSize' => '1024k',
                         'mimeTypes' => [
-                            'application/pdf',
-                            'application/x-pdf',
+                            'image/*',
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid PDF document',
-                ])
-            ],
-        ])
+                        'mimeTypesMessage' => 'Veuillez entrer un format de document
+                       valide',
+                    ])
+
+                ],
+            ])
             ->add('contentPub')
             ->add('cityPub')
             ->add('schedulePub', CKEditorType::class)
@@ -51,13 +53,11 @@ class PubsType extends AbstractType
                             'application/pdf',
                             'application/x-pdf',
                         ],
-                    'mimeTypesMessage' => 'Veuillez entrer un format de document
+                        'mimeTypesMessage' => 'Veuillez entrer un format de document
                     valide',
-                ])
-            ],
-        ])
-            
-        ;
+                    ])
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

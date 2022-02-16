@@ -1,71 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Products index{% endblock %}
+{% block title %}La carte
+{% endblock %}
 
 {% block body %}
-<section class="pageProduct navbarMargin container-fluid">
-    <div class="pageProdOpacite">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="">Dropkick Bar</h1>
-            </div>
-      <div class="cardUser container-fluid">
-          <div class="container">
-              <div class="row">
-{% if app.user.pubs.id is same as pub.id %}
+	<section class="pageProduct navbarMargin container-fluid">
+		<div class="pageProdOpacite">
+			<div class="cardUser">
+				<div class="container">
+					<div class="row">
+						{% if app.user.pubs.id is same as pub.id %}
 
-              {% for category in categories %}
+							{% for category in categories %}
 
-                <div class="col-md-12 blocCategory accordion">{{category.nameCategory}}</div>
-                <div class="panel row collapse show">
-                {% for product in products %}
-                {% if product.categories.id is same as category.id %}
-                
-
-                    <div class="col-md-4 blocProduct">
-                        <div class="blocArticle">
-                            <div class="row">
-                                <div class="row blocProductSansBtn">
-                                        <div class="col-md-4">
-                                            <div class="imgProduct"><img src="{{ asset('uploads/photos/' ~ product.imgProduct) }}" width="100"></div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="row">
-                                                <div class="col-md-8">
-                                                    <div class="titleProduct">{{ product.nameProduct }}</div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="priceProduct">{{ product.priceProduct }} €</div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="contentProduct">{{ product.contentProduct }}</div>
-                                            </div>
-                                </div>
-                                        </div>  
-                                        <div class="col-md-12 blocBtnProduct">
-                                           <a href="{{path('cart_add', {product: product.id})}}" class="btn btn-success btnProduct">
-								<i class="bi bi-cart-plus"></i>
-								Ajouter</a>
-                                        </div>   
-                            </div>
-                        </div>
-                    </div>     
-                    {% endif %}
-                    {% endfor %}
-                </div>
-              {% endfor %}
-                </div>
-            </div>
+								<div class="col-md-12 blocCategory accordion">{{category.nameCategory}}</div>
+								<div class="panel row collapse show">
+									{% for product in products %}
+										{% if product.categories.id is same as category.id %}
 
 
-    </div>
+											<div class="col-md-4 blocProduct">
+												<div class="blocArticle">
+													<div class="row">
+														<div class="row blocProductSansBtn">
+															<div class="col-md-4">
+																<div class="imgProduct"><img src="{{ asset('uploads/photos/' ~ product.imgProduct) }}" width="100"></div>
+															</div>
+															<div class="col-md-8">
+																<div class="row">
+																	<div class="col-md-8">
+																		<div class="titleProduct">{{ product.nameProduct }}</div>
+																	</div>
+																	<div class="col-md-4">
+																		<div class="priceProduct">{{ product.priceProduct }}
+																			€</div>
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="contentProduct">{{ product.contentProduct }}</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-12 blocBtnProduct">
+															<a href="{{path('cart_add', {product: product.id})}}" class="btn btn-success btnProduct">
+																<i class="bi bi-cart-plus"></i>
+																Ajouter</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										{% endif %}
+									{% endfor %}
+								</div>
+							{% endfor %}
+						</div>
+					</div>
 
-</div>
-</section>
+
+				</div>
+
+			</div>
+		</section>
 	{% else %}
 
-	<a href="{{ path('home') }}">Retour</a>
+		<a href="{{ path('home') }}">Retour</a>
 
 	{% endif %}
 

@@ -12,18 +12,22 @@
 				<img src="{{asset('uploads/Orleans.jpg')}}" alt="orleans">
 			</div>
 			<div id="slidertype2" class='slide' style="display:none">
-				<img src="{{asset('uploads/troyes.jpg')}}" alt="troyes">
+				<img src="{{asset('uploads/Troyes.jpg')}}" alt="troyes">
 			</div>
 			<div id="slidertype3" class='slide' style="display:none">
-				<img src="{{asset('uploads/reims.jpg')}}" alt="reims">
+				<img src="{{asset('uploads/Reims.jpg')}}" alt="reims">
 			</div>
 			<div class="container-fluid carousselCarte">
 				<div class="blocTextCarte">
 					<div class="textCarte text1">Un large choix</div>
 					<div class="textCarte text2">Poutines Burgers Hot-dog</div>
+
 					{% if app.user is same as null %}
-						<div class="textCarte text3">
-							<a onclick="document.getElementById('id01').style.display='block'" class="nav-link navH btn btn-success" href="{{ '/login' }}">Commander</a>
+						<div class="textCarte text3 text3-desktop">
+							<a onclick="document.getElementById('id01').style.display='block'" class="nav-link navH btnHeader" href="{{ '/login' }}">Commander</a>
+						</div>
+						<div class="textCarte text3 text3-mobile">
+							<a class="nav-link navH btnHeader" href="{{ path('products_index') }}">Voir la carte</a>
 						</div>
 					</div>
 				{% else %}
@@ -32,6 +36,9 @@
 							<div class="textCarte text3">
 								<a href="{{ path('pubs_show', {'id': pub.id}) }}" class="lienCaroussel commandeSansCo">
 									Je commande</a>
+							</div>
+							<div class="textCarte text3 text3-mobile">
+								<a class="nav-link navH btnHeader" href="{{ path('products_index') }}">Voir la carte</a>
 							</div>
 						</div>
 
@@ -51,8 +58,18 @@
 	<div class="blocLienPubs">
 		<div class="lienPub">
 			<div class="container-fluid blocSelectPub">
+				<div class="row blocDetailPubMobile">
+					<div class="textCarteLeft" style="display:none">Flechettes/jeux</div>
+					<div class="textCarteLeft" style="display:none">Bieres pressions</div>
+					<div class="textCarteLeft" style="display:none">Cocktails shooters</div>
+					<div class="textCarteLeft" style="display:none">Selection de whiskys rhums</div>
+				</div>
 				{% if app.user is same as null %}
 					<div class="row commandeDropkick">
+						<a href="{{ path('products_index')}}" class="cityPub">
+							Commander</a>
+					</div>
+					<div class="row commandeDropkickMobile" style="display:none">
 						<a href="{{ path('products_index')}}" class="cityPub">
 							Commander</a>
 					</div>
@@ -60,11 +77,9 @@
 						<div class="uploadCard">Telecharger notre carte</div>
 						<div class="lieuPub">
 							{% for pub in pubs %}
-
 								<div class="lieu">
 									<a href="{{ asset('uploads/brochures/' ~ pub.cardPdf) }}">{{pub.cityPub}}</a>
 								</div>
-
 							{% endfor %}
 						</div>
 					</div>
@@ -74,10 +89,12 @@
 			{% else %}
 				{% for pub in pubs %}
 					{% if app.user.pubs.cityPub is same as pub.cityPub %}
-						<div class="row commandeDropkick">
-							<a href="{{ path('pubs_show', {'id': pub.id}) }}" class="cityPub">
-								Je commande dans mon Dropkick :{{pub.cityPub}}</a>
-						</div>
+						<a href="{{ path('pubs_show', {'id': pub.id}) }}">
+							<div class="commandeDropkick commandeDropkickMobile">
+								Je commande dans mon Dropkick :
+								<br>{{pub.cityPub}}
+							</div>
+						</a>
 						<div class="row cardDropkick">
 							<div class="uploadCard">
 								<a href="{{ asset('uploads/brochures/' ~ pub.cardPdf) }}">Telecharger notre carte</a>
@@ -97,11 +114,9 @@
 		<div class="col-md-12 titleProductstar">Nos plats preferes</div>
 	</div>
 	<div class="row">
-
 		<ul id="c" class="carousselProduct liCarousselProduct">
 			{% for product in products %}
 				{% if product.productStar %}
-
 					<li class="liCaroussel">
 						<p class="blocImgCaroussel">
 							<img class="imgCarousselProductStar" src="{{ asset('uploads/photos/' ~ product.imgProduct) }}">
@@ -151,7 +166,7 @@
 	</div>
 
 
-	<div class="container-fluid">
+	<div class="container-fluid containerSport">
 		<div class="row blocS">
 			<div class="col-md-4"><img class="imgS" src="{{asset('uploads/sports/basket.jpg')}}" alt=""></div>
 			<div class="col-md-4"><img class="imgS" src="{{asset('uploads/sports/euro.jpg')}}" alt=""></div>

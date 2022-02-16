@@ -30,13 +30,17 @@ class HomeController extends AbstractController
     public function indexAdmin(PubsRepository $pubsRepository, ProductsRepository $productsRepository, PresentationRepository $presentationRepository): Response
 
     {
-
-
         return $this->render('home/admin.html.twig', [
             'controller_name' => 'HomeController',
             'pubs' => $pubsRepository->findAll(),
             'products' => $productsRepository->findAll(),
             'presentation' => $presentationRepository->findAll(),
         ]);
+    }
+    
+    #[Route('/rgpd', name: 'rgpd')]
+    public function rgpd(): Response
+    {
+        return $this->render('home/rgpd.html.twig');
     }
 }

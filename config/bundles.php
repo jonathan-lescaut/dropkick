@@ -14,5 +14,4 @@ return [
     Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
     MercurySeries\FlashyBundle\MercurySeriesFlashyBundle::class => ['all' => true],
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
-
 ];

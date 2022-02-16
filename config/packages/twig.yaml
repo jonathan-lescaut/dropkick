@@ -1,7 +1,9 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
     globals:
-        uuid: '@App\Service\CartService'
+        app_environement: '%env(APP_ENV)%'
+        stripe_public_key_test: '%env(STRIPE_PUBLIC_KEY_TEST)%'
+        uuid: '@App\Services\CartService'
 
 when@test:
     twig:

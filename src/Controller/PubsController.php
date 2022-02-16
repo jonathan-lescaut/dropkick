@@ -97,9 +97,9 @@ class PubsController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/edit", name="pubs_edit", methods={"GET","POST"})
-     */
+
+    #[Route('/{id}/edit', name: 'pubs_edit', methods: ['GET','POST'])]
+
     public function edit(Request $request, Pubs $pub, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(PubsType::class, $pub);
@@ -158,7 +158,7 @@ class PubsController extends AbstractController
             // ====================================
 
 
-            return $this->redirectToRoute('pubs_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('homeAdmin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('pubs/edit.html.twig', [

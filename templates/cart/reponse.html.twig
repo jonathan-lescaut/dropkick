@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!--Main layout-->
+    <main class="pt-5 mx-lg-5">
+        <div class="container-fluid mt-5">
+            <div class="card mb-4 wow fadeIn">
+                <div class="card-body d-sm-flex justify-content-between">
+                    <h4 class="mb-2 mb-sm-0 pt-1">
+                        <span> Recapitulatif de votre transaction </span>
+                    </h4>
+                </div>
+            </div>
+
+            <div class="row text-center wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>
+                                <strong> Paiement valide </strong>
+                            </h4>
+                        </div>
+
+                        <div class="card-body">
+                            <center>
+                                <i class="fas fa-shield-alt orange-text fa-8x"></i>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>
+                                <strong>Votre commande au {{app.user.pubs.namePub}}</strong>
+                            </h4>
+                        </div>
+
+                        <div class="card-body">
+                            <h3 class="card-title pricing-card-title mb-4"> Prix : {{uuid.total}} €</h3>
+                            <ol class="list-unstyled mb-4">
+                                <li>{{ app.user.firstNameUser }}
+                                    <i class="fas fa-check green-text ml-1"></i>
+                                </li>
+                                <hr>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <h4><strong>Une confirmation de votre commande a été envoyé par mail</strong></h4>
+            </div>
+
+
+        </div>
+    </main>
+{% endblock %}

@@ -45,7 +45,7 @@ class PresentationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('presentation_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('homeAdmin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('presentation/edit.html.twig', [
